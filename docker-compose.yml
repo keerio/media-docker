@@ -52,7 +52,6 @@ services:
       - PGID=1000
       - TZ=${TIMEZONE}
     labels:
-      - traefik.backend=ubooquity
       - traefik.docker.network=proxied
       - traefik.frontend.rule=Host:ubooquity.${DOMAIN}
       - traefik.port=2202

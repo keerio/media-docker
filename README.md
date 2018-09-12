@@ -2,7 +2,7 @@
 a short and sweet way to get a full-blown media stack running on a server in minutes. four files and sudo access are all you need to get started.
 
 ## what's included
-with this package, you'll get a media server environment capable of finding, grabbing, downloading, and presenting: movies, tv, books, music, and comics. it does this (relatively) securely, prioritizing usenet and torrenting-over-VPN.
+with this package, you'll get a media server environment capable of finding, grabbing, downloading, and presenting: movies, tv, books, music, and comics. it does this (relatively) securely, prioritizing usenet and torrenting-over-VPN. traefik acting as a reverse proxy manages access to everything via nice URL's, and watchtower keeps all of your docker containers up-to-date.
 
 ### services and where to access them
 | service | purpose | url / ports |
@@ -17,7 +17,7 @@ with this package, you'll get a media server environment capable of finding, gra
 | jackett | torznab searcher | https://jackett.${DOMAIN} |
 | sonarr | tv management | https://sonarr.${DOMAIN} |
 | radarr | movie management | https://radarr.${DOMAIN} |
-| headphones | music management | https://headphones.${DOMAIN} |
+| lidarr | music management | https://lidarr.${DOMAIN} |
 | lazylibrarian | book management | https://lazylibrarian.${DOMAIN} |
 | mylar | comic management | https://mylar.${DOMAIN} |
 | ombi | plex requests | https://ombi.${DOMAIN} |
@@ -151,7 +151,7 @@ this project makes use of the following Docker containers:
 - linuxserver\jackett
 - linuxserver\sonarr
 - linuxserver\radarr
-- linuxserver\headphones
+- linuxserver\lidarr
 - linuxserver\lazylibrarian
 - linuxserver\mylar
 - linuxserver\heimdall
@@ -160,3 +160,4 @@ this project makes use of the following Docker containers:
 - haugene\transmission-openvpn
 - haugene\transmission-openbpn-proxy
 - traefik
+- watchtower

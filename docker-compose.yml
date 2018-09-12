@@ -189,12 +189,12 @@ services:
       - 7878
     restart: always
 
-  # Headphones
-  headphones:
-    image: linuxserver/headphones:latest
-    container_name: headphones
-    volumes: 
-      - ${BASE_DIR}/headphones/config:/config
+  # Lidarr
+  lidarr:
+    image: linuxserver/lidarr:latest
+    container_name: lidarr
+    volumes:
+      - ${BASE_DIR}/lidarr/config:/config
       - ${MEDIA_DIR}/Music:/music
       - ${DOWNLOAD_DIR}:/downloads
     environment:
@@ -202,15 +202,14 @@ services:
       - PGID=1000
       - TZ=${TIMEZONE}
     labels:
-      - traefik.backend=headphones
-      - traefik.frontend.rule=Host:headphones.${DOMAIN}
+      - traefik.backend=lidarr
+      - traefik.frontend.rule=Host:lidarr.${DOMAIN}
       - traefik.docker.network=proxied
-      - traefik.port=8181
+      - traefik.port=8686
     networks:
-      - internal
       - proxied
     expose:
-      - 8181
+      - 8686
     restart: always
 
   # LazyLibrarian
@@ -416,7 +415,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     command:
-      - --cleanup --schedule="0 0 2 * * *"
+      - --cleanup --schedule "0 0 2 * * *"
     networks:
       - proxied
     restart: unless-stopped

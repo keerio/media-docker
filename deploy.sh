@@ -100,6 +100,14 @@ then
 fi
 success "Timezone set to ${timezone}."
 
+sudo add-apt-repository universe
+if [[ "$?" -ne "$SUCCESS" ]]
+then
+  err "Error occurred when installing universe repository."
+  exit 1
+fi
+success "Installed universe repository."
+
 sudo apt-get remove docker docker-engine docker.io &> /dev/null
 if [[ "$?" -ne "$SUCCESS" ]]
 then

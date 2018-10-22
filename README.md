@@ -18,8 +18,6 @@ with this package, you'll get a media server environment capable of finding, gra
 | sonarr | tv management | https://sonarr.${DOMAIN} |
 | radarr | movie management | https://radarr.${DOMAIN} |
 | lidarr | music management | https://lidarr.${DOMAIN} |
-| lazylibrarian | book management | https://lazylibrarian.${DOMAIN} |
-| mylar | comic management | https://mylar.${DOMAIN} |
 | ombi | plex requests | https://ombi.${DOMAIN} |
 | tautulli | plex statistics | https://tautulli.${DOMAIN} |
 | cockpit | server statistics & management | :9090 |

@@ -174,8 +174,6 @@ this project makes use of the following Docker containers:
 - linuxserver\sonarr
 - linuxserver\radarr
 - linuxserver\lidarr
-- linuxserver\lazylibrarian
-- linuxserver\mylar
 - linuxserver\heimdall
 - linuxserver\ombi
 - tautulli\tautulli

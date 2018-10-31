@@ -166,7 +166,7 @@ This is a list of providers that are bundled within the image. Feel free to crea
 this very much stands on the shoulders of those who came before, all this has done is made the deployment process simple.
 
 this project makes use of the following Docker containers:
-- linuxserver\plex
+- plexinc\pms-docker
 - linuxserver\ubooquity
 - linuxserver\sabnzbd
 - linuxserver\hydra

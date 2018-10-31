@@ -4,7 +4,7 @@ services:
   ## Media Interfaces
   # Plex Server
   plex:
-    image: linuxserver/plex:latest
+    image: plexinc/pms-docker:plexpass
     container_name: plex
     hostname: plex
     volumes:
@@ -16,6 +16,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=${TIMEZONE}
+      - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
     labels:
       - traefik.backend=plex
       - traefik.frontend.rule=Host:plex.${DOMAIN}

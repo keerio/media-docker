@@ -57,17 +57,10 @@ installation is omega-easy!
 2. be root
 3. run `sudo git clone https://github.com/joshuhn/media-docker/ /media-docker/ && cd /media-docker/`
 4. open `.env` in your favorite text editor and set the variables it contains
+* to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code in `.env` in the PLEX_CLAIM_TOKEN variable to claim your server with your account
 5. make sure that the script is executable (`chmod +x ./deploy.sh`) and run `./deploy.sh`
 6. wait a few minutes, watch the color-coded status messages scroll by
 7. use your newly configured media stack! hooray!
-
-note: there is an additional step required to link the Plex server to your account. Plex requires this step to be done from localhost, so you'll need to set up an ssh tunnel to make Plex think you're localhost. 
-
-if you're on \*nix, this can be done like this: 
-```
-ssh -L 8080:localhost:32400 user@host
-```
-if you're on Windows, i'd recommend doing the same via puTTY.
 
 ### non-apt systems
 if you're running on a system that doesn't use the apt package manager, you unfortunately can't use the `./deploy.sh` script. it relies heavily on apt, so you'll need to perform the configuration manually. refer to the deploy.sh section below for details on what the script actually does.
@@ -107,6 +100,7 @@ a simple dotenv file containing the variables necessary to configure and install
 | -------- | -------- | ------- |
 | USER_NAME | username for account that will be created by `./deploy.sh` | joshuhn |
 | PASSWORD | password for account that will be created by `./deploy.sh` | iM@gr8Password! |
+| PLEX_CLAIM_TOKEN | claim token for plex server from https://www.plex.tv/claim/ | claim-TcoQvJEUxjycmN8KdxGDx |
 | BASE_DIR | base directory path for container storage | /mnt/meda/data/ |
 | MEDIA_DIR | base directory path for media library storage | /mnt/media/data/media-library |
 | DOWNLOAD_DIR | base directory path for downloads | /mnt/media/data/downloads |
@@ -170,7 +164,7 @@ This is a list of providers that are bundled within the image. Feel free to crea
 this very much stands on the shoulders of those who came before, all this has done is made the deployment process simple.
 
 this project makes use of the following Docker containers:
-- linuxserver\plex
+- plexinc\pms-docker
 - linuxserver\ubooquity
 - linuxserver\sabnzbd
 - linuxserver\hydra
@@ -178,8 +172,6 @@ this project makes use of the following Docker containers:
 - linuxserver\sonarr
 - linuxserver\radarr
 - linuxserver\lidarr
-- linuxserver\lazylibrarian
-- linuxserver\mylar
 - linuxserver\heimdall
 - linuxserver\ombi
 - tautulli\tautulli

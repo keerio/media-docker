@@ -59,7 +59,7 @@ installation is omega-easy!
 2. be root
 3. run `sudo git clone https://github.com/joshuhn/media-docker/ /media-docker/ && cd /media-docker/`
 4. open `.env` in your favorite text editor and set the variables it contains
-4a. to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code in `.env` in the PLEX_CLAIM_TOKEN variable to claim your server with your account
+* to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code in `.env` in the PLEX_CLAIM_TOKEN variable to claim your server with your account
 5. make sure that the script is executable (`chmod +x ./deploy.sh`) and run `./deploy.sh`
 6. wait a few minutes, watch the color-coded status messages scroll by
 7. use your newly configured media stack! hooray!

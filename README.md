@@ -24,6 +24,34 @@ with this package, you'll get a media server environment capable of finding, gra
 | tautulli | plex statistics | https://tautulli.${DOMAIN} |
 | cockpit | server statistics & management | :9090 |
 
+## system requirements
+Plex transcoding is the heaviest resource draw for this system, and the primary resource affected is CPU.
+
+### hardware
+#### minimum recommended
+- CPU: Intel Core i3 3.0 GHz
+- RAM: 8GB
+
+#### recommended
+- CPU: Intel Core i5 3.0GHz or better
+- RAM: 12GB or better
+
+#### tested
+- CPU: Intel Core i7-4770, Intel Xeon E3-1245
+- RAM: 4x RAM 8192 MB DDR3, 4x RAM 4096 MB DDR3 ECC
+
+### operating system
+#### minimum recommended
+- Debian Jessie or better
+- i.e. Ubuntu 14.04 or better
+
+#### recommended
+- Ubuntu 18.04
+
+#### tested
+- Ubuntu 14.04, Ubuntu 16.04, Ubuntu 17.04, Ubuntu 18.04
+- Debian Stretch
+
 ## installation
 installation is omega-easy!
 

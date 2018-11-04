@@ -1,0 +1,48 @@
+  ## Torrenting over VPN
+  # Transmission - OpenVPN
+  transmission:
+    image: haugene/transmission-openvpn:latest
+    container_name: transmission
+    volumes:
+      - ${BASE_DIR}/transmission:/data
+      - ${DOWNLOAD_DIR}/complete:/data/completed
+      - ${DOWNLOAD_DIR}/incomplete:/data/incomplete
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+      - OPENVPN_PROVIDER=${VPN_PROVIDER}
+      - OPENVPN_USERNAME=${VPN_USER}
+      - OPENVPN_PASSWORD=${VPN_PASS}
+      - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
+      - TRANSMISSION_RPC_HOST_WHITELIST=*.${DOMAIN}
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    networks:
+      - vpn
+    expose:
+      - 9091
+    restart: always
+
+  vpn_proxy:
+    image: haugene/transmission-openvpn-proxy:latest
+    container_name: vpn_proxy
+    depends_on:
+      - transmission
+    links:
+      - transmission:transmission
+    labels:
+      - traefik.backend=vpn_proxy
+      - traefik.frontend.rule=Host:transmission.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8080
+    networks:
+      - vpn
+      - proxied
+    expose:
+      - 8080
+    restart: always
+  ## /Torrenting over VPN

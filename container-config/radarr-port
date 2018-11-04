@@ -1,0 +1,18 @@
+  # Radarr
+  radarr:
+    image: linuxserver/radarr:latest
+    container_name: radarr
+    volumes:
+      - ${BASE_DIR}/radarr/config:/config
+      - ${MEDIA_DIR}/Movies:/movies
+      - ${DOWNLOAD_DIR}:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    ports:
+      - 7878:7878
+    restart: always

@@ -1,0 +1,18 @@
+  # Jackett
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    volumes:
+      - ${BASE_DIR}/jackett/config:/config
+      - ${BASE_DIR}/jackett/blackhole:/downloads
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    ports:
+      - 9117:9117
+    restart: always

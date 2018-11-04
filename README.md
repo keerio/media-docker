@@ -1,25 +1,30 @@
 # media-docker
-a short and sweet way to get a full-blown media stack running on a server in minutes. four files and sudo access are all you need to get started.
+a short and sweet way to get a full-blown media stack running on a scratch server in minutes. 
 
 ## what's included
-with this package, you'll get a media server environment capable of finding, grabbing, downloading, and presenting: movies, tv, books, music, and comics. it does this (relatively) securely, prioritizing usenet and torrenting-over-VPN. traefik acting as a reverse proxy manages access to everything via nice URL's, and watchtower keeps all of your docker containers up-to-date.
+with this package, you'll get a media server environment capable of finding, grabbing, downloading, and presenting: movies, tv, books, and music. it does this (relatively) securely, prioritizing usenet but with an option for torrenting-over-VPN.
+
+traefik reverse-proxying is available for access via nice URLs without exposing ports to the outside world, as long as you have a publically accessible domain you should be clear to use this without issue.
+
+watchtower is available to keep all of your docker containers up-to-date.
 
 ### services and where to access them
 | service | purpose | url / ports |
 | ------- | ------- | :---------: |
 | plex | movie / tv / music interface | https://plex.${DOMAIN} <br> :32400 |
-| ubooquity | book / comic interface | https://ubooquity.${DOMAIN}/ubooquity <br> https://admin-ubooquity.${DOMAIN}/ubooquity/admin |
-| traefik | reverse proxy | https://traefik.${DOMAIN} <br> :80 <br> :443|
-| heimdall | dashboard | https://heimdall.${DOMAIN} |
-| sabnzbd | nzb download | https://sab.${DOMAIN} |
-| transmission | torrent download | https://transmission.${DOMAIN} |
-| hydra | nzb searcher | https://hydra.${DOMAIN} |
-| jackett | torznab searcher | https://jackett.${DOMAIN} |
-| sonarr | tv management | https://sonarr.${DOMAIN} |
-| radarr | movie management | https://radarr.${DOMAIN} |
-| lidarr | music management | https://lidarr.${DOMAIN} |
-| ombi | plex requests | https://ombi.${DOMAIN} |
-| tautulli | plex statistics | https://tautulli.${DOMAIN} |
+| ubooquity | book / comic interface | https://ubooquity.${DOMAIN}/ubooquity <br> https://admin-ubooquity.${DOMAIN}/ubooquity/admin <br> :2202 <br> :2203 |
+| traefik | reverse proxy | https://traefik.${DOMAIN} <br> :80 <br> :443 |
+| heimdall | dashboard | https://heimdall.${DOMAIN} <br> :80 <br> :443 |
+| sabnzbd | nzb download | https://sab.${DOMAIN} <br> :8080 |
+| nzbget | nzb download | https://nzbget.${DOMAIN} <br> :5678 |
+| transmission | torrent download | https://transmission.${DOMAIN} <br> :9091 |
+| hydra | nzb searcher | https://hydra.${DOMAIN} <br> :5075 |
+| jackett | torznab searcher | https://jackett.${DOMAIN} <br> :9117 |
+| sonarr | tv management | https://sonarr.${DOMAIN} <br> :8989 |
+| radarr | movie management | https://radarr.${DOMAIN} <br> :7878 |
+| lidarr | music management | https://lidarr.${DOMAIN} <br> :8686 |
+| ombi | plex requests | https://ombi.${DOMAIN} <br> :3579 |
+| tautulli | plex statistics | https://tautulli.${DOMAIN} <br> :8181 |
 | cockpit | server statistics & management | :9090 |
 
 ## system requirements
@@ -56,11 +61,10 @@ installation is omega-easy!
 1. have an Ubuntu machine available
 2. be root
 3. run `sudo git clone https://github.com/joshuhn/media-docker/ /media-docker/ && cd /media-docker/`
-4. open `.env` in your favorite text editor and set the variables it contains
-* to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code in `.env` in the PLEX_CLAIM_TOKEN variable to claim your server with your account
-5. make sure that the script is executable (`chmod +x ./deploy.sh`) and run `./deploy.sh`
-6. wait a few minutes, watch the color-coded status messages scroll by
-7. use your newly configured media stack! hooray!
+4. make sure that the script is executable (`chmod +x ./deploy.sh`) 
+5. run `./deploy.sh` and answer the questions it asks you
+* to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code when prompted by the install process (or directly in the `.env` file in the PLEX_CLAIM_TOKEN variable) to claim your server with your account
+6. use your newly configured media stack! hooray!
 
 ### non-apt systems
 if you're running on a system that doesn't use the apt package manager, you unfortunately can't use the `./deploy.sh` script. it relies heavily on apt, so you'll need to perform the configuration manually. refer to the deploy.sh section below for details on what the script actually does.
@@ -81,17 +85,19 @@ a straightforward shell script that ensures your environment is configured as ne
 8. build the Docker container environment via docker-compose.yml
 9. everything's functional!
 
-all of the customizable bits (users, directories, email) are pulled from the dotenv file. if anything fails, the shell script will tell you in big red text.
+all of the customizable bits (users, directories, email) are asked for in the interactive process, or can be pulled from the dotenv file. if anything fails, the shell script will tell you in big red text.
 
 if you're feeling saucy and confident that your system is properly configured (or if you're running a non-apt system), you can bypass `.\deploy.sh` and run `docker-compose up --force-recreate -d` on your own.
 
 ### docker-compose.yml
-this file contains all of the instructions Docker Compose needs to pull, build, and configure the entire media environment. as with `.\deploy.sh`, all user-configurable items are exposed through the dotenv file.
+this file is built by the `deploy.sh` process according to your selections through the installation. the source files are located in the `./container-config/` directory. each container option has two types, one for use with traefik (with labels and exposed ports configured appropriately) and one for direct port mapping between the host and the containers in the event that reverse-proxying is not desired.
+
+after completion of the process, this file contains all of the instructions Docker Compose needs to pull, build, and configure the entire media environment. as with `.\deploy.sh`, all user-configurable items are requested by the install and are exposed for later configuration through the dotenv file.
 
 all services are accessed via a Traefik reverse proxy for security. unfortunately, due to the complexity or poor design (or both) of Plex, it's also able to be reached directly. there's light at the end of that tunnel, though, as the Traefik team are currently working on a method of applying multiple routing labels to a single container. once that's implemented, we'll apply it here to make up for the needlessly many ports those services use.
 
 ### traefik.toml
-you don't need to worry about this one, the only thing to change is your email address and `.\deploy.sh` takes care of this for you.
+you don't need to worry about this one, the only thing to change is your email address and domain name and `.\deploy.sh` takes care of this for you. if you don't use traefik, this file is wholly irrelevant
 
 ### .env
 a simple dotenv file containing the variables necessary to configure and install all necessary components for the project.
@@ -167,6 +173,7 @@ this project makes use of the following Docker containers:
 - plexinc\pms-docker
 - linuxserver\ubooquity
 - linuxserver\sabnzbd
+- linuxserver\nzbget
 - linuxserver\hydra
 - linuxserver\jackett
 - linuxserver\sonarr

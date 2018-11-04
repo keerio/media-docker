@@ -1,0 +1,19 @@
+  # Tautulli
+  tautulli:
+    image: tautulli/tautulli:latest
+    container_name: tautulli
+    volumes:
+      - ${BASE_DIR}/tautulli/config:/config
+      - ${BASE_DIR}/plex/config/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - proxied
+      - internal
+    ports:
+      - 8181:8181
+    depends_on:
+      - plex    
+    restart: always

@@ -1,0 +1,23 @@
+  # Jackett
+  jackett:
+    image: linuxserver/jackett:latest
+    container_name: jackett
+    volumes:
+      - ${BASE_DIR}/jackett/config:/config
+      - ${BASE_DIR}/jackett/blackhole:/downloads
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    labels:
+      - traefik.backend=jackett
+      - traefik.frontend.rule=Host:jackett.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=9117
+    networks:
+      - internal
+      - proxied
+    expose:
+      - 9117
+    restart: always

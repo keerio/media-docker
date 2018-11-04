@@ -1,0 +1,24 @@
+  # Tautulli
+  tautulli:
+    image: tautulli/tautulli:latest
+    container_name: tautulli
+    volumes:
+      - ${BASE_DIR}/tautulli/config:/config
+      - ${BASE_DIR}/plex/config/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    labels:
+      - traefik.backend=tautulli
+      - traefik.frontend.rule=Host:tautulli.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8181
+    networks:
+      - proxied
+      - internal
+    expose:
+      - 8181
+    depends_on:
+      - plex    
+    restart: always

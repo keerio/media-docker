@@ -1,0 +1,23 @@
+  # Bazarr
+  bazarr:
+    image: linuxserver/bazarr:latest
+    container_name: bazarr
+    volumes:
+      - ${BASE_DIR}/bazarr/config:/config
+      - ${MEDIA_DIR}/Movies:/movies
+      - ${MEDIA_DIR}/TV:/tv
+      - ${DOWNLOAD_DIR}:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    labels:
+      - traefik.backend=bazarr
+      - traefik.frontend.rule=Host:bazarr.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=6767
+    networks:
+      - proxied
+    expose:
+      - 6767
+    restart: always

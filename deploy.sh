@@ -648,6 +648,86 @@ case "$doInstallLidarr" in
     ;;
 esac
 
+## Bazarr
+echo -n "Would you like to install the Bazarr container? [Yn]: "
+read -r doInstallBazarr
+case "$doInstallBazarr" in 
+  [Nn]* )
+    info "Skipping Bazarr configuration."
+    ;;
+  * )
+    case "$doInstallTraefik" in
+      [Nn]* )
+        append_file container-config/bazarr-port docker-compose.yml
+        ;;
+      * )
+        append_file container-config/bazarr-traefik docker-compose.yml
+        ;;
+    esac
+    success "Bazarr container enabled."
+    ;;
+esac
+
+## Oscarr
+echo -n "Would you like to install the Oscarr container? [Yn]: "
+read -r doInstallOscarr
+case "$doInstallOscarr" in 
+  [Nn]* )
+    info "Skipping Oscarr configuration."
+    ;;
+  * )
+    case "$doInstallTraefik" in
+      [Nn]* )
+        append_file container-config/oscarr-port docker-compose.yml
+        ;;
+      * )
+        append_file container-config/oscarr-traefik docker-compose.yml
+        ;;
+    esac
+    success "Oscarr container enabled."
+    ;;
+esac
+
+## Mylar
+echo -n "Would you like to install the Mylar container? [Yn]: "
+read -r doInstallMylar
+case "$doInstallMylar" in 
+  [Nn]* )
+    info "Skipping Mylar configuration."
+    ;;
+  * )
+    case "$doInstallTraefik" in
+      [Nn]* )
+        append_file container-config/mylar-port docker-compose.yml
+        ;;
+      * )
+        append_file container-config/mylar-traefik docker-compose.yml
+        ;;
+    esac
+    success "Mylar container enabled."
+    ;;
+esac
+
+## LazyLibrarian
+echo -n "Would you like to install the LazyLibrarian container? [Yn]: "
+read -r doInstallLazyLibrarian
+case "$doInstallLazyLibrarian" in 
+  [Nn]* )
+    info "Skipping LazyLibrarian configuration."
+    ;;
+  * )
+    case "$doInstallTraefik" in
+      [Nn]* )
+        append_file container-config/lazylibrarian-port docker-compose.yml
+        ;;
+      * )
+        append_file container-config/lazylibrarian-traefik docker-compose.yml
+        ;;
+    esac
+    success "LazyLibrarian container enabled."
+    ;;
+esac
+
 ## Heimdall
 echo -n "Would you like to install the Heimdall container? [Yn]: "
 read -r doInstallHeimdall

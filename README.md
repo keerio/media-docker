@@ -16,15 +16,19 @@ watchtower is available to keep all of your docker containers up-to-date.
 | traefik | reverse proxy | https://traefik.${DOMAIN} <br> :80 <br> :443 |
 | heimdall | dashboard | https://heimdall.${DOMAIN} <br> :80 <br> :443 |
 | sabnzbd | nzb download | https://sab.${DOMAIN} <br> :8080 |
-| nzbget | nzb download | https://nzbget.${DOMAIN} <br> :5678 |
+| nzbget | nzb download | https://nzbget.${DOMAIN} <br> :6789 |
 | transmission | torrent download | https://transmission.${DOMAIN} <br> :9091 |
 | hydra | nzb searcher | https://hydra.${DOMAIN} <br> :5075 |
 | jackett | torznab searcher | https://jackett.${DOMAIN} <br> :9117 |
 | sonarr | tv management | https://sonarr.${DOMAIN} <br> :8989 |
 | radarr | movie management | https://radarr.${DOMAIN} <br> :7878 |
 | lidarr | music management | https://lidarr.${DOMAIN} <br> :8686 |
+| bazarr | subtitle management | https://bazarr.${DOMAIN} <br> :6767 |
+| mylar | comic book management | https://mylar.${DOMAIN} <br> :8090 |
+| lazylibrarian | book management | https://lazylibrarian.${DOMAIN} <br> :5299 |
 | ombi | plex requests | https://ombi.${DOMAIN} <br> :3579 |
 | tautulli | plex statistics | https://tautulli.${DOMAIN} <br> :8181 |
+| tautulli | plex sonarr/radarr/bazarr dashboard | https://oscarr.${DOMAIN} <br> :5656 |
 | cockpit | server statistics & management | :9090 |
 
 ## system requirements

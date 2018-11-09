@@ -1,5 +1,5 @@
 # media-docker
-a short and sweet way to get a full-blown media stack running on a scratch server in minutes. 
+a short and sweet way to get a full-blown media stack running on a scratch server in minutes.
 
 ## what's included
 with this package, you'll get a media server environment capable of finding, grabbing, downloading, and presenting: movies, tv, books, and music. it does this (relatively) securely, prioritizing usenet but with an option for torrenting-over-VPN.
@@ -28,7 +28,7 @@ watchtower is available to keep all of your docker containers up-to-date.
 | lazylibrarian | book management | https://lazylibrarian.${DOMAIN} <br> :5299 |
 | ombi | plex requests | https://ombi.${DOMAIN} <br> :3579 |
 | tautulli | plex statistics | https://tautulli.${DOMAIN} <br> :8181 |
-| tautulli | plex sonarr/radarr/bazarr dashboard | https://oscarr.${DOMAIN} <br> :5656 |
+| oscarr | plex sonarr/radarr/bazarr dashboard | https://oscarr.${DOMAIN} <br> :5656 |
 | cockpit | server statistics & management | :9090 |
 
 ## system requirements
@@ -65,7 +65,7 @@ installation is omega-easy!
 1. have an Ubuntu machine available
 2. be root
 3. run `sudo git clone https://github.com/joshuhn/media-docker/ /media-docker/ && cd /media-docker/`
-4. make sure that the script is executable (`chmod +x ./deploy.sh`) 
+4. make sure that the script is executable (`chmod +x ./deploy.sh`)
 5. run `./deploy.sh` and answer the questions it asks you
 * to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code when prompted by the install process (or directly in the `.env` file in the PLEX_CLAIM_TOKEN variable) to claim your server with your account
 6. use your newly configured media stack! hooray!

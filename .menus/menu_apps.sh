@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-menu_select_apps() {
+menu_apps() {
   local -a APPS
   local -a OPTIONS
   local -a SELECTIONS

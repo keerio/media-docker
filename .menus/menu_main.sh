@@ -4,7 +4,8 @@ set -euo pipefail
 menu_main() {
   local -a OPTIONS
   OPTIONS+=("Guided Installer" "Walk through configuration and installation.")
-  OPTIONS+=("Configure Environment" "Manually configure environment.")
+  OPTIONS+=("Select Apps" "Enable or disable applications.")
+  OPTIONS+=("Timezone" "Set timezone.")
   OPTIONS+=("Update" "Update files from GitHub.")
   OPTIONS+=("Docker Prune" "Cleanup Docker system.")
 
@@ -19,10 +20,13 @@ menu_main() {
       info "Starting guided installer process."
       run_sh "$MENUDIR" "menu_guided" || run_sh "$MENUDIR" "menu_main"
     ;;
-    "Configure Environment")
-      info "Starting manual configuration process."
-      #run_sh "$MENUDIR" "menu_config" || run_sh "$MENUDIR" "menu_main"
-      run_sh "$MENUDIR" "menu_select_apps" || run_sh "$MENUDIR" "menu_main"
+    "Select Apps")
+      info "Starting manual app configuration process."
+      run_sh "$MENUDIR" "menu_apps" || run_sh "$MENUDIR" "menu_main"
+    ;;
+    "Timezone")
+      info "Starting timezone update process."
+      run_sh "$MENUDIR" "menu_timezone" || run_sh "$MENUDIR" "menu_main"
     ;;
     "Update")
       info "Starting media-docker update process."

@@ -1,0 +1,20 @@
+# APP CONFIGURATION
+bazarr=N
+heimdall=N
+jackett=N
+lazylibrarian=N
+lidarr=N
+mylar=N
+nzbget=N
+nzbhydra=N
+ombi=N
+oscarr=N
+plex=N
+radarr=N
+sabnzbd=N
+sonarr=N
+tautulli=N
+torrenting=N
+traefik=N
+ubooquity=N
+watchtower=N

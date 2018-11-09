@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-set_env_var() {
+env_set() {
   local KEY
   local VAL
   local FILE

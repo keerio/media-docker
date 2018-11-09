@@ -11,5 +11,8 @@ env_get() {
 
   VAL=$(grep "$KEY" "$FILE" | xargs)
   IFS="=" read -ra VAL <<< "$VAL"
-  echo "${VAL[1]}" | tr -d "\r"
+  if [ ${VAL[1]} ]
+  then
+    echo "${VAL[1]}" | tr -d "\r"
+  fi
 }

@@ -25,6 +25,7 @@ readonly SCRIPTDIR="$BASEDIR/.scripts/"
 readonly MENUDIR="$BASEDIR/.menus/"
 readonly CONFIGDIR="$BASEDIR/.config/"
 readonly CONTAINDIR="$BASEDIR/.containers/"
+readonly BACKUPDIR="$BASEDIR/.backups/"
 readonly CURRENT_UID=$UID
 
 # colors

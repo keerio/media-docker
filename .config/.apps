@@ -1,4 +1,7 @@
 # APP CONFIGURATION
+# app=Y to enable
+# app=N to disable
+#
 bazarr=N
 heimdall=N
 jackett=N

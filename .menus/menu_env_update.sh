@@ -17,5 +17,7 @@ menu_env_update() {
 
   if [ $? = 0 ]; then
     run_sh "$SCRIPTDIR" "env_set" "$KEY" "$VAL"
+  else 
+    return $?
   fi
 }

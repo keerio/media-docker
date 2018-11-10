@@ -4,7 +4,7 @@ set -euo pipefail
 apt_prereqs_install() {
   local COMPOSE_VER
 
-  COMPOSE_VER=$(run_sh "get_env" "COMPOSE_VERSION" "$BASEDIR/.env")
+  COMPOSE_VER=$(run_sh "$SCRIPTDIR" "env_get" "COMPOSE_VERSION" "$BASEDIR/.env")
 
   sudo add-apt-repository universe > /dev/null 2>&1 \
     || err "Error adding universe repository."
@@ -32,4 +32,5 @@ apt_prereqs_install() {
     > /dev/null 2>&1 \
     || err "Error installing Docker Compose."
   
+  return
 }

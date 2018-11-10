@@ -4,9 +4,9 @@ set -euo pipefail
 file_append() {
   local OUTFILE
   local INFILE
+  
+  INFILE=${1:-}
+  OUTFILE=${2:-}
 
-  OUTFILE=${1:-}
-  INFILE=${2:-}
-
-  cat "$OUTFILE" | sudo tee -a "$INFILE" > /dev/null
+  sudo cat "$OUTFILE" | sudo tee -a "$INFILE" > /dev/null
 }

@@ -47,18 +47,21 @@ menu_apps() {
     MAPSELS["$SELECTION"]=1
   done
 
-  case $SELECTIONS in
-    *)
-      for APP in ${APPS[@]} ; do
-        if [[ ${MAPSELS[$APP]+_} ]]
-        then
-          run_sh "$SCRIPTDIR" "env_set" "$APP" "Y" ".apps"
-        else
-          run_sh "$SCRIPTDIR" "env_set" "$APP" "N" ".apps"
-        fi
-      done
+  for APP in ${APPS[@]} ; do
+    if [[ ${MAPSELS[$APP]+_} ]]
+    then
+      run_sh "$SCRIPTDIR" "env_set" "$APP" "Y" ".apps"
+    else
+      run_sh "$SCRIPTDIR" "env_set" "$APP" "N" ".apps"
+    fi
+  done
 
-      run_sh "$MENUDIR" "menu_main"
-    ;;
-  esac
+  if [[ ${MAPSELS["torrenting"]+_} ]]
+  then
+    run_sh "$MENUDIR" "menu_vpn"
+  fi
+
+  run_sh "$SCRIPTDIR" "compose_create"
+
+  run_sh "$MENUDIR" "menu_main"
 }

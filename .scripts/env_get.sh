@@ -9,9 +9,9 @@ env_get() {
   KEY=${1:-}
   FILE=${2:-".env"}
 
-  VAL=$(grep "$KEY" "$FILE" | xargs)
+  VAL=$(grep "$KEY" "$FILE" | xargs) || ($(echo "") $(echo ""))
   IFS="=" read -ra VAL <<< "$VAL"
-  if [ ${VAL[1]} ]
+  if [[ ${VAL[1]+"${VAL[1]}"} ]]
   then
     echo "${VAL[1]}" | tr -d "\r"
   fi

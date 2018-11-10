@@ -15,8 +15,8 @@ apt_prereqs_install() {
   run_sh "$SCRIPTDIR" "apt_install" "apt-transport-https" \
     "ca-certificates" "curl" "software-properties-common"
 
-  sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
-    apt-key add - > /dev/null 2>&1 \
+  curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
+    sudo apt-key add - > /dev/null 2>&1 \
     || err "Error adding Docker GPG key."
   
   sudo add-apt-repository \

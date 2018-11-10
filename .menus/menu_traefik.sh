@@ -34,5 +34,4 @@ menu_traefik() {
   esac
   
   run_sh "$SCRIPTDIR" "editor_open" "${DIRECTORY}/traefik/traefik.toml"
-  run_sh "$MENUDIR" "menu_main"
 }

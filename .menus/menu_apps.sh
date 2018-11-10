@@ -10,8 +10,9 @@ menu_apps() {
 
   APPS=$(run_sh "$SCRIPTDIR" "dir_array" "$CONTAINDIR")
 
-  if [[ ! -f "${BASEDIR}/.apps" ]]
+  if [[ ! -f "$APPENV" ]]
   then
+    info ".apps not found, creating."
     echo "# APP CONFIGURATION" >> "$APPENV"
   fi
 
@@ -56,12 +57,5 @@ menu_apps() {
     fi
   done
 
-  if [[ ${MAPSELS["torrenting"]+_} ]]
-  then
-    run_sh "$MENUDIR" "menu_vpn"
-  fi
-
   run_sh "$SCRIPTDIR" "compose_create"
-
-  run_sh "$MENUDIR" "menu_main"
 }

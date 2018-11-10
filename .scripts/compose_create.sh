@@ -5,7 +5,7 @@ compose_create() {
   local -a ENABLED_APPS
   local PROXY
 
-  ENABLED_APPS=$(run_sh "$SCRIPTDIR" "apps_active" "$BASEDIR/.apps")
+  ENABLED_APPS=$(run_sh "$SCRIPTDIR" "apps_active_list" "$BASEDIR/.apps")
   PROXY=${1:-"N"}
 
   if [[ -f "${BASEDIR}/docker-compose.yml" ]]

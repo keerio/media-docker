@@ -21,43 +21,38 @@ menu_manual() {
   case $SELECTION in
     "Install Prerequisites")
       info "Starting prerequistes install."
-      run_sh "$SCRIPTDIR" "apt_prereqs_install" || run_sh "$MENUDIR" "menu_manual"
+      run_sh "$SCRIPTDIR" "apt_prereqs_install"
     ;;
     "Directories")
       info "Starting directory configuration process."
-      run_sh "$MENUDIR" "menu_directories" || run_sh "$MENUDIR" "menu_manual"
+      run_sh "$MENUDIR" "menu_directories"
     ;;
     "Apps")
       info "Starting manual app configuration process."
-      run_sh "$MENUDIR" "menu_apps" || run_sh "$MENUDIR" "menu_manual"
+      run_sh "$MENUDIR" "menu_apps"
     ;;
     "Traefik")
       info "Starting Traefik configuration process."
-      run_sh "$MENUDIR" "menu_traefik" || run_sh "$MENUDIR" "menu_manual"
+      run_sh "$MENUDIR" "menu_traefik"
     ;;
     "VPN Torrent")
       info "Starting Torrent-over-VPN configuration process."
-      run_sh "$MENUDIR" "menu_vpn" || run_sh "$MENUDIR" "menu_manual"
+      run_sh "$MENUDIR" "menu_vpn"
     ;;
     "Timezone")
       info "Starting timezone update process."
-      run_sh "$MENUDIR" "menu_timezone" || run_sh "$MENUDIR" "menu_manual"
+      run_sh "$MENUDIR" "menu_timezone"
     ;;
     "Plex Claim")
       info "Starting Plex claim process."
       run_sh "$MENUDIR" "menu_env_update" \
         "PLEX_CLAIM_TOKEN" \
         $(run_sh "$SCRIPTDIR" "env_get" "PLEX_CLAIM_TOKEN" "$BASEDIR/.env") \
-        "$BASEDIR/.env" \
-        || run_sh "$MENUDIR" "menu_manual"
+        "$BASEDIR/.env"
     ;;
     "Start")
       info "Starting Docker containers."
-      run_sh "$SCRIPTDIR" "docker_up" \
-        || run_sh "$MENUDIR" "menu_manual"
-    ;;
-    "Exit")
-      run_sh "$MENUDIR" "menu_main"
+      run_sh "$SCRIPTDIR" "docker_up"
     ;;
     *)
       run_sh "$MENUDIR" "menu_main"

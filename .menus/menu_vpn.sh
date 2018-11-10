@@ -15,13 +15,11 @@ menu_vpn() {
 
   case $SELECTION in 
     "Exit")
-      run_sh "$MENUDIR" "menu_main"
     ;;
     *)
       run_sh "$MENUDIR" "menu_env_update" \
         "$SELECTION" \
         "$(run_sh "$SCRIPTDIR" "env_get" "$SELECTION" "$BASEDIR/.env")" \
-        || run_sh "$MENUDIR" "menu_manual"
 
       run_sh "$MENUDIR" "menu_vpn"
     ;;

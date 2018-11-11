@@ -1,10 +1,11 @@
-# media-docker
+# [![media-docker](https://github.com/joskore/media-docker/raw/master/docs/logo.png)](https://media-docker.com/)
+
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/joskore/media-docker.svg)
 [![GitHub issues](https://img.shields.io/github/issues/joskore/media-docker.svg)](https://github.com/joskore/media-docker/issues)
 ![GitHub](https://img.shields.io/github/license/joskore/media-docker.svg)
 ![GitHub forks](https://img.shields.io/github/forks/joskore/media-docker.svg?style=social&label=Fork)
 
-a short and sweet way to get a full-blown media stack running on a scratch server in minutes.
+a short and sweet way to get a full-blown media stack running on a server from scratch in minutes.
 
 ## what's included
 with this package, you'll get a media server environment capable of finding, grabbing, downloading, and presenting: movies, tv, books, and music. it does this (relatively) securely, prioritizing usenet but with an option for torrenting-over-VPN.
@@ -70,19 +71,17 @@ installation is omega-easy!
 1. have an Ubuntu machine available
 2. be root
 3. run `sudo git clone https://github.com/joshuhn/media-docker/ /media-docker/ && cd /media-docker/`
-4. make sure that the script is executable (`chmod +x ./deploy.sh`)
-5. run `./deploy.sh` and answer the questions it asks you
+4. make sure that the script is executable (`chmod +x ./media-docker.sh`)
+5. run `./media-docker.sh` and answer the questions it asks you
 * to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code when prompted by the install process (or directly in the `.env` file in the PLEX_CLAIM_TOKEN variable) to claim your server with your account
 6. use your newly configured media stack! hooray!
 
 ### non-apt systems
-if you're running on a system that doesn't use the apt package manager, you unfortunately can't use the `./deploy.sh` script. it relies heavily on apt, so you'll need to perform the configuration manually. refer to the deploy.sh section below for details on what the script actually does.
-
-if you're confident your system is configured appropriately, run `docker-compose up --force-recreate -d` from `/media-docker`.
+the installer process currently requires that your system be running apt, though support for other package managers is in progress.
 
 ## what are those?
-### deploy.sh
-a straightforward shell script that ensures your environment is configured as needed to ensure a solid media server. the process it takes is as follows:
+### media-docker.sh
+an installer built in shell script that ensures your environment is configured as needed to ensure a solid media server. the process it takes is as follows:
 
 1. perform local server configuration (sudo user setup, timezone)
 2. cleanup legacy Docker packages
@@ -96,30 +95,26 @@ a straightforward shell script that ensures your environment is configured as ne
 
 all of the customizable bits (users, directories, email) are asked for in the interactive process, or can be pulled from the dotenv file. if anything fails, the shell script will tell you in big red text.
 
-if you're feeling saucy and confident that your system is properly configured (or if you're running a non-apt system), you can bypass `.\deploy.sh` and run `docker-compose up --force-recreate -d` on your own.
-
 ### docker-compose.yml
-this file is built by the `deploy.sh` process according to your selections through the installation. the source files are located in the `./container-config/` directory. each container option has two types, one for use with traefik (with labels and exposed ports configured appropriately) and one for direct port mapping between the host and the containers in the event that reverse-proxying is not desired.
+this file is built by the `media-docker.sh` process according to your selections through the installation. the source files are located in the `./.containers/` directory. each container option has two types, one for use with traefik (with labels and exposed ports configured appropriately) and one for direct port mapping between the host and the containers in the event that reverse-proxying is not desired.
 
-after completion of the process, this file contains all of the instructions Docker Compose needs to pull, build, and configure the entire media environment. as with `.\deploy.sh`, all user-configurable items are requested by the install and are exposed for later configuration through the dotenv file.
-
-all services are accessed via a Traefik reverse proxy for security. unfortunately, due to the complexity or poor design (or both) of Plex, it's also able to be reached directly. there's light at the end of that tunnel, though, as the Traefik team are currently working on a method of applying multiple routing labels to a single container. once that's implemented, we'll apply it here to make up for the needlessly many ports those services use.
+after completion of the process, this file contains all of the instructions Docker Compose needs to pull, build, and configure the entire media environment. as with `./media-docker.sh`, all user-configurable items are requested by the install and are exposed for later configuration through the dotenv file.
 
 ### traefik.toml
-you don't need to worry about this one, the only thing to change is your email address and domain name and `.\deploy.sh` takes care of this for you. if you don't use traefik, this file is wholly irrelevant
+you don't need to worry about this one, the only thing to change is your email address and domain name and `./media-docker.sh` takes care of this for you. if you don't use traefik, this file is wholly irrelevant
 
 ### .env
 a simple dotenv file containing the variables necessary to configure and install all necessary components for the project.
 
 | variable | function | example |
 | -------- | -------- | ------- |
-| USER_NAME | username for account that will be created by `./deploy.sh` | joshuhn |
-| PASSWORD | password for account that will be created by `./deploy.sh` | iM@gr8Password! |
+| USER_NAME | username for account that will be created by `./media-docker.sh` | joshuhn |
+| PASSWORD | password for account that will be created by `./media-docker.sh` | iM@gr8Password! |
 | PLEX_CLAIM_TOKEN | claim token for plex server from https://www.plex.tv/claim/ | claim-TcoQvJEUxjycmN8KdxGDx |
 | BASE_DIR | base directory path for container storage | /mnt/meda/data/ |
 | MEDIA_DIR | base directory path for media library storage | /mnt/media/data/media-library |
 | DOWNLOAD_DIR | base directory path for downloads | /mnt/media/data/downloads |
-| TIMEZONE | local timezone, set by `./deploy.sh` | America/Montevideo |
+| TIMEZONE | local timezone, set by `./media-docker.sh` | America/Montevideo |
 | DOMAIN | domain name for the media stack, used by traefik | media.com |
 | COMPOSE_VERSION | version of docker-compose to pull from GitHub | 1.20.0-rc2 |
 | VPN_PROVIDER | openvpn provider, supported values in the table below | NORDVPN |

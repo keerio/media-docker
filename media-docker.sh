@@ -7,20 +7,24 @@ set -euo pipefail
 
 ## GLOBALS
 get_source() {
-  local SOURCE="${BASH_SOURCE[0]}"
-  local BASE_DIR
+  local SOURCE
+  local DIR
 
-  while [ -h "$SOURCE" ]; do
-    BASE_DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null && pwd )"
-    SOURCE="$(readlink "$SOURCE")"
-    [[ $SOURCE != /* ]] && SOURCE="$BASE_DIR/$SOURCE"
+  SOURCE="${BASH_SOURCE[0]}"
+  
+  while [[ -h "${SOURCE}" ]]; do
+    DIR="$( cd -P "$( dirname "${SOURCE}" )" > /dev/null && pwd )"
+    SOURCE="$(readlink "${SOURCE}")"
+    [[ ${SOURCE} != /* ]] && SOURCE="${DIR}/${SOURCE}"
   done
-  echo "$SOURCE"
+
+  echo "${SOURCE}"
 }
 
 # script info
-readonly SOURCE="$(get_source)"
-readonly BASEDIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null && pwd )"
+readonly ARGS=("$@")
+readonly SOURCENAME="$(get_source)"
+readonly BASEDIR="$( cd -P "$( dirname "$SOURCENAME" )" >/dev/null && pwd )"
 readonly SCRIPTDIR="$BASEDIR/.scripts/"
 readonly MENUDIR="$BASEDIR/.menus/"
 readonly CONFIGDIR="$BASEDIR/.config/"
@@ -53,16 +57,36 @@ run_sh() {
   fi
 }
 
+#/ Usage: sudo media-docker [OPTIONS]
+#/ Description: media-docker installation and configuration tool.
+#/ 
+#/ To run the GUI installer / configurator, run media-docker without options.
+#/
+#/ Options:
+#/
+#/   -p, --prereq: Install pre-requisites.
+#/   -a, --apps: View or edit your .apps file
+#/   -e, --env: View or edit your .env file
+#/   -c, --compose <up/down/restart/pull/create>: Rebuild your compose environment from selected options
+#/   -u, --update: Update media-docker
+#/   -P, --prune: Prune the Docker system
+#/   -h, --help: Display this help message
+#/
+usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
+
 # main
 main() {
   # prereqs for processes
   run_sh "$SCRIPTDIR" "root_check"
   run_sh "$SCRIPTDIR" "apt_check"
+  run_sh "$SCRIPTDIR" "self_symlink"
   run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR"
   run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR"
+
+  # run cli if options are included
+  run_sh "$MENUDIR" "cli" "${ARGS[@]:-}"
 
   # start menu
   run_sh "$MENUDIR" "menu_main"
 }
-
 main

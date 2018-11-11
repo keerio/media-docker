@@ -17,6 +17,6 @@ self_update() {
     sudo git clone https://github.com/joshuhn/media-docker/ "${DIRECTORY}"
   fi
 
-  sudo chmod +x "${DIRECTORY}/${SOURCE}" \
-    > /dev/null 2>&1 || err "Error occurred while making $SOURCE executable."
+  sudo chmod +x "${DIRECTORY}/${SOURCENAME}" \
+    > /dev/null 2>&1 || err "Error occurred while making $SOURCENAME executable."
 }

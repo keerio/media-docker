@@ -39,7 +39,7 @@ menu_guided() {
   fi
 
   info "Starting Docker containers."
-  run_sh "$SCRIPTDIR" "docker_up"
+  run_sh "$SCRIPTDIR" "compose_up"
 
   run_sh "$MENUDIR" "menu_main"
 }

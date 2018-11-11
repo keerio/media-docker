@@ -30,7 +30,7 @@ installation is omega-easy!
 2. run `sudo git clone https://github.com/joshuhn/media-docker/ /media-docker/ && cd /media-docker/`
 3. make sure that the script is executable (`chmod +x ./media-docker.sh`)
 4. run `./media-docker.sh` and answer the questions it asks you
-* to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code when prompted by the install process (or directly in the `.env` file in the PLEX_CLAIM_TOKEN variable) to claim your server with your account
+    * to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code when prompted by the install process (or directly in the `.env` file in the PLEX_CLAIM_TOKEN variable) to claim your server with your account
 6. use your newly configured media stack! hooray!
 
 ### non-apt systems

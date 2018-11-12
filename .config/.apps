@@ -3,7 +3,11 @@
 # app=N to disable
 #
 bazarr=N
+calibreweb=N
+couchpotato=N
+emby=N
 heimdall=N
+htpcmanager=N
 jackett=N
 lazylibrarian=N
 lidarr=N
@@ -11,8 +15,10 @@ mylar=N
 nzbget=N
 nzbhydra=N
 ombi=N
+organizr=N
 oscarr=N
 plex=N
+portainer=N
 radarr=N
 sabnzbd=N
 sonarr=N

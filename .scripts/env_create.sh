@@ -8,11 +8,10 @@ env_create() {
   SOURCEDIR=${1:-}
   DESTDIR=${2:-}
 
-  if [[ ! -f "${DESTDIR}/.env" ]]
-  then
+  if [[ ! -f "${DESTDIR}/.env" ]] ; then
     sudo cp "${SOURCEDIR}/.env" "${DESTDIR}/.env" \
       > /dev/null 2>&1 || err "Error occured copying .env."
-    
+
     run_sh "$SCRIPTDIR" "env_set" \
       "BASE_DIR" "$BASEDIR/" "${DESTDIR}/.env"
     run_sh "$SCRIPTDIR" "env_set" \

@@ -3,7 +3,8 @@ set -euo pipefail
 
 menu_manual() {
   local -a OPTIONS
-  OPTIONS+=("Install Prerequisites" "Install necessary packages and repositories.")
+  OPTIONS+=("Install Prerequisites" \
+    "Install necessary packages and repositories.")
   OPTIONS+=("Directories" "Define / update storage directories.")
   OPTIONS+=("Apps" "Enable or disable applications.")
   OPTIONS+=("Traefik" "Edit Traefik configuration.")
@@ -13,7 +14,7 @@ menu_manual() {
   OPTIONS+=("Start" "Start Docker containers.")
 
   local SELECTION
-  
+
   SELECTION=$(whiptail --fb --clear --title "media-docker Configuration" \
     --cancel-button "Exit" --menu "Select an option." 0 0 0 \
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")

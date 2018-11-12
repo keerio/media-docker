@@ -14,20 +14,17 @@ menu_guided() {
   info "Starting manual app configuration process."
   run_sh "$MENUDIR" "menu_apps"
 
-  if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "traefik") -eq 0 ]]
-  then
+  if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "traefik") -eq 0 ]] ; then
     info "Starting Traefik configuration process."
     run_sh "$MENUDIR" "menu_traefik"
   fi
 
-  if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "torrenting")  -eq 0 ]]
-  then
+  if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "torrenting")  -eq 0 ]] ; then
     info "Starting Torrent-over-VPN configuration process."
     run_sh "$MENUDIR" "menu_vpn"
   fi
 
-  if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "plex")  -eq 0 ]]
-  then
+  if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "plex")  -eq 0 ]] ; then
     info "Starting Plex claim process."
     run_sh "$MENUDIR" "menu_env_update" \
       "PLEX_CLAIM_TOKEN" \

@@ -10,6 +10,6 @@ dir_array() {
   for d in $BASE/*/ ; do
     DIRS=("${DIRS[@]}" "$(basename "$d" | tr -d "/")")
   done
-  
+
   echo "${DIRS[@]}"
 }

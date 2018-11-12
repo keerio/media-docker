@@ -12,8 +12,7 @@ self_symlink() {
       || err "Error occurred while removing old symlink"
   fi
 
-  if [[ ! -L "/usr/local/bin/media-docker" ]]
-  then
+  if [[ ! -L "/usr/local/bin/media-docker" ]] ; then
     info "Creating symlink for media-docker."
     sudo ln -s -T "${BASEDIR}/${SOURCENAME}" /usr/local/bin/media-docker \
       || err "Error occurred while setting up symlink."

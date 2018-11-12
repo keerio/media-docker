@@ -11,8 +11,7 @@ env_get() {
 
   VAL=$(grep "$KEY" "$FILE" | xargs)
   IFS="=" read -ra VAL <<< "$VAL"
-  if [[ ${VAL[1]+"${VAL[1]}"} ]]
-  then
+  if [[ ${VAL[1]+"${VAL[1]}"} ]] ; then
     echo "${VAL[1]}" | tr -d "\r"
   fi
 }

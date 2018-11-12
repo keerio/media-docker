@@ -13,8 +13,7 @@ array_contains () {
     MAP["$item"]=1
   done
 
-  if [[ ${MAP["$VAL"]+_} ]] 
-  then 
+  if [[ ${MAP["$VAL"]+_} ]] ; then
     echo "0"
   else
     echo "1"

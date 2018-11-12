@@ -11,8 +11,7 @@ menu_apps() {
 
   APPS=$(run_sh "$SCRIPTDIR" "dir_array" "$CONTAINDIR")
 
-  if [[ ! -f "$APPENV" ]]
-  then
+  if [[ ! -f "$APPENV" ]] ; then
     info ".apps not found, creating."
     echo "# APP CONFIGURATION" >> "$APPENV"
   fi
@@ -42,7 +41,7 @@ menu_apps() {
   SELECTIONS=$(whiptail --title "media-docker Configuration" --checklist \
     "Enable or disable applications" 0 0 0 \
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
-  
+
   # replace pesky quotes and map to associative array
   SELECTIONS=("${SELECTIONS[@]//\"/}")
   for SELECTION in ${SELECTIONS[@]} ; do
@@ -50,8 +49,7 @@ menu_apps() {
   done
 
   for APP in ${APPS[@]} ; do
-    if [[ ${MAPSELS[$APP]+_} ]]
-    then
+    if [[ ${MAPSELS[$APP]+_} ]] ; then
       run_sh "$SCRIPTDIR" "env_set" "$APP" "Y" ".apps"
     else
       run_sh "$SCRIPTDIR" "env_set" "$APP" "N" ".apps"

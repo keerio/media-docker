@@ -16,7 +16,7 @@ menu_env_update() {
     3>&1 1>&2 2>&3 || echo "Exit" )
   if [ "$VAL" != "Exit" ]; then
     run_sh "$SCRIPTDIR" "env_set" "$KEY" "$VAL" "$FILE"
-  else 
+  else
     return $?
   fi
 }

@@ -13,6 +13,6 @@ apps_active_list() {
     IFS="=" read -ra res <<< "$res"
     APPS=("${APPS[@]}" "$(echo "$res" | tr -d "\r")")
   done
-  
+
   echo "${APPS[@]}"
 }

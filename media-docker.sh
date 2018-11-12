@@ -11,7 +11,7 @@ get_source() {
   local DIR
 
   SOURCE="${BASH_SOURCE[0]}"
-  
+
   while [[ -h "${SOURCE}" ]]; do
     DIR="$( cd -P "$( dirname "${SOURCE}" )" > /dev/null && pwd )"
     SOURCE="$(readlink "${SOURCE}")"
@@ -40,17 +40,23 @@ readonly BLUE='\e[34m'
 readonly NOCOL='\033[0m'
 
 # logging functions
-info() { echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" ; }
-err() { echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" >&2 ; exit 1 ; }
-success() { echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" ; }
+info() {
+  echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}"
+}
+err() {
+  echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" >&2
+  exit 1
+}
+success() {
+  echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}"
+}
 
 # script runner
 run_sh() {
   local DIR="${1:-}"
   local FILE="${2:-}"
   shift; shift
-  if [[ -f "${DIR}/${FILE}.sh" ]]
-  then
+  if [[ -f "${DIR}/${FILE}.sh" ]] ; then
     source "${DIR}/${FILE}.sh"
     ${FILE} "$@";
   else
@@ -76,7 +82,7 @@ run_sh() {
 #/
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
 
-finish() { 
+finish() {
   sudo service docker start
   run_sh "$SCRIPTDIR" "self_symlink"
   run_sh "$SCRIPTDIR" "self_config_delete"

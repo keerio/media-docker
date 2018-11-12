@@ -4,7 +4,7 @@ set -euo pipefail
 file_append() {
   local OUTFILE
   local INFILE
-  
+
   INFILE=${1:-}
   OUTFILE=${2:-}
 

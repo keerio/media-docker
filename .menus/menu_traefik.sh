@@ -2,16 +2,17 @@
 set -euo pipefail
 
 menu_traefik() {
-  local PROMPT="Would you like to overwrite the existing Traefik configuration?"
+  local PROMPT="Would you like to overwrite \
+    the existing Traefik configuration?"
   local SELECTION
   local RESPONSE
   local DIRECTORY
 
   DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "BASE_DIR")"
 
-  if [[ -f "${DIRECTORY}/traefik/traefik.toml" ]]
-  then
-    SELECTION=$(whiptail --title "media-docker Configuration" --yesno "$PROMPT" 0 0 \
+  if [[ -f "${DIRECTORY}/traefik/traefik.toml" ]] ; then
+    SELECTION=$(whiptail --title "media-docker Configuration" \
+      --yesno "$PROMPT" 0 0 \
       3>&1 1>&2 2>&3 ; echo $?)
     [ "$SELECTION" -eq 0 ] && RESPONSE="Y" || RESPONSE="N"
   else
@@ -32,6 +33,6 @@ menu_traefik() {
     *)
     ;;
   esac
-  
+
   run_sh "$SCRIPTDIR" "editor_open" "${DIRECTORY}/traefik/traefik.toml"
 }

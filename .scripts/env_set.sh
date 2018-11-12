@@ -10,5 +10,6 @@ env_set() {
   VAL=${2:-}
   FILE=${3:-".env"}
 
-  sed -i '\|^'"$KEY"'=|{h;s|=.*|='"$VAL"'|};${x;\|^$|{s||'"$KEY"'='"$VAL"'|;H};x}' "$FILE"
+  sed -i '\|^'"$KEY"'=|{h;s|=.*|='"$VAL"'|};
+${x;\|^$|{s||'"$KEY"'='"$VAL"'|;H};x}' "$FILE"
 }

@@ -10,8 +10,7 @@ menu_timezone() {
   CURRTZ=$(run_sh "$SCRIPTDIR" "timezone_get")
 
   for tz in $TIMEZONES ; do
-    if [ "$tz" = "$CURRTZ" ]
-    then
+    if [ "$tz" = "$CURRTZ" ] ; then
       OPTIONS=("${OPTIONS[@]}" "$tz" "" "ON")
     else
       OPTIONS=("${OPTIONS[@]}" "$tz" "" "OFF")
@@ -22,7 +21,7 @@ menu_timezone() {
     "Select the desired timezone." 0 0 0 \
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "$CURRTZ")
 
-  case $SELECTION in 
+  case $SELECTION in
     *)
       run_sh "$SCRIPTDIR" "env_set" "TIMEZONE" "$SELECTION" ".env"
       run_sh "$SCRIPTDIR" "timezone_set" "$SELECTION"

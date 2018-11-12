@@ -5,9 +5,8 @@ self_update() {
   local DIRECTORY
   DIRECTORY=${1:-}
   info "Updating media-docker from Git."
-  
-  if [ -d "${DIRECTORY}/.git/" ]
-  then
+
+  if [ -d "${DIRECTORY}/.git/" ] ; then
     info "Pulling changes from Git."
     sudo git -C "${DIRECTORY}" pull origin master \
       > /dev/null 2>&1 || err "Error occured when updating from Git."
@@ -18,5 +17,6 @@ self_update() {
   fi
 
   sudo chmod +x "${DIRECTORY}/${SOURCENAME}" \
-    > /dev/null 2>&1 || err "Error occurred while making $SOURCENAME executable."
+    > /dev/null 2>&1 \
+      || err "Error occurred while making $SOURCENAME executable."
 }

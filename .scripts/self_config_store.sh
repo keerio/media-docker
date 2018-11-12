@@ -2,10 +2,9 @@
 set -euo pipefail
 
 self_config_store() {
-  if [[ ! -f "${BASEDIR}/.mdc" ]]
-  then
+  if [[ ! -f "${BASEDIR}/.mdc" ]] ; then
     echo "# media-docker location config" >> "${BASEDIR}/.mdc"
-    
+
     run_sh "$SCRIPTDIR" "env_set" \
       "SOURCE_NAME" "${SOURCENAME}" "${BASEDIR}/.mdc"
     run_sh "$SCRIPTDIR" "env_set" \

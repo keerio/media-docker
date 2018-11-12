@@ -15,8 +15,7 @@ app_is_active() {
     MAPAPPS["$app"]=1
   done
 
-  if [[ ${MAPAPPS["$APP"]+_} ]] 
-  then 
+  if [[ ${MAPAPPS["$APP"]+_} ]] ; then
     echo "0"
   else
     echo "1"

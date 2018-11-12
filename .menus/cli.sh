@@ -32,9 +32,9 @@ cli() {
       --help)
         PARSED_ARGS="${PARSED_ARGS:-}-h "
       ;;
-      *) 
+      *)
         [[ "${arg:0:1}" == "-" ]] || DELIM="\""
-        PARSED_ARGS="${PARSED_ARGS:-}${DELIM}${arg}${DELIM} " 
+        PARSED_ARGS="${PARSED_ARGS:-}${DELIM}${arg}${DELIM} "
       ;;
     esac
   done

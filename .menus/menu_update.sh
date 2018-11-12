@@ -8,10 +8,11 @@ menu_update() {
   local DIRECTORY
 
   DIRECTORY=${1:-}
-  SELECTION=$(whiptail --title "media-docker Configuration" --yesno "$PROMPT" 0 0 \
+  SELECTION=$(whiptail --title "media-docker Configuration" \
+    --yesno "$PROMPT" 0 0 \
     3>&1 1>&2 2>&3 ; echo $?)
   [ "$SELECTION" -eq 0 ] && RESPONSE="Y" || RESPONSE="N"
-  
+
   case $RESPONSE in
     [Yy]*)
       info "Starting media-docker self update."

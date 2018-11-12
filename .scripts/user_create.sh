@@ -13,6 +13,6 @@ user_create() {
   sudo useradd -p "${PASS}" -d /home/"${USER}" \
     -m -g users -s /bin/bash "${USER}" \
     > /dev/null 2>&1 || err "Failed to create user."
-  
+
   echo "${RETURN[@]}"
 }

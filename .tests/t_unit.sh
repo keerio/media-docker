@@ -38,10 +38,10 @@ test_app_is_active_false() {
 
 # test array_contains
 test_array_contains_true() {
-  assertEquals 0 $(array_contains traefik "(${ARRAY_CONTAINS[*]})")
+  assertEquals 0 $(array_contains traefik "(bazarr traefik watchtower)")
 }
 test_array_contains_false() {
-  assertEquals 1 $(array_contains plex "(${ARRAY_CONTAINS[*]})")
+  assertEquals 1 $(array_contains plex "(bazarr traefik watchtower)")
 }
 
 # test file_append
@@ -65,8 +65,6 @@ oneTimeSetUp() {
   readonly CONFIGDIR="$(val_get "CONFIG_DIR")"
   readonly CONTAINDIR="$(val_get "CONTAIN_DIR")"
   readonly BACKUPDIR="$(val_get "BACKUP_DIR")"
-
-  readonly ARRAY_CONTAINS=("bazarr" "traefik" "watchtower")
 
   . "${SCRIPTDIR}/app_is_active.sh"
   . "${SCRIPTDIR}/array_contains.sh"

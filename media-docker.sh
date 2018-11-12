@@ -70,6 +70,7 @@ run_sh() {
 #/   -c, --compose <up/down/restart/pull/create>: Rebuild your compose environment from selected options
 #/   -u, --update: Update media-docker
 #/   -P, --prune: Prune the Docker system
+#/   -t, --test: Run tests
 #/   -h, --help: Display this help message
 #/
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }

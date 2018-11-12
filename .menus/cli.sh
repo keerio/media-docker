@@ -26,6 +26,9 @@ cli() {
       --prune)
         PARSED_ARGS="${PARSED_ARGS:-}-P "
       ;;
+      --test)
+        PARSED_ARGS="${PARSED_ARGS:-}-t "
+      ;;
       --help)
         PARSED_ARGS="${PARSED_ARGS:-}-h "
       ;;
@@ -84,6 +87,10 @@ cli() {
       ;;
       P)
         run_sh "$SCRIPTDIR" "docker_prune"
+        exit
+      ;;
+      t)
+        run_sh "$TESTDIR" "${OPTARG}"
         exit
       ;;
       h)

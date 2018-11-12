@@ -26,6 +26,7 @@ readonly ARGS=("$@")
 readonly SOURCENAME="$(get_source)"
 readonly BASEDIR="$( cd -P "$( dirname "$SOURCENAME" )" >/dev/null && pwd )"
 readonly SCRIPTDIR="$BASEDIR/.scripts/"
+readonly TESTDIR="$BASEDIR/.tests/"
 readonly MENUDIR="$BASEDIR/.menus/"
 readonly CONFIGDIR="$BASEDIR/.config/"
 readonly CONTAINDIR="$BASEDIR/.containers/"
@@ -39,9 +40,9 @@ readonly BLUE='\e[34m'
 readonly NOCOL='\033[0m'
 
 # logging functions
-info() { echo -e "${BLUE}[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@${NOCOL}" ; }
-err() { echo -e "${RED}[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@${NOCOL}" >&2 ; exit 1 ; }
-success() { echo -e "${GREEN}[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@${NOCOL}" ; }
+info() { echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" ; }
+err() { echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" >&2 ; exit 1 ; }
+success() { echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" ; }
 
 # script runner
 run_sh() {
@@ -70,18 +71,26 @@ run_sh() {
 #/   -c, --compose <up/down/restart/pull/create>: Rebuild your compose environment from selected options
 #/   -u, --update: Update media-docker
 #/   -P, --prune: Prune the Docker system
+#/   -t, --test: Run tests
 #/   -h, --help: Display this help message
 #/
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
+
+finish() { 
+  sudo service docker start
+  run_sh "$SCRIPTDIR" "self_symlink"
+  run_sh "$SCRIPTDIR" "self_config_delete"
+}
+trap finish EXIT
 
 # main
 main() {
   # prereqs for processes
   run_sh "$SCRIPTDIR" "root_check"
   run_sh "$SCRIPTDIR" "apt_check"
-  run_sh "$SCRIPTDIR" "self_symlink"
   run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR"
   run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR"
+  run_sh "$SCRIPTDIR" "self_config_store"
 
   # run cli if options are included
   run_sh "$MENUDIR" "cli" "${ARGS[@]:-}"

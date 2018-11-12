@@ -14,5 +14,5 @@ user_create() {
     -m -g users -s /bin/bash "${USER}" \
     > /dev/null 2>&1 || err "Failed to create user."
   
-  echo ${RETURN[@]}
+  echo "${RETURN[@]}"
 }

@@ -2,9 +2,6 @@
 set -euo pipefail
 
 menu_guided() {
-  local -a ENABLED_APPS
-  local -A MAP_APPS
-
   info "Starting prerequistes install."
   run_sh "$SCRIPTDIR" "apt_prereqs_install"
 
@@ -34,7 +31,7 @@ menu_guided() {
     info "Starting Plex claim process."
     run_sh "$MENUDIR" "menu_env_update" \
       "PLEX_CLAIM_TOKEN" \
-      $(run_sh "$SCRIPTDIR" "env_get" "PLEX_CLAIM_TOKEN" "$BASEDIR/.env") \
+      "$(run_sh "$SCRIPTDIR" "env_get" "PLEX_CLAIM_TOKEN" "$BASEDIR/.env")" \
       "$BASEDIR/.env"
   fi
 

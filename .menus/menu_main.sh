@@ -27,7 +27,7 @@ menu_main() {
     ;;
     "Update")
       info "Starting media-docker update process."
-      run_sh "$MENUDIR" "menu_update" ${BASEDIR} || run_sh "$MENUDIR" "menu_main"
+      run_sh "$MENUDIR" "menu_update" "${BASEDIR}" || run_sh "$MENUDIR" "menu_main"
     ;;
     "Docker Prune")
       info "Asking for confirmation of Docker system prune."

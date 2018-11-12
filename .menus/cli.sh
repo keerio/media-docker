@@ -26,6 +26,9 @@ cli() {
       --prune)
         PARSED_ARGS="${PARSED_ARGS:-}-P "
       ;;
+      --test)
+        PARSED_ARGS="${PARSED_ARGS:-}-t "
+      ;;
       --help)
         PARSED_ARGS="${PARSED_ARGS:-}-h "
       ;;
@@ -38,7 +41,7 @@ cli() {
 
   eval set -- "${PARSED_ARGS:-}"
 
-  while getopts ":paec:uPh" SELECTED ; do
+  while getopts ":paec:uPt:h" SELECTED ; do
     case $SELECTED in
       p)
         run_sh "$SCRIPTDIR" "apt_prereqs_install"
@@ -84,6 +87,18 @@ cli() {
       ;;
       P)
         run_sh "$SCRIPTDIR" "docker_prune"
+        exit
+      ;;
+      t)
+        case ${OPTARG} in
+          t_unit)
+            sudo chmod +x "${TESTDIR}/${OPTARG}.sh"
+            sudo "${TESTDIR}/${OPTARG}.sh"
+          ;;
+          *)
+            run_sh "$TESTDIR" "${OPTARG}"
+          ;;
+        esac
         exit
       ;;
       h)

@@ -6,6 +6,6 @@ user_sudo() {
 
   USER=${1:-}
 
-  sudo usermod -aG sudo "${username}" \
+  sudo usermod -aG sudo "${USER}" \
     > /dev/null 2>&1 || err "Error setting user as sudo-er."
 }

@@ -9,7 +9,7 @@ apps_active_list() {
   FILE=${1:-".apps"}
 
   RESULT=($(grep "Y" "$FILE" | grep -v "#"))
-  for res in ${RESULT[@]} ; do
+  for res in "${RESULT[@]}" ; do
     IFS="=" read -ra res <<< "$res"
     APPS=("${APPS[@]}" "$(echo "$res" | tr -d "\r")")
   done

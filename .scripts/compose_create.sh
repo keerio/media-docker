@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2068
 set -euo pipefail
 
 compose_create() {
@@ -20,7 +21,12 @@ compose_create() {
     "${CONTAINDIR}/start"
 
   for app in ${ENABLED_APPS[@]} ; do
-    if [[ "$PROXY" = "Y" ]]
+    if [[ "$app" = "traefik" ]] || [[ "$app" = "watchtower" ]]
+    then
+      run_sh "$SCRIPTDIR" "file_append" \
+        "${BASEDIR}/docker-compose.yml" \
+        "${CONTAINDIR}/${app}/${app}"
+    elif [[ "$PROXY" = "Y" ]]
     then
       run_sh "$SCRIPTDIR" "file_append" \
         "${BASEDIR}/docker-compose.yml" \

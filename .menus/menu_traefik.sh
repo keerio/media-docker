@@ -13,7 +13,7 @@ menu_traefik() {
   then
     SELECTION=$(whiptail --title "media-docker Configuration" --yesno "$PROMPT" 0 0 \
       3>&1 1>&2 2>&3 ; echo $?)
-    [ $SELECTION -eq 0 ] && RESPONSE="Y" || RESPONSE="N"
+    [ "$SELECTION" -eq 0 ] && RESPONSE="Y" || RESPONSE="N"
   else
     RESPONSE="Y"
   fi

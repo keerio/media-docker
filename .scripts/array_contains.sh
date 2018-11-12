@@ -2,8 +2,21 @@
 set -euo pipefail
 
 array_contains () {
-  local e match="$1"
-  shift
-  for e; do [[ "$e" = "$match" ]] && return 0; done
-  return 1
+  local VAL
+  local ARR
+  local -A MAP
+
+  VAL=${1:-}
+  ARR=${2:-}
+
+  for item in $ARR ; do
+    MAP["$item"]=1
+  done
+
+  if [[ ${MAP["$VAL"]+_} ]] 
+  then 
+    echo "0"
+  else
+    echo "1"
+  fi
 }

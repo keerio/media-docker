@@ -76,4 +76,4 @@ oneTimeTearDown() {
   sudo rm "${TESTDIR}/.apps-test"
 }
 
-. shunit2
+. shunit2-2.1.6/src/shunit2

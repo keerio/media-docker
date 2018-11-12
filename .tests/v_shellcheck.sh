@@ -6,6 +6,8 @@ v_shellcheck(){
   sudo wget "https://storage.googleapis.com/shellcheck/shellcheck-${scversion}.linux.x86_64.tar.xz"
   sudo tar --xz -xvf shellcheck-"${scversion}".linux.x86_64.tar.xz
   sudo cp shellcheck-"${scversion}"/shellcheck /usr/bin/
+  sudo rm -r shellcheck-"${scversion}"/
+  sudo rm shellcheck-${scversion}.linux.x86_64.tar.xz
 
   shellcheck --version \
     || err "Shellcheck not running correctly."

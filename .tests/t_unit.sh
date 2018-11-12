@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -euo pipefail
 
 # script runner
 run_sh() {
@@ -54,6 +53,8 @@ test_file_append() {
 }
 
 oneTimeSetUp() {
+  set +u
+
   # GLOBALS
   readonly CURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
   readonly SOURCENAME="$(val_get "SOURCE_NAME")"
@@ -77,5 +78,3 @@ oneTimeTearDown() {
 }
 
 . .tests/shunit2-2.1.6/src/shunit2
-
-set +u

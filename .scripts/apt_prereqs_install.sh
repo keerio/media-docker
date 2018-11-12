@@ -15,8 +15,7 @@ apt_prereqs_install() {
     || err "Error cleaning legacy packages."
 
   run_sh "$SCRIPTDIR" "apt_install" "apt-transport-https" \
-    "ca-certificates" "curl" "software-properties-common" \
-    "python-bashate"
+    "ca-certificates" "curl" "software-properties-common"
 
   curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
     sudo apt-key add - > /dev/null 2>&1 \

@@ -2,8 +2,10 @@
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/joskore/media-docker.svg)
 [![GitHub issues](https://img.shields.io/github/issues/joskore/media-docker.svg)](https://github.com/joskore/media-docker/issues)
+[![Build Status](https://travis-ci.com/joskore/media-docker.svg?branch=master)](https://travis-ci.com/joskore/media-docker)
 ![GitHub](https://img.shields.io/github/license/joskore/media-docker.svg)
 ![GitHub forks](https://img.shields.io/github/forks/joskore/media-docker.svg?style=social&label=Fork)
+
 
 a short and sweet way to get a full-blown media stack running on a server from scratch in minutes.
 

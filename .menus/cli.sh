@@ -90,7 +90,15 @@ cli() {
         exit
       ;;
       t)
-        run_sh "$TESTDIR" "${OPTARG}"
+        case ${OPTARG} in
+          t_unit)
+            sudo chmod +x "${TESTDIR}/${OPTARG}.sh"
+            sudo "${TESTDIR}/${OPTARG}.sh"
+          ;;
+          *)
+            run_sh "$TESTDIR" "${OPTARG}"
+          ;;
+        esac
         exit
       ;;
       h)

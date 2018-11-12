@@ -7,9 +7,11 @@ apps_active_list() {
   local -a RESULT
   local -a APPS
 
+  APPS=()
+
   FILE=${1:-".apps"}
 
-  RESULT=($(grep "Y" "$FILE" | grep -v "#"))
+  RESULT=($(sudo grep "Y" "$FILE" | grep -v "#"))
   for res in "${RESULT[@]}" ; do
     IFS="=" read -ra res <<< "$res"
     APPS=("${APPS[@]}" "$(echo "$res" | tr -d "\r")")

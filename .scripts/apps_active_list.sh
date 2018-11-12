@@ -7,7 +7,7 @@ apps_active_list() {
   local -a RESULT
   local -a APPS
 
-  APPS=()
+  APPS=("")
 
   FILE=${1:-".apps"}
 

@@ -76,12 +76,17 @@ run_sh() {
 #/
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
 
+finish() { 
+  sudo service docker start
+  run_sh "$SCRIPTDIR" "self_symlink"
+}
+trap finish EXIT
+
 # main
 main() {
   # prereqs for processes
   run_sh "$SCRIPTDIR" "root_check"
   run_sh "$SCRIPTDIR" "apt_check"
-  run_sh "$SCRIPTDIR" "self_symlink"
   run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR"
   run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR"
 

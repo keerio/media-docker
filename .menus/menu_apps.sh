@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2068
 set -euo pipefail
 
 menu_apps() {
@@ -44,7 +45,7 @@ menu_apps() {
   
   # replace pesky quotes and map to associative array
   SELECTIONS=("${SELECTIONS[@]//\"/}")
-  for SELECTION in $SELECTIONS ; do
+  for SELECTION in ${SELECTIONS[@]} ; do
     MAPSELS["$SELECTION"]=1
   done
 

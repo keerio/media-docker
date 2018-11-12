@@ -41,7 +41,7 @@ cli() {
 
   eval set -- "${PARSED_ARGS:-}"
 
-  while getopts ":paec:uPh" SELECTED ; do
+  while getopts ":paec:uPt:h" SELECTED ; do
     case $SELECTED in
       p)
         run_sh "$SCRIPTDIR" "apt_prereqs_install"

@@ -10,7 +10,7 @@ apps_create() {
 
   if [[ ! -f "${DESTDIR}/.apps" ]]
   then
-    sudo cp "${SOURCEDIR}/.apps" "${DESTDIR}/.apps"
+    sudo cp "${SOURCEDIR}/.apps" "${DESTDIR}/.apps" \
       > /dev/null 2>&1 || err "Error occured copying .apps."
   fi
 }

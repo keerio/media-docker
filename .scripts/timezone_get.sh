@@ -8,11 +8,11 @@ timezone_get() {
   elif [ -h /etc/localtime ]; then
     TZ=$(readlink /etc/localtime | sed "s/\/usr\/share\/zoneinfo\///")
   else
-    checksum=$(md5sum /etc/localtime | cut -d' ' -f1)
-    TZ=$(find /usr/share/zoneinfo/ -type f -exec md5sum {} \
-      | grep "^$checksum" | sed "s/.*\/usr\/share\/zoneinfo\///"\
-      | head -n 1)
+    checksum="$(md5sum /etc/localtime | cut -d' ' -f1)"
+    TZ="$( find /usr/share/zoneinfo -type f -exec sh -c 'md5sum "$1" '\
+      '| grep "^$2" | sed "s/.*\/usr\/share\/zoneinfo\///" '\
+      '| head -n 1' -- {} "$checksum" \;)"
   fi
 
-  echo $TZ
+  echo "$TZ"
 }

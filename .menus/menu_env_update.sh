@@ -13,10 +13,9 @@ menu_env_update() {
   PROMPT="Update value for ${KEY}."
 
   VAL=$(whiptail --title "Update .env" --inputbox "$PROMPT" 0 0 "$VAL" \
-    3>&1 1>&2 2>&3 )
-
-  if [ $? = 0 ]; then
-    run_sh "$SCRIPTDIR" "env_set" "$KEY" "$VAL"
+    3>&1 1>&2 2>&3 || echo "Exit" )
+  if [ "$VAL" != "Exit" ]; then
+    run_sh "$SCRIPTDIR" "env_set" "$KEY" "$VAL" "$FILE"
   else 
     return $?
   fi

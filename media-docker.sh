@@ -26,6 +26,7 @@ readonly ARGS=("$@")
 readonly SOURCENAME="$(get_source)"
 readonly BASEDIR="$( cd -P "$( dirname "$SOURCENAME" )" >/dev/null && pwd )"
 readonly SCRIPTDIR="$BASEDIR/.scripts/"
+readonly TESTDIR="$BASEDIR/.tests/"
 readonly MENUDIR="$BASEDIR/.menus/"
 readonly CONFIGDIR="$BASEDIR/.config/"
 readonly CONTAINDIR="$BASEDIR/.containers/"
@@ -39,9 +40,9 @@ readonly BLUE='\e[34m'
 readonly NOCOL='\033[0m'
 
 # logging functions
-info() { echo -e "${BLUE}[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@${NOCOL}" ; }
-err() { echo -e "${RED}[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@${NOCOL}" >&2 ; exit 1 ; }
-success() { echo -e "${GREEN}[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $@${NOCOL}" ; }
+info() { echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" ; }
+err() { echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" >&2 ; exit 1 ; }
+success() { echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" ; }
 
 # script runner
 run_sh() {

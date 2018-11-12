@@ -1,0 +1,17 @@
+  # Portainer
+  portainer:
+    image: portainer/portainer:latest
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /config/portainer:/data
+    labels:
+      - traefik.backend=portainer
+      - traefik.frontend.rule=Host:portainer.${DOMAIN}
+      - traefik.docker.network=internal
+      - traefik.port=9000
+    networks:
+      - internal
+    expose:
+      - 9000
+    restart: always

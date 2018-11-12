@@ -2,19 +2,21 @@
 set -euo pipefail
 
 compose_install() {
+  local URL
   local COMPOSE_VERSION
-  COMPOSE_VERSION=${1:-}
-  info "Installing Docker Compose."
 
-  sudo curl -fsSL "https://github.com/docker/compose/releases/download/\
-    "${COMPOSE_VERSION}"/docker-compose-"$(uname -s)"-"$(uname -m)"" \
-    -o /usr/local/bin/docker-compose \
+  COMPOSE_VERSION=${1:-}
+  URL="https://github.com/docker/compose/releases/download/" \
+"${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
+
+  info "Installing Docker Compose."
+  sudo curl -fsSL "$URL" -o /usr/local/bin/docker-compose \
     > /dev/null 2>&1 \
-    || echo "Error downloading Docker Compose."; return 1
+    || err "Error downloading Docker Compose."
 
   sudo chmod +x /usr/local/bin/docker-compose \
     > /dev/null 2>&1 \
-    || echo "Error installing Docker Compose."; return 1
+    || err "Error installing Docker Compose."
 
-  echo "Docker Compose installed"
+  info "Docker Compose installed"
 }

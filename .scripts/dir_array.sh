@@ -7,7 +7,7 @@ dir_array() {
 
   BASE=${1:-}
 
-  for d in $BASE/*/ ; do
+  for d in "$BASE"/*/ ; do
     DIRS=("${DIRS[@]}" "$(basename "$d" | tr -d "/")")
   done
 

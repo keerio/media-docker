@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2207
 set -euo pipefail
 
 apps_active_list() {

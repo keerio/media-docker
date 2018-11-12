@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
 # script runner
 run_sh() {
@@ -49,8 +50,6 @@ test_file_append() {
   file_append "${TESTDIR}/.apps-test" "${TESTDIR}/.apps"
   result=$(cat "${TESTDIR}/.apps-test")
   actual=$(cat "${TESTDIR}/.apps")
-
-  echo "$result"
   assertEquals "$actual" "$result"
 }
 

@@ -17,3 +17,6 @@ jobs:
     - stage: test
       script: 
         - sudo bash ./media-docker.sh -t t_unit
+branches:
+  only:
+    - master

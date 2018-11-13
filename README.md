@@ -42,22 +42,4 @@ the installer process currently requires that your system be running apt, though
 a listing of supported VPN providers for torrenting-over-vpn, provided via the haugene\transmission-openvpn container, can be found in the container's repository [here.](https://github.com/haugene/docker-transmission-openvpn#supported-providers)
 
 ## thanks!
-this very much stands on the shoulders of those who came before, all this has done is made the deployment process simple.
-
-this project makes use of the following Docker containers:
-- plexinc\pms-docker
-- linuxserver\ubooquity
-- linuxserver\sabnzbd
-- linuxserver\nzbget
-- linuxserver\hydra
-- linuxserver\jackett
-- linuxserver\sonarr
-- linuxserver\radarr
-- linuxserver\lidarr
-- linuxserver\heimdall
-- linuxserver\ombi
-- tautulli\tautulli
-- haugene\transmission-openvpn
-- haugene\transmission-openbpn-proxy
-- traefik
-- watchtower
+this very much stands on the shoulders of those who came before, all this has done is made the deployment process simple and straightforward to configure.

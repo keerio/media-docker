@@ -1,0 +1,5 @@
+services:
+  # Watcher
+  watcher:
+    ports:
+      - 9090:9090

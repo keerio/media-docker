@@ -1,0 +1,5 @@
+services:
+  # Portainer
+  portainer:
+    ports:
+      - 9000:9000

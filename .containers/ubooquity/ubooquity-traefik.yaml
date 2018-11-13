@@ -1,0 +1,14 @@
+services:
+  # Ubooquity
+  ubooquity:
+    labels:
+      - traefik.docker.network=proxied
+      - traefik.frontend.rule=Host:ubooquity.${DOMAIN}
+      - traefik.port=2202
+      - traefik.default.protocol=http
+      - traefik.admin.frontend.rule=Host:admin-ubooquity.${DOMAIN}
+      - traefik.admin.port=2203
+      - traefik.admin.protocol=http
+    expose:
+      - 2202
+      - 2203

@@ -1,0 +1,10 @@
+services:
+  # Muximux
+  muximux:
+    labels:
+      - traefik.backend=muximux
+      - traefik.frontend.rule=Host:muximux.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=80
+    expose:
+      - 80

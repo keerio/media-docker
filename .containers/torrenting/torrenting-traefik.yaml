@@ -1,0 +1,12 @@
+services:
+  ## Torrenting over VPN
+  # Transmission - OpenVPN
+  vpn_proxy:
+    labels:
+      - traefik.backend=vpn_proxy
+      - traefik.frontend.rule=Host:transmission.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8080
+    expose:
+      - 8080
+  ## /Torrenting over VPN

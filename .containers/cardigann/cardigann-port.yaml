@@ -1,0 +1,5 @@
+services:
+  # Cardigann
+  cardigann:
+    ports:
+      - 5060:5060

@@ -1,0 +1,20 @@
+services:
+  # Plex Server
+  plex:
+    image: plexinc/pms-docker:plexpass
+    container_name: plex
+    hostname: plex
+    volumes:
+      - ${BASE_DIR}/plex/config:/config
+      - ${MEDIA_DIR}/TV:/data/tv
+      - ${MEDIA_DIR}/Movies:/data/movies
+      - ${MEDIA_DIR}/Music:/data/music
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+      - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
+    networks:
+      - internal
+      - proxied
+    restart: always

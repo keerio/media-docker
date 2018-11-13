@@ -1,0 +1,16 @@
+services:
+  # NZBGet
+  nzbget:
+    image: linuxserver/nzbget:latest
+    container_name: nzbget
+    volumes:
+      - ${BASE_DIR}/nzbget/config:/config
+      - ${DOWNLOAD_DIR}/nzbget:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    restart: always

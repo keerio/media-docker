@@ -1,0 +1,5 @@
+services:
+  # Organizr
+  organizr:
+    ports:
+      - 8081:80

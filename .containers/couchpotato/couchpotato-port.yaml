@@ -1,0 +1,5 @@
+services:
+  # Couchpotato
+  couchpotato:
+    ports:
+      - 5050:5050

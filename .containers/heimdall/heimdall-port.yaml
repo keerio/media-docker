@@ -1,0 +1,6 @@
+services:
+  # Heimdall
+  heimdall:
+    ports:
+      - 81:80
+      - 444:443

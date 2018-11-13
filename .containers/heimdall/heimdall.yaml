@@ -1,0 +1,15 @@
+services:
+  # Heimdall
+  heimdall:
+    image: linuxserver/heimdall:latest
+    container_name: heimdall
+    volumes:
+      - ${BASE_DIR}/heimdall/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    restart: always

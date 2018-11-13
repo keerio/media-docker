@@ -1,0 +1,10 @@
+services:
+  # Beets
+  beets:
+    labels:
+      - traefik.backend=beets
+      - traefik.frontend.rule=Host:beets.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8337
+    expose:
+      - 8337

@@ -1,0 +1,5 @@
+services:
+  # Oscarr
+  oscarr:
+    ports:
+      - 5656:5656

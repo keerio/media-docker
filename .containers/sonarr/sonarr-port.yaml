@@ -1,0 +1,5 @@
+services:
+  # Sonarr
+  sonarr:
+    ports:
+      - 8989:8989

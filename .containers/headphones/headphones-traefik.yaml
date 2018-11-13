@@ -1,0 +1,10 @@
+services:
+  # Headphones
+  headphones:
+    labels:
+      - traefik.backend=headphones
+      - traefik.frontend.rule=Host:headphones.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8181
+    expose:
+      - 8181

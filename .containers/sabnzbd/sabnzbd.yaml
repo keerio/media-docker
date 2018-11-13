@@ -1,0 +1,16 @@
+services:
+  # sabNZBd
+  sabnzbd:
+    image: linuxserver/sabnzbd:latest
+    container_name: sabnzbd
+    volumes:
+      - ${BASE_DIR}/sabnzbd/config:/config
+      - ${DOWNLOAD_DIR}:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    restart: always

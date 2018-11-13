@@ -1,0 +1,5 @@
+services:
+  # Jackett
+  jackett:
+    ports:
+      - 9117:9117

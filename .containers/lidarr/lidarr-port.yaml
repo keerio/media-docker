@@ -1,0 +1,5 @@
+services:
+  # Lidarr
+  lidarr:
+    ports:
+      - 8686:8686

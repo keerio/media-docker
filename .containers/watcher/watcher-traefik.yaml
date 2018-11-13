@@ -1,0 +1,10 @@
+services:
+  # Watcher
+  watcher:
+    labels:
+      - traefik.backend=watcher
+      - traefik.frontend.rule=Host:watcher.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=9090
+    expose:
+      - 9090

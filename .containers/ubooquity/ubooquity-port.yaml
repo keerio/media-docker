@@ -1,0 +1,6 @@
+services:
+  # Ubooquity
+  ubooquity:
+    ports:
+      - 2202:2202
+      - 2203:2203

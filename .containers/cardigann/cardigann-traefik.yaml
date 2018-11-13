@@ -1,0 +1,10 @@
+services:
+  # Cardigann
+  cardigann:
+    labels:
+      - traefik.backend=cardigann
+      - traefik.frontend.rule=Host:cardigann.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=5060
+    expose:
+      - 5060

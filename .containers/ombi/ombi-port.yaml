@@ -1,0 +1,5 @@
+services:
+  # Ombi
+  ombi:
+    ports:
+      - 3579:3579

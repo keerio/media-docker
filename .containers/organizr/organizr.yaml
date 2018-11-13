@@ -1,0 +1,15 @@
+services:
+  # Organizr
+  organizr:
+    image: organizrtools/organizr-v2:php-fpm
+    container_name: organizr
+    volumes:
+      - ${BASE_DIR}/organizr/config:/config
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    restart: always

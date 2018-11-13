@@ -1,0 +1,10 @@
+services:
+  # Organizr
+  organizr:
+    labels:
+      - traefik.backend=organizr
+      - traefik.frontend.rule=Host:organizr.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=80
+    expose:
+      - 80

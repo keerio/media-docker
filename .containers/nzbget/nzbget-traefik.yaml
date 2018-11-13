@@ -1,0 +1,10 @@
+services:
+  # NZBGet
+  nzbget:
+    labels:
+      - traefik.backend=nzbget
+      - traefik.frontend.rule=Host:nzbget.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=6789
+    expose:
+      - 6789

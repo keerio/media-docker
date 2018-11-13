@@ -1,0 +1,10 @@
+services:
+  # sabNZBd
+  sabnzbd:
+    labels:
+      - traefik.backend=sabnzbd
+      - traefik.frontend.rule=Host:sab.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8080
+    expose:
+      - 8080

@@ -1,0 +1,17 @@
+services:
+  # Watcher
+  watcher:
+    image: linuxserver/watcher:latest
+    container_name: watcher
+    volumes:
+      - ${BASE_DIR}/watcher/config:/config
+      - ${MEDIA_DIR}/Movies:/movies
+      - ${DOWNLOAD_DIR}:/downloads
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    restart: always

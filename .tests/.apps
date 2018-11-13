@@ -3,6 +3,7 @@
 # app=N to disable
 #
 bazarr=Y
+beets=N
 calibreweb=N
 couchpotato=Y
 emby=N

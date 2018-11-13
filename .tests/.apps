@@ -13,6 +13,7 @@ htpcmanager=Y
 jackett=N
 lazylibrarian=Y
 lidarr=N
+muximux=N
 mylar=Y
 nzbget=N
 nzbhydra=Y

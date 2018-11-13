@@ -1,16 +1,16 @@
-  # Heimdall
-  heimdall:
-    image: linuxserver/heimdall:latest
-    container_name: heimdall
+  # Muximux
+  muximux:
+    image: linuxserver/muximux:latest
+    container_name: muximux
     volumes:
-      - ${BASE_DIR}/heimdall/config:/config
+      - ${BASE_DIR}/muximux/config:/config
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=${TIMEZONE}
     labels:
-      - traefik.backend=heimdall
-      - traefik.frontend.rule=Host:heimdall.${DOMAIN}
+      - traefik.backend=muximux
+      - traefik.frontend.rule=Host:muximux.${DOMAIN}
       - traefik.docker.network=proxied
       - traefik.port=80
     networks:
@@ -18,5 +18,4 @@
       - proxied
     expose:
       - 80
-      - 443
     restart: always

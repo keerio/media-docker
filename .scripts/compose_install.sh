@@ -6,7 +6,7 @@ compose_install() {
   local COMPOSE_VERSION
 
   COMPOSE_VERSION=${1:-}
-  URL="https://github.com/docker/compose/releases/download/" \
+  URL="https://github.com/docker/compose/releases/download/"\
 "${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 
   info "Installing Docker Compose."

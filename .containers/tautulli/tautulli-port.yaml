@@ -1,0 +1,5 @@
+services:
+  # Tautulli
+  tautulli:
+    ports:
+      - 8181:8181

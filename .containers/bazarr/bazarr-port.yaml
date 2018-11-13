@@ -1,0 +1,5 @@
+services:
+  # Bazarr
+  bazarr:
+    ports:
+      - 6767:6767

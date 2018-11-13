@@ -1,0 +1,10 @@
+services:
+  # LazyLibrarian
+  lazylibrarian:
+    labels:
+      - traefik.backend=lazylibrarian
+      - traefik.frontend.rule=Host:lazylibrarian.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=5299
+    expose:
+      - 5299

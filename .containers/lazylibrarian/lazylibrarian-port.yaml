@@ -1,0 +1,5 @@
+services:
+  # LazyLibrarian
+  lazylibrarian:
+    ports:
+      - 5299:5299

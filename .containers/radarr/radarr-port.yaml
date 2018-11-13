@@ -1,0 +1,5 @@
+services:
+  # Radarr
+  radarr:
+    ports:
+      - 7878:7878

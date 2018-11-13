@@ -1,0 +1,10 @@
+services:
+  # Couchpotato
+  couchpotato:
+    labels:
+      - traefik.backend=couchpotato
+      - traefik.frontend.rule=Host:couchpotato.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=5050
+    expose:
+      - 5050

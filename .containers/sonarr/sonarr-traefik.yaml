@@ -1,0 +1,10 @@
+services:
+  # Sonarr
+  sonarr:
+    labels:
+      - traefik.backend=sonarr
+      - traefik.frontend.rule=Host:sonarr.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8989
+    expose:
+      - 8989

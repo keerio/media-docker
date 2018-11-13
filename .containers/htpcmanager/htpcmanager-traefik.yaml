@@ -1,0 +1,10 @@
+services:
+  # HTPC Manager
+  htpcmanager:
+    labels:
+      - traefik.backend=htpcmanager
+      - traefik.frontend.rule=Host:htpcmanager.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8085
+    expose:
+      - 8085

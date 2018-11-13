@@ -1,0 +1,10 @@
+services:
+  # Lidarr
+  lidarr:
+    labels:
+      - traefik.backend=lidarr
+      - traefik.frontend.rule=Host:lidarr.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8686
+    expose:
+      - 8686

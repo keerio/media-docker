@@ -1,0 +1,10 @@
+services:
+  # Bazarr
+  bazarr:
+    labels:
+      - traefik.backend=bazarr
+      - traefik.frontend.rule=Host:bazarr.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=6767
+    expose:
+      - 6767

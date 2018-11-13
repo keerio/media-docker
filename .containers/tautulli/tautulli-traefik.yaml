@@ -1,0 +1,10 @@
+services:
+  # Tautulli
+  tautulli:
+    labels:
+      - traefik.backend=tautulli
+      - traefik.frontend.rule=Host:tautulli.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8181
+    expose:
+      - 8181

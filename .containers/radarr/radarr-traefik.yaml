@@ -1,0 +1,10 @@
+services:
+  # Radarr
+  radarr:
+    labels:
+      - traefik.backend=radarr
+      - traefik.frontend.rule=Host:radarr.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=7878
+    expose:
+      - 7878

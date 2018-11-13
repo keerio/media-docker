@@ -1,0 +1,5 @@
+services:
+  # NZBHydra
+  hydra:
+    ports:
+      - 5075:5075

@@ -1,0 +1,6 @@
+networks:
+  vpn:
+  internal:
+    external: false
+  proxied:
+    external: true

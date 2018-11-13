@@ -1,0 +1,5 @@
+services:
+  # Mylar
+  mylar:
+    ports:
+      - 8090:8090

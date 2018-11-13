@@ -1,0 +1,10 @@
+services:
+  # Emby
+  emby:
+    labels:
+      - traefik.backend=emby
+      - traefik.frontend.rule=Host:emby.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8096
+    expose:
+      - 8096

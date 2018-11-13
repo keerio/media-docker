@@ -1,0 +1,12 @@
+services:
+  # Portainer
+  portainer:
+    image: portainer/portainer:latest
+    container_name: portainer
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /config/portainer:/data
+    networks:
+      - internal
+      - proxied
+    restart: always

@@ -1,0 +1,5 @@
+services:
+  # NZBGet
+  nzbget:
+    ports:
+      - 6789:6789

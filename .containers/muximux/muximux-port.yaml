@@ -1,0 +1,5 @@
+services:
+  # Muximux
+  muximux:
+    ports:
+      - 82:80

@@ -1,0 +1,5 @@
+services:
+  # Beets
+  beets:
+    ports:
+      - 8337:8337

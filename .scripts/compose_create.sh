@@ -4,6 +4,8 @@ set -euo pipefail
 
 compose_create() {
   local -a ENABLED_APPS
+  local -a COMPOSE_FILES
+  local COMPOSE
   local PROXY="N"
 
   ENABLED_APPS=$(run_sh "$SCRIPTDIR" "apps_active_list" "$BASEDIR/.apps")
@@ -18,27 +20,26 @@ compose_create() {
     echo >> "${BASEDIR}/docker-compose.yml"
   fi
 
-  run_sh "$SCRIPTDIR" "file_append" \
-    "${BASEDIR}/docker-compose.yml" \
-    "${CONTAINDIR}/start"
+  COMPOSE_FILES=("${CONTAINDIR}/start.yaml")
 
   for app in ${ENABLED_APPS[@]} ; do
-    if [[ "$app" = "traefik" ]] || [[ "$app" = "watchtower" ]] ; then
-      run_sh "$SCRIPTDIR" "file_append" \
-        "${BASEDIR}/docker-compose.yml" \
-        "${CONTAINDIR}/${app}/${app}"
-    elif [[ "$PROXY" = "Y" ]] ; then
-      run_sh "$SCRIPTDIR" "file_append" \
-        "${BASEDIR}/docker-compose.yml" \
-        "${CONTAINDIR}/${app}/${app}-traefik"
-    else
-      run_sh "$SCRIPTDIR" "file_append" \
-        "${BASEDIR}/docker-compose.yml" \
-        "${CONTAINDIR}/${app}/${app}-port"
+    COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+      "${CONTAINDIR}/${app}/${app}.yaml")
+    if [[ ! "$app" = "traefik" ]] && [[ ! "$app" = "watchtower" ]] ; then
+      if [[ "$PROXY" = "Y" ]] ; then
+        COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+          "${CONTAINDIR}/${app}/${app}-traefik.yaml")
+      else
+        COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+          "${CONTAINDIR}/${app}/${app}-port.yaml")
+      fi
     fi
   done
 
-  run_sh "$SCRIPTDIR" "file_append" \
-    "${BASEDIR}/docker-compose.yml" \
-    "${CONTAINDIR}/end"
+  COMPOSE_FILES=("${COMPOSE_FILES[@]}" "${CONTAINDIR}/end.yaml")
+
+  COMPOSE=$(run_sh "$SCRIPTDIR" "yq_build" \
+    ${COMPOSE_FILES[@]})
+
+  echo "$COMPOSE" >> "${BASEDIR}/docker-compose.yml"
 }

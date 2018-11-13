@@ -1,0 +1,10 @@
+services:
+  # Oscarr
+  oscarr:
+    labels:
+      - traefik.backend=oscarr
+      - traefik.frontend.rule=Host:oscarr.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=5656
+    expose:
+      - 5656

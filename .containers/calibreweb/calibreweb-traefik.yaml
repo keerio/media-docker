@@ -1,0 +1,10 @@
+services:
+  # Calibre Web
+  calibreweb:
+    labels:
+      - traefik.backend=calibreweb
+      - traefik.frontend.rule=Host:calibre.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8083
+    expose:
+      - 8083

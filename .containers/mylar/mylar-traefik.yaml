@@ -1,0 +1,10 @@
+services:
+  # Mylar
+  mylar:
+    labels:
+      - traefik.backend=mylar
+      - traefik.frontend.rule=Host:mylar.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8090
+    expose:
+      - 8090

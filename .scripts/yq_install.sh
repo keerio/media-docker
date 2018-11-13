@@ -11,7 +11,7 @@ yq_install() {
     "github_latest_release" "$REPO")
   URL="https://github.com/mikefarah/yq/releases/download/" \
   "${YQ_VERSION}/yq_$(uname -s)_$(uname -m)"
-  
+
   info "Installing yq."
   sudo curl -fsSL "$URL" -o /usr/local/bin/yq \
     > /dev/null 2>&1 \

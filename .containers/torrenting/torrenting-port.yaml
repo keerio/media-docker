@@ -1,0 +1,7 @@
+services:
+  ## Torrenting over VPN
+  # Transmission - OpenVPN
+  vpn_proxy:
+    ports:
+      - 9091:8080
+  ## /Torrenting over VPN

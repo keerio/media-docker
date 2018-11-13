@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2140
 set -euo pipefail
 
 compose_install() {
@@ -9,7 +10,7 @@ compose_install() {
   REPO="docker/compose"
   COMPOSE_VERSION=$(run_sh "$SCRIPTDIR" \
     "github_latest_release" "$REPO")
-  URL="https://github.com/docker/compose/releases/download/" \
+  URL="https://github.com/docker/compose/releases/download/"\
 "${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 
   info "Installing Docker Compose."

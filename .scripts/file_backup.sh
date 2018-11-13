@@ -10,5 +10,9 @@ file_backup() {
   FULLFILE=${1:-}
   FILENAME=$(basename "$FULLFILE")
 
-  sudo mv "$FULLFILE" "${BACKUPDIR}/${FILENAME}.${NOW}"
+  sudo mkdir -p "$BACKUPDIR" > /dev/null 2>&1 \
+    || err "Error when creating backup directory."
+  sudo mv "$FULLFILE" "${BACKUPDIR}/${FILENAME}.${NOW}" \
+    > /dev/null 2>&1 \
+    || err "Error when backing up ${FILENAME}."
 }

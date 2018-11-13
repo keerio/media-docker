@@ -1,3 +1,4 @@
+services:
   # Radarr
   radarr:
     image: linuxserver/radarr:latest

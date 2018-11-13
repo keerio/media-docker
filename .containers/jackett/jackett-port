@@ -1,3 +1,4 @@
+services:
   # Jackett
   jackett:
     image: linuxserver/jackett:latest

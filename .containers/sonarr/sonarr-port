@@ -1,3 +1,4 @@
+services:
   # Sonarr
   sonarr:
     image: linuxserver/sonarr:latest

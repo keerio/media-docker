@@ -1,3 +1,4 @@
+services:
   # Calibre Web
   calibreweb:
     image: linuxserver/calibre-web:latest

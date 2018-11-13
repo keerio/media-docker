@@ -1,3 +1,4 @@
+services:
   # Plex Server
   plex:
     image: plexinc/pms-docker:plexpass

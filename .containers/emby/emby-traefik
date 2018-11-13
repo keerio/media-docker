@@ -1,3 +1,4 @@
+services:
   # Emby
   emby:
     image: emby/embyserver:latest

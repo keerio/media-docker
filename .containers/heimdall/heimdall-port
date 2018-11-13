@@ -1,3 +1,4 @@
+services:
   # Heimdall
   heimdall:
     image: linuxserver/heimdall:latest

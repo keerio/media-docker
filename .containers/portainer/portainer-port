@@ -1,3 +1,4 @@
+services:
   # Portainer
   portainer:
     image: portainer/portainer:latest

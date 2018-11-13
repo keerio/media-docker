@@ -1,3 +1,4 @@
+services:
   # Mylar
   mylar:
     image: linuxserver/mylar:latest

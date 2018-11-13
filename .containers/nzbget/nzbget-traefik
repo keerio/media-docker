@@ -1,3 +1,4 @@
+services:
   # NZBGet
   nzbget:
     image: linuxserver/nzbget:latest

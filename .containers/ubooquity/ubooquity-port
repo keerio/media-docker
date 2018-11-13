@@ -1,3 +1,4 @@
+services:
   # Ubooquity
   ubooquity:
     image: linuxserver/ubooquity:latest

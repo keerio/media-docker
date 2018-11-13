@@ -1,3 +1,4 @@
+services:
   # HTPC Manager
   htpcmanager:
     image: linuxserver/htpcmanager:latest

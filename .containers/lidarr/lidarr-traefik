@@ -1,3 +1,4 @@
+services:
   # Lidarr
   lidarr:
     image: linuxserver/lidarr:latest

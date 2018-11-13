@@ -1,3 +1,4 @@
+services:
   # Beets
   beets:
     image: linuxserver/beets:latest

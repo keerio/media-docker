@@ -1,4 +1,4 @@
-# Networking config
+services:
 networks:
   vpn:
   internal:

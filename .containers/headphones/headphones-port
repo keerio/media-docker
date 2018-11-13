@@ -1,3 +1,4 @@
+services:
   # Headphones
   headphones:
     image: linuxserver/headphones:latest

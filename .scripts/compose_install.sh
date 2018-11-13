@@ -2,10 +2,13 @@
 set -euo pipefail
 
 compose_install() {
+  local REPO
   local URL
   local COMPOSE_VERSION
 
-  COMPOSE_VERSION=${1:-}
+  REPO="docker/compose"
+  COMPOSE_VERSION=$(run_sh "$SCRIPTDIR" \
+    "github_latest_release" "$REPO")
   URL="https://github.com/docker/compose/releases/download/" \
 "${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
 

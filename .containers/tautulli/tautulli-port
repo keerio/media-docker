@@ -1,3 +1,4 @@
+services:
   # Tautulli
   tautulli:
     image: tautulli/tautulli:latest

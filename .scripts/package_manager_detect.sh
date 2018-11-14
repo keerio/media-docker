@@ -13,6 +13,8 @@ package_manager_detect() {
   for distro in "${!DISTROMAP[@]}" ; do
     if [[ -f $distro ]] ; then
       echo "${DISTROMAP[$distro]}"
+      info "Detected package manager as: ${DISTROMAP[$distro]}"
+      return
     fi
   done
 }

@@ -23,7 +23,7 @@ prereq_install() {
     emerge)
       run_sh "$SCRIPTDIR" "emerge_prereqs_install"
     ;;
-    zypper)
+    zypp)
       run_sh "$SCRIPTDIR" "zypper_prereqs_install"
     ;;
     *)

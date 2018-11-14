@@ -13,17 +13,7 @@ apt_prereqs_install() {
     "ca-certificates" "curl" "software-properties-common" \
     "jq"
 
-  curl -fsSL https://download.docker.com/linux/ubuntu/gpg |
-    sudo apt-key add - > /dev/null 2>&1 \
-    || err "Error adding Docker GPG key."
-
-  sudo add-apt-repository \
-  "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-    $(lsb_release -cs) stable" \
-    > /dev/null 2>&1 \
-    || err "Error adding Docker repository."
-
-  run_sh "$SCRIPTDIR" "apt_install" "docker-ce"
+  run_sh "$SCRIPTDIR" "docker_install"
 
   run_sh "$SCRIPTDIR" "compose_install"
 

@@ -2,6 +2,7 @@
 #
 # Perform initial setup and configuration of Docker environment for 
 # full media server goodness.
+# shellcheck disable=SC2143
 
 set -euo pipefail
 
@@ -87,7 +88,7 @@ run_sh() {
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
 
 finish() {
-  if [[ $(service --status-all | grep -Fq 'docker') ]]; then    
+  if [[ $(service --status-all | grep -Fq 'docker') ]] ; then
     sudo service docker restart || true
   fi
   run_sh "$SCRIPTDIR" "self_symlink" || true

@@ -8,7 +8,7 @@ array_contains () {
 
   VAL=${1:-}
   shift
-  
+
   for item in "$@" ; do
     if [[ ! -z $item ]] ; then
       MAP[$item]=1

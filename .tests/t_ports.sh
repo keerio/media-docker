@@ -8,6 +8,8 @@ t_ports() {
   local -a PARSEDPORTS
   local COMPOSE
 
+  run_sh "$SCRIPTDIR" "yq_install" 
+  
   APPS=$(run_sh "$SCRIPTDIR" "dir_array" "$CONTAINDIR")
   PARSEDPORTS=("")
   COMPOSE_FILES=("")

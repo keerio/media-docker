@@ -3,7 +3,7 @@ set -euo pipefail
 
 menu_guided() {
   info "Starting prerequistes install."
-  run_sh "$SCRIPTDIR" "apt_prereqs_install"
+  run_sh "$SCRIPTDIR" "prereq_install"
 
   info "Starting timezone update process."
   run_sh "$MENUDIR" "menu_timezone"

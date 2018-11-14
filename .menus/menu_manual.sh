@@ -22,7 +22,7 @@ menu_manual() {
   case $SELECTION in
     "Install Prerequisites")
       info "Starting prerequistes install."
-      run_sh "$SCRIPTDIR" "apt_prereqs_install"
+      run_sh "$SCRIPTDIR" "prereq_install"
     ;;
     "Directories")
       info "Starting directory configuration process."

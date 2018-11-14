@@ -102,7 +102,6 @@ trap finish EXIT
 main() {
   # prereqs for processes
   run_sh "$SCRIPTDIR" "root_check"
-  run_sh "$SCRIPTDIR" "apt_check"
   run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR"
   run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR"
   run_sh "$SCRIPTDIR" "self_config_store"

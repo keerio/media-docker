@@ -2,9 +2,13 @@ dist: xenial
 sudo: required
 language: minimal
 before_install:
-  - cd .tests/ && curl -L "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/shunit2/shunit2-2.1.6.tgz" | tar zx
+  - cd .tests/
+  - sudo curl -L "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/shunit2/shunit2-2.1.6.tgz" | tar zx
   - sudo pip install -U bashate
+  - sudo curl -L "https://github.com/mikefarah/yq/releases/download/2.1.2/yq_linux_amd64" -o yq
+  - chmod +x yq
   - cd ..
+  - export PATH=$PWD/.tests/:$PATH
 addons:
   apt:
     update: true

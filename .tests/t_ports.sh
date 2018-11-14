@@ -2,7 +2,7 @@
 
 # test ports_collide
 t_ports() {
-  local COMPOSE_FILES
+  local -a COMPOSE_FILES
   local -a APPS
   local -a ALLPORTS
   local -a PARSEDPORTS
@@ -10,6 +10,7 @@ t_ports() {
 
   APPS=$(run_sh "$SCRIPTDIR" "dir_array" "$CONTAINDIR")
   PARSEDPORTS=("")
+  COMPOSE_FILES=("")
 
   for app in ${APPS[@]} ; do
     if [[ ! "$app" = "traefik" ]] && [[ ! "$app" = "watchtower" ]] ; then

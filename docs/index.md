@@ -27,7 +27,11 @@ sudo chmod +x ./media-docker.sh
 sudo ./media-docker.sh
 ```
 
-  * to get your plex claim token, go to https://www.plex.tv/claim/. paste this entire code when prompted by the install process (or directly in the `.env` file in the PLEX_CLAIM_TOKEN variable) to claim your server with your account
+after this first installation and run, you can run media-docker from anywhere by running:
+
+```bash
+sudo media-docker
+```
 
 ## services
 a full list of available services and where to access them can be found in the wiki [here.](https://github.com/joskore/media-docker/wiki/services)

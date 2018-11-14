@@ -31,6 +31,7 @@ readonly MENUDIR="$BASEDIR/.menus/"
 readonly CONFIGDIR="$BASEDIR/.config/"
 readonly CONTAINDIR="$BASEDIR/.containers/"
 readonly BACKUPDIR="$BASEDIR/.backups/"
+readonly LOGFILE="$BASEDIR/media-docker-$(date +%s).log"
 readonly CURRENT_UID=$UID
 
 # colors
@@ -41,14 +42,17 @@ readonly NOCOL='\033[0m'
 
 # logging functions
 info() {
-  echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}"
+  echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
+    | tee -a "$LOGFILE" >&2 ;
 }
 err() {
-  echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" >&2
+  echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
+    | tee -a "$LOGFILE" >&2 ;
   exit 1
 }
 success() {
-  echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}"
+  echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
+    | tee -a "$LOGFILE" >&2 ;
 }
 
 # script runner

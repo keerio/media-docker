@@ -2,6 +2,7 @@
 #
 # Perform initial setup and configuration of Docker environment for 
 # full media server goodness.
+# shellcheck disable=SC2143
 
 set -euo pipefail
 
@@ -31,6 +32,7 @@ readonly MENUDIR="$BASEDIR/.menus/"
 readonly CONFIGDIR="$BASEDIR/.config/"
 readonly CONTAINDIR="$BASEDIR/.containers/"
 readonly BACKUPDIR="$BASEDIR/.backups/"
+readonly LOGFILE="$BASEDIR/media-docker-$(date +%s).log"
 readonly CURRENT_UID=$UID
 
 # colors
@@ -41,14 +43,17 @@ readonly NOCOL='\033[0m'
 
 # logging functions
 info() {
-  echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}"
+  echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
+    | tee -a "$LOGFILE" >&2 ;
 }
 err() {
-  echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" >&2
+  echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
+    | tee -a "$LOGFILE" >&2 ;
   exit 1
 }
 success() {
-  echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}"
+  echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
+    | tee -a "$LOGFILE" >&2 ;
 }
 
 # script runner
@@ -83,7 +88,9 @@ run_sh() {
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
 
 finish() {
-  sudo service docker start || true
+  if [[ $(service --status-all | grep -Fq 'docker') ]] ; then
+    sudo service docker restart || true
+  fi
   run_sh "$SCRIPTDIR" "self_symlink" || true
   run_sh "$SCRIPTDIR" "self_config_delete" || true
   sudo rm -f "${TESTDIR}/.apps-test" || true

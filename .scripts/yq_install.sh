@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2140
 set -euo pipefail
 
 yq_install() {
@@ -9,8 +10,8 @@ yq_install() {
   REPO="mikefarah/yq"
   YQ_VERSION=$(run_sh "$SCRIPTDIR" \
     "github_latest_release" "$REPO")
-  URL="https://github.com/mikefarah/yq/releases/download/" \
-  "${YQ_VERSION}/yq_$(uname -s)_$(uname -m)"
+  URL="https://github.com/mikefarah/yq/releases/download/"\
+"${YQ_VERSION}/yq_$(uname -s)_amd64"
 
   info "Installing yq."
   sudo curl -fsSL "$URL" -o /usr/local/bin/yq \
@@ -21,5 +22,5 @@ yq_install() {
     > /dev/null 2>&1 \
     || err "Error installing yq."
 
-  info "yq installed"
+  success "yq installed"
 }

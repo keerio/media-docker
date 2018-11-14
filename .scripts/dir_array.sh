@@ -6,6 +6,7 @@ dir_array() {
   local -a DIRS
 
   BASE=${1:-}
+  DIRS=("")
 
   for d in "$BASE"/*/ ; do
     DIRS=("${DIRS[@]}" "$(basename "$d" | tr -d "/")")

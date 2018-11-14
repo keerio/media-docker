@@ -83,9 +83,11 @@ run_sh() {
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
 
 finish() {
-  sudo service docker start
-  run_sh "$SCRIPTDIR" "self_symlink"
-  run_sh "$SCRIPTDIR" "self_config_delete"
+  sudo service docker start || true
+  run_sh "$SCRIPTDIR" "self_symlink" || true
+  run_sh "$SCRIPTDIR" "self_config_delete" || true
+  sudo rm -f "${TESTDIR}/.apps-test" || true
+  sudo rm -f "${TESTDIR}/docker-compose-test.yml" || true
 }
 trap finish EXIT
 

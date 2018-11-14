@@ -41,10 +41,17 @@ cli() {
 
   eval set -- "${PARSED_ARGS:-}"
 
-  while getopts ":paec:uPt:h" SELECTED ; do
+  while getopts ":p:aec:uPt:h" SELECTED ; do
     case $SELECTED in
       p)
-        run_sh "$SCRIPTDIR" "apt_prereqs_install"
+        case ${OPTARG} in
+          test)
+            run_sh "$SCRIPTDIR" "yq_install"
+          ;;
+          *)
+            usage
+          ;;
+        esac
         exit
       ;;
       a)
@@ -110,6 +117,10 @@ cli() {
           c)
             run_sh "$SCRIPTDIR" "compose_create"
             run_sh "$SCRIPTDIR" "compose_up"
+            exit
+          ;;
+          p)
+            run_sh "$SCRIPTDIR" "apt_prereqs_install"
             exit
           ;;
           *)

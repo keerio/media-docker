@@ -3,19 +3,23 @@ set -euo pipefail
 
 array_contains () {
   local VAL
-  local ARR
   local -A MAP
+  MAP[0]=1
 
   VAL=${1:-}
-  ARR=${2:-}
+  shift
 
-  for item in $ARR ; do
-    MAP["$item"]=1
+  for item in "$@" ; do
+    if [[ ! -z $item ]] ; then
+      MAP[$item]=1
+    fi
   done
 
   if [[ ${MAP["$VAL"]+_} ]] ; then
     echo "0"
+    return 0
   else
     echo "1"
+    return 1
   fi
 }

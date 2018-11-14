@@ -4,6 +4,6 @@ set -euo pipefail
 
 yq_build(){
   local COMPOSE_FILE
-  COMPOSE_FILE=$(yq m "$@")
+  COMPOSE_FILE=$(sudo yq m "$@")
   echo "$COMPOSE_FILE"
 }

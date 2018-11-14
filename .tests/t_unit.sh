@@ -38,10 +38,10 @@ test_app_is_active_false() {
 
 # test array_contains
 test_array_contains_true() {
-  assertEquals 0 $(array_contains traefik "(bazarr traefik watchtower)")
+  assertEquals 0 $(array_contains "traefik" "${TEST_ARRAY[@]}")
 }
 test_array_contains_false() {
-  assertEquals 1 $(array_contains plex "(bazarr traefik watchtower)")
+  assertEquals 1 $(array_contains "plex" "${TEST_ARRAY[@]}")
 }
 
 # test file_append
@@ -69,10 +69,8 @@ oneTimeSetUp() {
   . "${SCRIPTDIR}/app_is_active.sh"
   . "${SCRIPTDIR}/array_contains.sh"
   . "${SCRIPTDIR}/file_append.sh"
-}
 
-oneTimeTearDown() {
-  sudo rm "${TESTDIR}/.apps-test"
+  TEST_ARRAY=("bazarr" "traefik" "watchtower")
 }
 
 . .tests/shunit2-2.1.6/src/shunit2

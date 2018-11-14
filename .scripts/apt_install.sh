@@ -7,5 +7,6 @@ apt_install() {
   sudo apt-get install -y "$@" \
     > /dev/null 2>&1 || err "Error installing packages: $*."
 
-  success "Successfully installed requested packages."
+  success "Successfully installed requested package(s): $*."
+  return 0
 }

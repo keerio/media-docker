@@ -83,7 +83,9 @@ run_sh() {
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
 
 finish() {
-  sudo service docker start || true
+  if [[ $(service --status-all | grep -Fq 'docker') ]]; then    
+    sudo service docker restart || true
+  fi
   run_sh "$SCRIPTDIR" "self_symlink" || true
   run_sh "$SCRIPTDIR" "self_config_delete" || true
   sudo rm -f "${TESTDIR}/.apps-test" || true

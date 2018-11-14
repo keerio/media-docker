@@ -13,11 +13,17 @@ apt_prereqs_install() {
     "ca-certificates" "curl" "software-properties-common" \
     "jq"
 
-  run_sh "$SCRIPTDIR" "docker_install"
+  if [[ ! $(command -v "docker") ]] ; then 
+    run_sh "$SCRIPTDIR" "docker_install"
+  fi
 
-  run_sh "$SCRIPTDIR" "compose_install"
+  if [[ ! $(command -v "docker-compose") ]] ; then 
+    run_sh "$SCRIPTDIR" "compose_install"
+  fi
 
-  run_sh "$SCRIPTDIR" "yq_install"
+  if [[ ! $(command -v "yq") ]] ; then 
+    run_sh "$SCRIPTDIR" "yq_install"
+  fi
 
   return
 }

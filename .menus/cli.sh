@@ -120,7 +120,7 @@ cli() {
             exit
           ;;
           p)
-            run_sh "$SCRIPTDIR" "apt_prereqs_install"
+            run_sh "$SCRIPTDIR" "prereq_install"
             exit
           ;;
           *)

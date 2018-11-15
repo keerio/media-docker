@@ -2,6 +2,10 @@
 set -euo pipefail
 
 apt_prereqs_install() {
+  sudo add-apt-repository universe \
+    > /dev/null 2>&1 \
+    || err "Error adding universe repository."
+
   sudo apt-get remove docker docker-engine docker.io \
     > /dev/null 2>&1 \
     || true

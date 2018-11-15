@@ -6,6 +6,7 @@ dnf_prereqs_install() {
     > /dev/null 2>&1 \
     || true
 
-  run_sh "$SCRIPTDIR" "yum_install" \
-    "curl" "git" "grep" "sed" "jq"
+  run_sh "$SCRIPTDIR" "dnf_install" \
+    "curl" "git" "grep" "sed" "jq" \
+    "newt"
 }

@@ -7,5 +7,6 @@ pacman_prereqs_install() {
     || true
 
   run_sh "$SCRIPTDIR" "pacman_install" \
-    "curl" "git" "grep" "sed" "jq"
+    "curl" "git" "grep" "sed" "jq" \
+    "libnewt"
 }

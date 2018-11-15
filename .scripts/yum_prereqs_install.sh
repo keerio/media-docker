@@ -7,5 +7,6 @@ yum_prereqs_install() {
     || true
 
   run_sh "$SCRIPTDIR" "yum_install" \
-    "curl" "git" "grep" "sed" "jq"
+    "curl" "git" "grep" "sed" "jq" \
+    "newt"
 }

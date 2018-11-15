@@ -16,10 +16,10 @@ package_manager_detect() {
 
   for distro in "${!DISTROMAP[@]}" ; do
     if [[ -f $distro ]] ; then
-      if [[ $distro = "dnf" ]] ; then
-        if [[ -n $(command -v "dnf") ]] ; then
+      if [[ "${DISTROMAP[$distro]}" = "dnf" ]] ; then
+        if [[ "$(command -v "dnf")" ]] ; then
           PACKAGE_MAN="dnf"
-        elif [[ -n "$(command -v "yum")" ]] ; then
+        elif [[ "$(command -v "yum")" ]] ; then
           PACKAGE_MAN="yum"
         fi
       else

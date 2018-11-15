@@ -89,7 +89,7 @@ cli() {
         exit
       ;;
       u)
-        run_sh "$SCRIPTDIR" "self_update"
+        run_sh "$SCRIPTDIR" "self_update" "${BASEDIR}"
         exit
       ;;
       P)

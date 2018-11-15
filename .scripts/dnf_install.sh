@@ -4,7 +4,7 @@ set -euo pipefail
 dnf_install() {
   run_sh "$SCRIPTDIR" "dnf_update"
   shift
-  sudo dnf install -y "$@" \
+  sudo dnf -y install "$@" \
     > /dev/null 2>&1 || err "Error installing packages: $*."
 
   success "Successfully installed requested package(s): $*."

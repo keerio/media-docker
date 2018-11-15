@@ -6,6 +6,7 @@ zypper_prereqs_install() {
     > /dev/null 2>&1 \
     || true
 
-  run_sh "$SCRIPTDIR" "yum_install" \
-    "curl" "git" "grep" "sed" "jq"
+  run_sh "$SCRIPTDIR" "zypp_install" \
+    "curl" "git-core" "grep" "sed" "jq" \
+    "newt"
 }

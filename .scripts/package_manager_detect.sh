@@ -11,6 +11,7 @@ package_manager_detect() {
   DISTROMAP[/etc/arch-release]=pacman
   DISTROMAP[/etc/gentoo-release]=emerge
   DISTROMAP[/etc/SuSE-release]=zypp
+  DISTROMAP[/etc/SUSE-brand]=zypp
   DISTROMAP[/etc/debian_version]=apt
 
   for distro in "${!DISTROMAP[@]}" ; do

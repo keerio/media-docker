@@ -1,0 +1,325 @@
+#
+# ---------------------------------------------------------------------------------------
+# List of supported applications provided by media-docker.
+#
+# To document a new application, create a new "list-item" below with the following keys:
+#   name:           : [REQUIRED] A name that identifies the service.
+#   description:    : [REQUIRED] A short description of what the application does.
+#   maintainer      : [OPTIONAL] A 'nested list' of details regarding the container maintainer.
+#     name:         : [REQUIRED] Name of the container maintainer.
+#     url:          : [OPTIONAL] URL of the container in the registry.
+#   url:            : [REQUIRED] The URL pattern the service is available on.
+#   ports:          : [REQUIRED] A list of ports the service is accessible on.
+#
+# Tip: Use YAML Block notations to "fold" a long string, or to "break" a long string
+#      to the following line. Block notations can also be used to avoid having to use
+#      backslashes to escape quotes.
+# ---------------------------------------------------------------------------------------
+#
+
+- name: Plex Media Server
+  description: Movie / TV / Music interface
+  maintainer:
+    name: plexinc
+    url: https://hub.docker.com/r/plexinc/pms-docker/
+  url: https://plex.${DOMAIN}
+  ports: 
+    - 32400
+
+- name: Traefik
+  description: Reverse Proxy / SSL Termination
+  maintainer:
+    name: traefik
+    url: https://hub.docker.com/_/traefik/
+  url: https://traefik.${DOMAIN}
+  ports: 
+    - 80
+    - 443
+
+- name: Heimdall
+  description: Application Dashboard
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/heimdall/
+  url: https://heimdall.${DOMAIN}
+  ports: 
+    - 81
+    - 444
+
+- name: sabNZBd
+  description: NZB Downloader
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/sabnzbd/
+  url: https://sab.${DOMAIN}
+  ports: 
+    - 8080
+
+- name: NZBGet
+  description: NZB Downloader
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/nzbget/
+  url: https://nzbget.${DOMAIN}
+  ports: 
+    - 6789
+    
+- name: Ubooquity
+  description: Book / Comic Interface
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/ubooquity/
+  url: 
+    - https://ubooquity.${DOMAIN}
+    - https://admin-ubooquity.${DOMAIN}
+  ports: 
+    - 2202
+    - 2203
+
+- name: Transmission
+  description: Torrenting over VPN
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/haugene/transmission-openvpn/
+  url: 
+    - https://transmission.${DOMAIN}
+  ports: 
+    - 9091
+
+- name: NZBHydra
+  description: NZB Meta Searcher
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/hyrda2/
+  url: 
+    - https://hydra.${DOMAIN}
+  ports: 
+    - 5075
+
+- name: Jackett
+  description: TorzNab Meta Searcher
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/jackett/
+  url: 
+    - https://jackett.${DOMAIN}
+  ports: 
+    - 9117
+
+- name: Sonarr
+  description: TV Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/sonarr/
+  url: 
+    - https://sonarr.${DOMAIN}
+  ports: 
+    - 8989
+
+- name: Radarr
+  description: Movie Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/radarr/
+  url: 
+    - https://radarr.${DOMAIN}
+  ports: 
+    - 7878
+
+- name: Lidarr
+  description: Music Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/lidarr/
+  url: 
+    - https://lidarr.${DOMAIN}
+  ports: 
+    - 8686
+
+- name: Bazarr
+  description: Subtitle Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/bazarr/
+  url: 
+    - https://bazarr.${DOMAIN}
+  ports: 
+    - 6767
+
+- name: Mylar
+  description: Comic Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/mylar/
+  url: 
+    - https://mylar.${DOMAIN}
+  ports: 
+    - 8090
+
+- name: LazyLibrarian
+  description: Book Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/lazylibrarian/
+  url: 
+    - https://lazylibrarian.${DOMAIN}
+  ports: 
+    - 5299
+
+- name: Ombi
+  description: Plex Media Requests
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/ombi/
+  url: 
+    - https://ombi.${DOMAIN}
+  ports: 
+    - 3579
+
+- name: Tautulli
+  description: Plex Statistics
+  maintainer:
+    name: tautulli
+    url: https://hub.docker.com/tautulli/tautulli/
+  url: 
+    - https://tautulli.${DOMAIN}
+  ports: 
+    - 8181
+
+- name: Oscarr
+  description: Media Dashboard
+  maintainer:
+    name: morpheus65535
+    url: https://hub.docker.com/morpheus65535/oscarr/
+  url: 
+    - https://oscarr.${DOMAIN}
+  ports: 
+    - 5656
+
+- name: Calibre Web
+  description: Web Calibre Client
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/calibre-web/
+  url: 
+    - https://calibre.${DOMAIN}
+  ports: 
+    - 8083
+
+- name: CouchPotato
+  description: Movie Downloader
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/couchpotato/
+  url: 
+    - https://couchpotato.${DOMAIN}
+  ports: 
+    - 5050
+
+- name: Emby
+  description: Open Media Server
+  maintainer:
+    name: emby
+    url: https://hub.docker.com/embt/embyserver/
+  url: 
+    - https://emby.${DOMAIN}
+  ports: 
+    - 8096
+
+- name: HTPCManager
+  description: Application Dashboard
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/htpcmanager/
+  url: 
+    - https://htpcmanager.${DOMAIN}
+  ports: 
+    - 8085
+
+- name: Organizr
+  description: Application Dashboard
+  maintainer:
+    name: organizrtools
+    url: https://hub.docker.com/organizrtools/organizr-v2/
+  url: 
+    - https://organizr.${DOMAIN}
+  ports: 
+    - 8081
+
+- name: Portainer
+  description: Docker Web UI
+  maintainer:
+    name: portainer
+    url: https://hub.docker.com/portainer/portainer/
+  url: 
+    - https://portainer.${DOMAIN}
+  ports: 
+    - 9000
+
+- name: HTPCManager
+  description: Application Dashboard
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/htpcmanager/
+  url: 
+    - https://htpcmanager.${DOMAIN}
+  ports: 
+    - 8085
+
+- name: Watchtower
+  description: Container Update
+  maintainer:
+    name: v2tec
+    url: https://hub.docker.com/v2tec/watchtower/
+  url:
+  ports:
+
+- name: Watcher
+  description: Movie Snatcher
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/watcher/
+  url: 
+    - https://watcher.${DOMAIN}
+  ports: 
+    - 9090
+
+- name: MuxiMux
+  description: Application Dashboard
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/muximux/
+  url: 
+    - https://muximux.${DOMAIN}
+  ports: 
+    - 82
+
+- name: Beets
+  description: Music Library Manager
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/beets/
+  url: 
+    - https://beets.${DOMAIN}
+  ports: 
+    - 8337
+
+- name: Cardigann
+  description: Indexing Server
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/cardigann/
+  url: 
+    - https://cardigann.${DOMAIN}
+  ports: 
+    - 5060
+
+- name: Headphones
+  description: Music Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/linuxserver/headphones/
+  url: 
+    - https://headphones.${DOMAIN}
+  ports: 
+    - 8182

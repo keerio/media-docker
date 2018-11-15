@@ -1,0 +1,47 @@
+---
+title: Supported Services
+layout: docs
+permalink: /docs/services/
+redirect_from:
+  - /docs/services/home/
+---
+
+<div class="mobile-side-scroller">
+  <table>
+    <thead>
+      <tr>
+        <th>Service</th>
+        <th>Description</th>
+        <th>Maintainer</th>
+        <th>URL Pattern</th>
+        <th>Ports</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for service in site.data.supported_services %}
+      <tr>
+        <td><p>{{ service.name }}</p></td>
+        <td><p>{{ service.description }}</p></td>
+        <td><p><a href="{{ service.maintainer.url }}">{{ service.maintainer.name }}</a></p></td>
+        <td><p>
+          {% for url in service.url %}
+            {% if forloop.first != true %}
+              <br/>
+            {% endif %}
+            {{ url }}
+          {% endfor %}
+        </p></td>
+        <td><p>
+            {% for port in service.ports %}
+              {% if forloop.first != true %}
+                <br/>
+              {% endif %}
+              :{{ port }}
+            {% endfor %}
+          </p></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+  

@@ -2,7 +2,7 @@
 
 *Describe the application as well as a reference to the GitHub issue and a link to the project.*
 
-# Implementation
+# Adding an App: Implementation
 
 *Describe the actions taken to implement the application.*
 
@@ -14,6 +14,13 @@
 - [ ] Added `$app-x86_64.yaml` file to application directory.
 - [ ] Added details to documentation in `/docs/data/supported_services.yml`.
 - [ ] Added detail page to documentation in `/docs/_docs/services/$app`
+
+# Bugfix or Enhancement:
+
+*Describe the actions taken to resolve the issue or add the behavior.*
+
+- [ ] Use GitHub checklists to separate sub-tasks of the issue.
+- [X] Mark each sub-task as complete when done.
 
 # Requirements
 

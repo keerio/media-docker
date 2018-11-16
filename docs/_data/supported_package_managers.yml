@@ -22,11 +22,11 @@
 
 - name: dnf
   description: Modern package manager for RedHat systems (CentOS / Fedora).
-  support: false
+  support: true
 
 - name: emerge
   description: Primary package manager for Gentoo systems.
-  support: true
+  support: false
 
 - name: zypper
   description: Primary package manager for openSUSE systems.

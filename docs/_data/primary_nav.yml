@@ -1,0 +1,9 @@
+- title: Home
+  link: /
+  show_on_mobile: true
+- title: Docs
+  link: /docs/
+  show_on_mobile: true
+- title: Support
+  link: https://github.com/joskore/media-docker/issues
+  show_on_mobile: false

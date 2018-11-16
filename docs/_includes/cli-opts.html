@@ -1,0 +1,27 @@
+<div class="support-list">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Arguments</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for opt in site.data.cli_opts %}
+      <tr>
+        <td><a href="/docs/opts/{{ opt.long-name }}/">{{ opt.long-name }}, {{ opt.short-name }}</a></td>
+        <td>{{ opt.description }}</td>
+        <td>
+          {% for arg in opt.arguments %}
+            {% if forloop.first != true %}
+              <br/>
+            {% endif %}
+            {{ arg.name }}
+          {% endfor %}
+        </td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

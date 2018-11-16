@@ -1,0 +1,62 @@
+#
+# ---------------------------------------------------------------------------------------
+# List of environment variables used by media-docker.
+#
+# To document a new variable, create a new "list-item" below with the following keys:
+#   name:           : [REQUIRED] A name that identifies the variable.
+#   description:    : [REQUIRED] A short description of what the variable is for.
+#   example        : [OPTIONAL] An example value for the variable.
+#
+# Tip: Use YAML Block notations to "fold" a long string, or to "break" a long string
+#      to the following line. Block notations can also be used to avoid having to use
+#      backslashes to escape quotes.
+# ---------------------------------------------------------------------------------------
+#
+
+- name: USER_NAME
+  description: username for account that will be created by media-docker.
+  example: joskore
+
+- name: PASSWORD
+  description: password for account that will be created by media-docker.
+  example: iM@gr8Password!
+
+- name: PLEX_CLAIM_TOKEN
+  description: claim token for plex server from https://www.plex.tv/claim/
+  example: claim-TcoQvJEUxjycmN8KdxGDx
+
+- name: BASE_DIR
+  description: Base directory path for storage.
+  example: /mnt/media/data/
+
+- name: MEDIA_DIR
+  description: Base media directory path for storage.
+  example: /mnt/media/data/library/
+
+- name: DOWNLOAD_DIR
+  description: Base directory path for download swap.
+  example: /mnt/media/data/downloads/
+
+- name: TIMEZONE
+  description: Local timezone.
+  example: America/Montevideo
+
+- name: DOMAIN
+  description: Domain name used by Traefik for reverse proxying.
+  example: media-docker.com
+
+- name: EMAIL_ADDRESS
+  description: Email used for Let's Encrpyt notifications.
+  example: jos@ellips.es
+
+- name: VPN_PROVIDER
+  description: OpenVPN provider
+  example: NORDVPN
+
+- name: VPN_USER
+  description: OpenVPN username
+  example: joskore
+
+- name: VPN_PASS
+  description: OpenVPN password
+  example: "!@mveri5mart"

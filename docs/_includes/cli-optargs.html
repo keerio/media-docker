@@ -1,0 +1,22 @@
+<div class="support-list">
+  <p>The available arguments for this option are below.</p>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% assign option = site.data.cli_opts | where:"long-name", page.title %}
+      {% for opt in option %}
+        {% for arg in opt.arguments %}
+          <tr>
+            <td>{{ arg.name }}</td>
+            <td>{{ arg.description }}</td>
+          </tr>
+        {% endfor %}
+      {% endfor %}
+    </tbody>
+  </table>
+</div>

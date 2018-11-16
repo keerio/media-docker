@@ -1,0 +1,11 @@
+- title: Getting Started
+  docs:
+    - link: /docs/
+    - link: /docs/requirements/
+    - link: /docs/files/
+    - link: /docs/opts/
+- title: Applications
+  docs:
+    - link: /docs/services/
+- title: Guides
+  docs:

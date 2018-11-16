@@ -1,0 +1,30 @@
+#
+# ---------------------------------------------------------------------------------------
+# List of files used by media-docker.
+#
+# To document a new application, create a new "list-item" below with the following keys:
+#   name:           : [REQUIRED] A name that identifies the service.
+#   description:    : [REQUIRED] A short description of what the file is for.
+#   location        : [OPTIONAL] An example path to the file.
+#
+# Tip: Use YAML Block notations to "fold" a long string, or to "break" a long string
+#      to the following line. Block notations can also be used to avoid having to use
+#      backslashes to escape quotes.
+# ---------------------------------------------------------------------------------------
+#
+
+- name: dotenv
+  description: Environment variable storage.
+  location: ~/media-docker/.env
+
+- name: dotapps
+  description: Stores enabled / disabled app selections.
+  location: ~/media-docker/.apps
+
+- name: traefik.toml
+  description: Stores configuration for Traefik reverse proxy.
+  location: ~/media-docker/traefik/traefik.toml
+
+- name: docker-compose.yml
+  description: Docker container configuration.
+  location: ~/media-docker/docker-compose.yml

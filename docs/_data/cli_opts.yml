@@ -1,0 +1,92 @@
+#
+# ---------------------------------------------------------------------------------------
+# List of commandline options used by media-docker.
+#
+# To document a new variable, create a new "list-item" below with the following keys:
+#   long-name:       : [REQUIRED] A long name that identifies the option.
+#   short-name:      : [REQUIRED] A short name that identifies the option.
+#   description:     : [REQUIRED] A short description of what the option is for.
+#   arguments        : [OPTIONAL] A list of optional arguments for the parameter.
+#
+# Tip: Use YAML Block notations to "fold" a long string, or to "break" a long string
+#      to the following line. Block notations can also be used to avoid having to use
+#      backslashes to escape quotes.
+# ---------------------------------------------------------------------------------------
+#
+
+- long-name: --prereq
+  short-name: -p
+  description: Install prerequisites for media-docker.
+  arguments:
+    - name: test
+      description: Installs only testing dependencies.
+
+- long-name: --apps
+  short-name: -a
+  description: Edit the dotapps file.
+  arguments:
+
+- long-name: --env
+  short-name: -e
+  description: Edit the dotenv file.
+  arguments:
+
+- long-name: --compose
+  short-name: -c
+  description: Run Docker Compose operations.
+  arguments:
+    - name: up
+      description: Rebuilds docker-compose.yml and brings up the stack.
+    - name: pull
+      description: Rebuilds the docker-compose.yml and pulls fresh images.
+    - name: restart
+      description: Rebuilds the docker-compose.yml and restarts the stack.
+    - name: down
+      description: Brings down the stack.
+    - name: create
+      description: Builds the docker.compose.yml file.
+
+- long-name: --update
+  short-name: -u
+  description: Update media-docker from GitHub.
+  arguments:
+
+- long-name: --prune
+  short-name: -P
+  description: Prune the Docker system
+  arguments:
+
+- long-name: --test
+  short-name: -t
+  description: Run development tests.
+  arguments:
+    - name: v_bashate
+      description: Validates the project against the Bashate rules.
+    - name: v_shellcheck
+      description: Validates the project against ShellCheck rules.
+    - name: t_ports
+      description: Checks all Docker containers to ensure no port collisions exist internally.
+    - name: t_unit
+      description: Runs assorted development unit tests.
+
+- long-name: --help
+  short-name: -h
+  description: Show usage message.
+  arguments:
+  output: |
+    #/ Usage: sudo media-docker [OPTIONS]
+    #/ Description: media-docker installation and configuration tool.
+    #/ 
+    #/ To run the GUI installer / configurator, run media-docker without options.
+    #/
+    #/ Options:
+    #/
+    #/   -p, --prereq: Install pre-requisites.
+    #/   -a, --apps: View or edit your .apps file
+    #/   -e, --env: View or edit your .env file
+    #/   -c, --compose <up/down/restart/pull/create>: Rebuild your compose environment from selected options
+    #/   -u, --update: Update media-docker
+    #/   -P, --prune: Prune the Docker system
+    #/   -t, --test: Run tests
+    #/   -h, --help: Display this help message
+    #/

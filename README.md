@@ -1,4 +1,4 @@
-# [![media-docker](https://github.com/joskore/media-docker/raw/master/docs/logo.png)](https://media-docker.com/)
+# [![media-docker](https://media-docker.com/assets/images/logo.png)](https://media-docker.com/)
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/joskore/media-docker.svg)
 [![GitHub issues](https://img.shields.io/github/issues/joskore/media-docker.svg)](https://github.com/joskore/media-docker/issues)
@@ -22,8 +22,8 @@ installation is omega-easy!
 from your terminal as a sudo-capable user, run the following commands:
 
 ```bash
-sudo git clone https://github.com/joskore/media-docker/ ./media-docker && cd ./media-docker/
-sudo chmod +x ./media-docker.sh
+git clone https://github.com/joskore/media-docker/ ./media-docker && cd ./media-docker/
+chmod +x ./media-docker.sh
 sudo ./media-docker.sh
 ```
 

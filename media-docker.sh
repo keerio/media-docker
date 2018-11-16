@@ -102,7 +102,7 @@ trap finish EXIT
 # main
 main() {
   # ensure log dir exists
-  mkdir -p "$(dirname ${LOGFILE})"
+  mkdir -p "$(dirname "${LOGFILE}")"
 
   # prereqs for processes
   run_sh "$SCRIPTDIR" "arch_is_supported" "$ARCH"

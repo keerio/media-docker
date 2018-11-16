@@ -18,7 +18,7 @@
 # ---------------------------------------------------------------------------------------
 #
 
-- name: Plex Media Server
+- name: Plex
   description: Movie / TV / Music interface
   maintainer:
     name: plexinc
@@ -26,6 +26,15 @@
   url: https://plex.${DOMAIN}
   ports: 
     - 32400
+    - 32469
+    - 3005
+    - 8324
+    - 1900
+    - 5353
+    - 32410
+    - 32412
+    - 32413
+    - 32414
   arch:
     - x86_64
 
@@ -300,20 +309,6 @@
     - https://emby.${DOMAIN}
   ports: 
     - 8096
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: HTPCManager
-  description: Application Dashboard
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/htpcmanager/
-  url: 
-    - https://htpcmanager.${DOMAIN}
-  ports: 
-    - 8085
   arch:
     - x86_64
     - armhf

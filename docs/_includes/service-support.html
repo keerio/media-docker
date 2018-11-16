@@ -5,32 +5,14 @@
         <th>Service</th>
         <th>Description</th>
         <th>Maintainer</th>
-        <th>URL Pattern</th>
-        <th>Ports</th>
       </tr>
     </thead>
     <tbody>
     {% for service in site.data.supported_services %}
       <tr>
-        <td>{{ service.name }}</td>
+        <td><a href="/docs/services/{{ service.name }}/">{{ service.name }}</a></td>
         <td>{{ service.description }}</td>
         <td><a href="{{ service.maintainer.url }}">{{ service.maintainer.name }}</a></td>
-        <td>
-          {% for url in service.url %}
-            {% if forloop.first != true %}
-              <br/>
-            {% endif %}
-            {{ url }}
-          {% endfor %}
-        </td>
-        <td>
-            {% for port in service.ports %}
-              {% if forloop.first != true %}
-                <br/>
-              {% endif %}
-              :{{ port }}
-            {% endfor %}
-          </td>
       </tr>
     {% endfor %}
     </tbody>

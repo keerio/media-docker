@@ -34,6 +34,7 @@ readonly CONTAINDIR="$BASEDIR/.containers/"
 readonly BACKUPDIR="$BASEDIR/.backups/"
 readonly LOGFILE="$BASEDIR/media-docker-$(date +%s).log"
 readonly CURRENT_UID=$UID
+readonly ARCH="$(uname -m)"
 
 # colors
 readonly RED='\033[0;31m'
@@ -101,6 +102,7 @@ trap finish EXIT
 # main
 main() {
   # prereqs for processes
+  run_sh "$SCRIPTDIR" "arch_is_supported" "$ARCH"
   run_sh "$SCRIPTDIR" "root_check"
   run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR"
   run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR"

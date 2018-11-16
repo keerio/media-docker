@@ -1,7 +1,6 @@
 services:
   # Heimdall
   heimdall:
-    image: linuxserver/heimdall:latest
     container_name: heimdall
     volumes:
       - ${BASE_DIR}/heimdall/config:/config

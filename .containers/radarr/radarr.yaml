@@ -1,7 +1,6 @@
 services:
   # Radarr
   radarr:
-    image: linuxserver/radarr:latest
     container_name: radarr
     volumes:
       - ${BASE_DIR}/radarr/config:/config

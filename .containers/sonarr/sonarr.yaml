@@ -1,7 +1,6 @@
 services:
   # Sonarr
   sonarr:
-    image: linuxserver/sonarr:latest
     container_name: sonarr
     volumes: 
       - ${BASE_DIR}/sonarr/config:/config

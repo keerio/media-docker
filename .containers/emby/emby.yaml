@@ -1,7 +1,6 @@
 services:
   # Emby
   emby:
-    image: emby/embyserver:latest
     container_name: emby
     volumes:
       - ${BASE_DIR}/emby/config:/config

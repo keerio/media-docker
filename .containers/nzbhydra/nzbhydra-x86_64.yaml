@@ -1,0 +1,4 @@
+services:
+  # NZBHydra
+  hydra:
+    image: linuxserver/hydra2:latest

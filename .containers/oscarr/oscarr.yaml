@@ -1,7 +1,6 @@
 services:
   # Oscarr
   oscarr:
-    image: morpheus65535/oscarr:latest
     container_name: oscarr
     volumes:
       - ${BASE_DIR}/morpheus65535/config:/oscarr/data

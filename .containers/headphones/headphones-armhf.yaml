@@ -1,0 +1,4 @@
+services:
+  # Headphones
+  headphones:
+    image: lsioarmhf/headphones:latest

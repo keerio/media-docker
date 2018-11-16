@@ -1,0 +1,4 @@
+services:
+  # Oscarr
+  oscarr:
+    image: morpheus65535/oscarr:latest

@@ -1,0 +1,4 @@
+services:
+  # Jackett
+  jackett:
+    image: lsioarmhf/jackett:latest

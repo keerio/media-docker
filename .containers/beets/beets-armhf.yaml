@@ -1,0 +1,4 @@
+services:
+  # Beets
+  beets:
+    image: lisoarmhf/beets:latest

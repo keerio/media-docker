@@ -1,0 +1,4 @@
+services:
+  # Ombi
+  ombi:
+    image: lsioarmhf/ombi:latest

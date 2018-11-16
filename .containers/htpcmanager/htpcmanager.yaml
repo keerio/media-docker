@@ -1,7 +1,6 @@
 services:
   # HTPC Manager
   htpcmanager:
-    image: linuxserver/htpcmanager:latest
     container_name: htpcmanager
     volumes:
       - ${BASE_DIR}/htpcmanager/config:/config

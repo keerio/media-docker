@@ -1,7 +1,6 @@
 services:
   # LazyLibrarian
   lazylibrarian:
-    image: linuxserver/lazylibrarian:latest
     container_name: lazylibrarian
     volumes:
       - ${BASE_DIR}/lazylibrarian/config:/config

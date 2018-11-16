@@ -1,0 +1,4 @@
+services:
+  # Sonarr
+  sonarr:
+    image: lsioarmhf/sonarr:latest

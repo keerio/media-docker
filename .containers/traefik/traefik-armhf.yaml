@@ -1,0 +1,4 @@
+services:
+  # Traefik
+  traefik:
+    image: traefik:latest

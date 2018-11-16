@@ -1,0 +1,4 @@
+services:
+  # Organizr
+  organizr:
+    image: lsioarmhf/organizr-aarch64:latest

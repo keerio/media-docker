@@ -1,0 +1,4 @@
+services:
+  # Heimdall
+  heimdall:
+    image: lsioarmhf/heimdall-aarch64:latest

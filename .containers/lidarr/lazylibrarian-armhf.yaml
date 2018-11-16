@@ -1,0 +1,4 @@
+services:
+  # Lidarr
+  lidarr:
+    image: lsioarmhf/lidarr:latest

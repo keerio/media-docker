@@ -1,7 +1,6 @@
 services:
   # Watcher
   watcher:
-    image: linuxserver/watcher:latest
     container_name: watcher
     volumes:
       - ${BASE_DIR}/watcher/config:/config

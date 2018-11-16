@@ -1,0 +1,4 @@
+services:
+  # Muximux
+  muximux:
+    image: lsioarmhf/muximux-aarch64:latest

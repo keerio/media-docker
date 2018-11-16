@@ -1,0 +1,4 @@
+services:
+  # Portainer
+  portainer:
+    image: portainer/portainer:arm64

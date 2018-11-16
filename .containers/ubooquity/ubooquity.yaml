@@ -1,7 +1,6 @@
 services:
   # Ubooquity
   ubooquity:
-    image: linuxserver/ubooquity:latest
     container_name: ubooquity
     volumes:
       - ${BASE_DIR}/ubooquity/config:/config

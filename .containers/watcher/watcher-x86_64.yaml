@@ -1,0 +1,4 @@
+services:
+  # Watcher
+  watcher:
+    image: linuxserver/watcher:latest

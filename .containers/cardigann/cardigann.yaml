@@ -1,7 +1,6 @@
 services:
   # Cardigann
   cardigann:
-    image: linuxserver/cardigann:latest
     container_name: cardigann
     volumes:
       - ${BASE_DIR}/cardigann/config:/config

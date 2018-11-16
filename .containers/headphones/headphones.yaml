@@ -1,7 +1,6 @@
 services:
   # Headphones
   headphones:
-    image: linuxserver/headphones:latest
     container_name: headphones
     volumes:
       - ${BASE_DIR}/headphones/config:/config

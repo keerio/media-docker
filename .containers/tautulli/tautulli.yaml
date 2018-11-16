@@ -1,7 +1,6 @@
 services:
   # Tautulli
   tautulli:
-    image: tautulli/tautulli:latest
     container_name: tautulli
     volumes:
       - ${BASE_DIR}/tautulli/config:/config

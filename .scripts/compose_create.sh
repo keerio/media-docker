@@ -23,16 +23,26 @@ compose_create() {
   COMPOSE_FILES=("${CONTAINDIR}/start.yaml")
 
   for app in ${ENABLED_APPS[@]} ; do
-    COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
-      "${CONTAINDIR}/${app}/${app}.yaml")
-    if [[ ! "$app" = "traefik" ]] && [[ ! "$app" = "watchtower" ]] ; then
-      if [[ "$PROXY" = "Y" ]] ; then
+    if [[ $(run_sh "$SCRIPTDIR" "app_is_supported" \
+      "$app" "$ARCH") == 0 ]] ; then
         COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
-          "${CONTAINDIR}/${app}/${app}-traefik.yaml")
-      else
+          "${CONTAINDIR}/${app}/${app}.yaml")
+
         COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
-          "${CONTAINDIR}/${app}/${app}-port.yaml")
-      fi
+          "${CONTAINDIR}/${app}/${app}-${ARCH}.yaml")
+
+        if [[ ! "$app" = "traefik" ]] && [[ ! "$app" = "watchtower" ]] ; then
+          if [[ "$PROXY" = "Y" ]] ; then
+            COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+              "${CONTAINDIR}/${app}/${app}-traefik.yaml")
+          else
+            COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+              "${CONTAINDIR}/${app}/${app}-port.yaml")
+          fi
+        fi
+    else
+      info "$app selected but is not supported by ${ARCH}, disabling."
+      run_sh "$SCRIPTDIR" "env_set" "$app" "N" ".apps"
     fi
   done
 

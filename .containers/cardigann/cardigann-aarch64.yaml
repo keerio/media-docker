@@ -1,0 +1,4 @@
+services:
+  # Cardigann
+  cardigann:
+    image: lsioarmhf/cardigann-aarch64:latest

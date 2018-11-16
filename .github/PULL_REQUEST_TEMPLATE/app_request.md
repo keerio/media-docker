@@ -19,8 +19,8 @@
 
 Please ensure your pull request adheres to the following guidelines:
 
-- [ ] I have read and agree to the [Contributor Covenant Code of Conduct](/.github/CODE_OF_CONDUCT.md).
-- [ ] I have confirmed that all changes adhere to the [Contributing Guidelines](/.github/CONTRIBUTING.md).
+- [ ] I have read and agree to the [Contributor Covenant Code of Conduct](https://github.com/joskore/media-docker/blob/master/.github/CODE_OF_CONDUCT.md).
+- [ ] I have confirmed that all changes adhere to the [Contributing Guidelines](https://github.com/joskore/media-docker/blob/master/.github/CONTRIBUTING.md).
 - [ ] I have confirmed that all defined tests pass prior to opening this pull request.
 
 Thanks for contributing!

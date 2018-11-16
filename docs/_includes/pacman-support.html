@@ -9,7 +9,12 @@
     <tbody>
         {% for pacman in site.data.supported_package_managers %}
       <tr>
-        <td>{{ pacman.name }}</td>
+        <td>
+          {{ pacman.name }}
+          {% if pacman.support == false %}
+            *
+          {% endif %}
+        </td>
         <td>{{ pacman.description }}</td>
       </tr>
     {% endfor %}

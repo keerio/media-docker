@@ -14,6 +14,8 @@ The package managers supported are:
 
 {% include pacman-support.html %}
 
+\* Basic support is in place but is not fully tested or guaranteed to work on all systems.
+
 <hr>
 
 ## Hardware Specifications

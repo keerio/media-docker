@@ -14,18 +14,24 @@
 
 - name: apt-get
   description: Primary package manager for Debian-based systems (a la Ubuntu).
+  support: true
 
 - name: yum
   description: Primary package manager for RedHat systems (CentOS / Fedora).
+  support: true
 
 - name: dnf
   description: Modern package manager for RedHat systems (CentOS / Fedora).
+  support: false
 
 - name: emerge
   description: Primary package manager for Gentoo systems.
+  support: true
 
 - name: zypper
   description: Primary package manager for openSUSE systems.
+  support: false
 
 - name: pacman
   description: Primary package manager for Arch systems.
+  support: false

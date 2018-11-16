@@ -1,4 +1,4 @@
-# [![media-docker](https://media-docker.com/assets/images/logo.png)](https://media-docker.com/)
+# [![media-docker](https://github.com/joskore/media-docker/blob/master/docs/logo.png)](https://media-docker.com/)
 
 ![GitHub tag (latest SemVer)](https://img.shields.io/github/tag/joskore/media-docker.svg)
 [![GitHub issues](https://img.shields.io/github/issues/joskore/media-docker.svg)](https://github.com/joskore/media-docker/issues)

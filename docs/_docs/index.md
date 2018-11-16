@@ -12,7 +12,7 @@ media-docker is your all-in-one deployment and configuration tool for an all-in-
 1. Be a sudo-er and have `git` installed on your machine.
 2. Download media-docker:
     ```bash
-    git clone https://github.com/joskore/media-docker ./media-docker
+    git clone {{ site.repository }} ./media-docker
     ```
 3. Make sure that the tool is executable: 
     ```bash

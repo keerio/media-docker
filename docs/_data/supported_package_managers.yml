@@ -1,0 +1,31 @@
+#
+# ---------------------------------------------------------------------------------------
+# List of supported package managers.
+#
+# To document a new application, create a new "list-item" below with the following keys:
+#   name:           : [REQUIRED] A name that identifies the package manager.
+#   description:    : [REQUIRED] A short description of the package manager.
+#
+# Tip: Use YAML Block notations to "fold" a long string, or to "break" a long string
+#      to the following line. Block notations can also be used to avoid having to use
+#      backslashes to escape quotes.
+# ---------------------------------------------------------------------------------------
+#
+
+- name: apt-get
+  description: Primary package manager for Debian-based systems (a la Ubuntu).
+
+- name: yum
+  description: Primary package manager for RedHat systems (CentOS / Fedora).
+
+- name: dnf
+  description: Modern package manager for RedHat systems (CentOS / Fedora).
+
+- name: emerge
+  description: Primary package manager for Gentoo systems.
+
+- name: zypper
+  description: Primary package manager for openSUSE systems.
+
+- name: pacman
+  description: Primary package manager for Arch systems.

@@ -1,0 +1,20 @@
+<div class="support-list">
+  <table>
+    <thead>
+      <tr>
+        <th>File</th>
+        <th>Description</th>
+        <th>Example Path</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for file in site.data.md_files %}
+      <tr>
+        <td><a href="/docs/files/{{ file.name }}/">{{ file.name }}</a></td>
+        <td>{{ file.description }}</td>
+        <td>{{ file.location }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

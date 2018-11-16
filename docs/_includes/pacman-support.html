@@ -1,0 +1,18 @@
+<div class="support-list">
+  <table>
+    <thead>
+      <tr>
+        <th>Package Manager</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for pacman in site.data.supported_package_managers %}
+      <tr>
+        <td>{{ pacman.name }}</td>
+        <td>{{ pacman.description }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

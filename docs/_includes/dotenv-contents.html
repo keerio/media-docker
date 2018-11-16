@@ -1,0 +1,20 @@
+<div class="support-list">
+  <table>
+    <thead>
+      <tr>
+        <th>Variable Name</th>
+        <th>Description</th>
+        <th>Example Value</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for var in site.data.dotenv_vars %}
+      <tr>
+        <td>{{ var.name }}</td>
+        <td>{{ var.description }}</td>
+        <td>{{ var.example }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

@@ -10,7 +10,7 @@
     <tbody>
     {% for service in site.data.supported_services %}
       <tr>
-        <td><a href="/docs/services/{{ service.name }}/">{{ service.name }}</a></td>
+        <td><a href="/docs/services/{{ service.name | downcase }}/">{{ service.name }}</a></td>
         <td>{{ service.description }}</td>
         <td><a href="{{ service.maintainer.url }}">{{ service.maintainer.name }}</a></td>
       </tr>

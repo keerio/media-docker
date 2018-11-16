@@ -1,7 +1,6 @@
 services:
   # Jackett
   jackett:
-    image: linuxserver/jackett:latest
     container_name: jackett
     volumes:
       - ${BASE_DIR}/jackett/config:/config

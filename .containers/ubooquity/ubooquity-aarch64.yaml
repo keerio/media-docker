@@ -1,0 +1,4 @@
+services:
+  # Ubooquity
+  ubooquity:
+    image: lsioarmhf/ubooquity-aarch64:latest

@@ -11,7 +11,7 @@ compose_install() {
   COMPOSE_VERSION=$(run_sh "$SCRIPTDIR" \
     "github_latest_release" "$REPO")
   URL="https://github.com/docker/compose/releases/download/"\
-"${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)"
+"${COMPOSE_VERSION}/docker-compose-$(uname -s)-${ARCH}"
 
   info "Installing Docker Compose."
   sudo curl -fsSL "$URL" -o /usr/local/bin/docker-compose \

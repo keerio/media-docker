@@ -1,0 +1,4 @@
+services:
+  # sabNZBd
+  sabnzbd:
+    image: lsioarmhf/sabnzbd:latest

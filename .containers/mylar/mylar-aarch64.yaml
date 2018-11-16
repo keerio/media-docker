@@ -1,0 +1,4 @@
+services:
+  # Mylar
+  mylar:
+    image: lsioarmhf/mylar-aarch64:latest

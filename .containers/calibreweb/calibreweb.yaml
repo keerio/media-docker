@@ -1,7 +1,6 @@
 services:
   # Calibre Web
   calibreweb:
-    image: linuxserver/calibre-web:latest
     container_name: calibreweb
     volumes:
       - ${BASE_DIR}/calibreweb/config:/config

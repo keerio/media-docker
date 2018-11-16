@@ -1,0 +1,4 @@
+services:
+  # Cardigann
+  cardigann:
+    image: linuxserver/cardigann:latest

@@ -1,0 +1,78 @@
+<div class="support-list">
+  <table>
+    <tbody>
+      {% assign service = site.data.supported_services | where:"name", page.title %}
+      {% for detail in service %}
+        <tr>
+          <td>
+            <strong>Name:</strong>
+          </td>
+          <td>
+            {{ detail.name }}
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Description:</strong>
+          </td>
+          <td>
+            {{ detail.description }}
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Container Maintainer:</strong>
+          </td>
+          <td>
+            <a href="{{ detail.maintainer.url }}">{{ detail.maintainer.name }}</a>
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>URL Pattern:</strong>
+          </td>
+          <td>
+            {% for url in detail.url %}
+              {% if forloop.first != true %}
+                <br/>
+              {% endif %}
+              {{ url }}
+            {% endfor %}
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Ports:</strong>
+          </td>
+          <td>
+            {% for port in detail.ports %}
+                {% if forloop.first != true %}
+                  <br/>
+                {% endif %}
+                :{{ port }}
+              {% endfor %}
+          </td>
+        </tr>
+
+        <tr>
+          <td>
+            <strong>Architectures:</strong>
+          </td>
+          <td>
+            {% for arch in detail.arch %}
+                {% if forloop.first != true %}
+                  <br/>
+                {% endif %}
+                {{ arch }}
+              {% endfor %}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+  

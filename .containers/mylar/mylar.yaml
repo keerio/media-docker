@@ -1,7 +1,6 @@
 services:
   # Mylar
   mylar:
-    image: linuxserver/mylar:latest
     container_name: mylar
     volumes:
       - ${BASE_DIR}/mylar/config:/config

@@ -10,6 +10,7 @@
 #     url:          : [OPTIONAL] URL of the container in the registry.
 #   url:            : [REQUIRED] The URL pattern the service is available on.
 #   ports:          : [REQUIRED] A list of ports the service is accessible on.
+#   arch:           : [REQUIRED] A list of architectures supported by this app.
 #
 # Tip: Use YAML Block notations to "fold" a long string, or to "break" a long string
 #      to the following line. Block notations can also be used to avoid having to use
@@ -17,7 +18,7 @@
 # ---------------------------------------------------------------------------------------
 #
 
-- name: Plex Media Server
+- name: Plex
   description: Movie / TV / Music interface
   maintainer:
     name: plexinc
@@ -25,6 +26,17 @@
   url: https://plex.${DOMAIN}
   ports: 
     - 32400
+    - 32469
+    - 3005
+    - 8324
+    - 1900
+    - 5353
+    - 32410
+    - 32412
+    - 32413
+    - 32414
+  arch:
+    - x86_64
 
 - name: Traefik
   description: Reverse Proxy / SSL Termination
@@ -35,6 +47,10 @@
   ports: 
     - 80
     - 443
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Heimdall
   description: Application Dashboard
@@ -45,6 +61,10 @@
   ports: 
     - 81
     - 444
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: sabNZBd
   description: NZB Downloader
@@ -54,6 +74,10 @@
   url: https://sab.${DOMAIN}
   ports: 
     - 8080
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: NZBGet
   description: NZB Downloader
@@ -63,6 +87,10 @@
   url: https://nzbget.${DOMAIN}
   ports: 
     - 6789
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
     
 - name: Ubooquity
   description: Book / Comic Interface
@@ -75,6 +103,10 @@
   ports: 
     - 2202
     - 2203
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Transmission
   description: Torrenting over VPN
@@ -85,6 +117,10 @@
     - https://transmission.${DOMAIN}
   ports: 
     - 9091
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: NZBHydra
   description: NZB Meta Searcher
@@ -95,6 +131,10 @@
     - https://hydra.${DOMAIN}
   ports: 
     - 5075
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Jackett
   description: TorzNab Meta Searcher
@@ -105,6 +145,10 @@
     - https://jackett.${DOMAIN}
   ports: 
     - 9117
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Sonarr
   description: TV Management
@@ -115,6 +159,10 @@
     - https://sonarr.${DOMAIN}
   ports: 
     - 8989
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Radarr
   description: Movie Management
@@ -125,6 +173,10 @@
     - https://radarr.${DOMAIN}
   ports: 
     - 7878
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Lidarr
   description: Music Management
@@ -135,6 +187,10 @@
     - https://lidarr.${DOMAIN}
   ports: 
     - 8686
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Bazarr
   description: Subtitle Management
@@ -145,6 +201,8 @@
     - https://bazarr.${DOMAIN}
   ports: 
     - 6767
+  arch:
+    - x86_64
 
 - name: Mylar
   description: Comic Management
@@ -155,6 +213,10 @@
     - https://mylar.${DOMAIN}
   ports: 
     - 8090
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: LazyLibrarian
   description: Book Management
@@ -165,6 +227,10 @@
     - https://lazylibrarian.${DOMAIN}
   ports: 
     - 5299
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Ombi
   description: Plex Media Requests
@@ -175,6 +241,10 @@
     - https://ombi.${DOMAIN}
   ports: 
     - 3579
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Tautulli
   description: Plex Statistics
@@ -185,6 +255,10 @@
     - https://tautulli.${DOMAIN}
   ports: 
     - 8181
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Oscarr
   description: Media Dashboard
@@ -195,6 +269,8 @@
     - https://oscarr.${DOMAIN}
   ports: 
     - 5656
+  arch:
+    - x86_64
 
 - name: Calibre Web
   description: Web Calibre Client
@@ -205,6 +281,10 @@
     - https://calibre.${DOMAIN}
   ports: 
     - 8083
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: CouchPotato
   description: Movie Downloader
@@ -215,6 +295,10 @@
     - https://couchpotato.${DOMAIN}
   ports: 
     - 5050
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Emby
   description: Open Media Server
@@ -225,16 +309,10 @@
     - https://emby.${DOMAIN}
   ports: 
     - 8096
-
-- name: HTPCManager
-  description: Application Dashboard
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/htpcmanager/
-  url: 
-    - https://htpcmanager.${DOMAIN}
-  ports: 
-    - 8085
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Organizr
   description: Application Dashboard
@@ -245,6 +323,10 @@
     - https://organizr.${DOMAIN}
   ports: 
     - 8081
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Portainer
   description: Docker Web UI
@@ -255,6 +337,10 @@
     - https://portainer.${DOMAIN}
   ports: 
     - 9000
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: HTPCManager
   description: Application Dashboard
@@ -265,6 +351,10 @@
     - https://htpcmanager.${DOMAIN}
   ports: 
     - 8085
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Watchtower
   description: Container Update
@@ -273,6 +363,10 @@
     url: https://hub.docker.com/v2tec/watchtower/
   url:
   ports:
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Watcher
   description: Movie Snatcher
@@ -283,6 +377,8 @@
     - https://watcher.${DOMAIN}
   ports: 
     - 9090
+  arch:
+    - x86_64
 
 - name: MuxiMux
   description: Application Dashboard
@@ -293,6 +389,10 @@
     - https://muximux.${DOMAIN}
   ports: 
     - 82
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Beets
   description: Music Library Manager
@@ -303,6 +403,10 @@
     - https://beets.${DOMAIN}
   ports: 
     - 8337
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Cardigann
   description: Indexing Server
@@ -313,6 +417,10 @@
     - https://cardigann.${DOMAIN}
   ports: 
     - 5060
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
 
 - name: Headphones
   description: Music Management
@@ -323,3 +431,7 @@
     - https://headphones.${DOMAIN}
   ports: 
     - 8182
+  arch:
+    - x86_64
+    - armhf
+    - aarch64

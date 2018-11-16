@@ -1,0 +1,4 @@
+services:
+  # Radarr
+  radarr:
+    image: lsioarmhf/radarr:latest

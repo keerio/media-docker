@@ -1,7 +1,6 @@
 services:
   # Muximux
   muximux:
-    image: linuxserver/muximux:latest
     container_name: muximux
     volumes:
       - ${BASE_DIR}/muximux/config:/config

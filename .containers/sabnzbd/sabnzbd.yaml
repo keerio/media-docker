@@ -1,7 +1,6 @@
 services:
   # sabNZBd
   sabnzbd:
-    image: linuxserver/sabnzbd:latest
     container_name: sabnzbd
     volumes:
       - ${BASE_DIR}/sabnzbd/config:/config

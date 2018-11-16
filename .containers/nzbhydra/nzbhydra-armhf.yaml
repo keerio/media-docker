@@ -1,0 +1,4 @@
+services:
+  # NZBHydra
+  hydra:
+    image: lsioarmhf/hydra2:latest

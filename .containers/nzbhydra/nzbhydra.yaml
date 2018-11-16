@@ -1,7 +1,6 @@
 services:
   # NZBHydra
   hydra:
-    image: linuxserver/hydra2:latest
     container_name: hydra
     volumes:
       - ${BASE_DIR}/hydra/config:/config

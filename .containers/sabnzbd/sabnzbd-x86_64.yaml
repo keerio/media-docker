@@ -1,0 +1,4 @@
+services:
+  # sabNZBd
+  sabnzbd:
+    image: linuxserver/sabnzbd:latest

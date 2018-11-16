@@ -24,7 +24,9 @@ get_source() {
 
 # script info
 readonly ARGS=("$@")
+readonly ARCH="$(uname -m)"
 readonly SOURCENAME="$(get_source)"
+readonly CURRENT_UID=$UID
 readonly BASEDIR="$( cd -P "$( dirname "$SOURCENAME" )" >/dev/null && pwd )"
 readonly SCRIPTDIR="$BASEDIR/.scripts/"
 readonly TESTDIR="$BASEDIR/.tests/"
@@ -32,8 +34,7 @@ readonly MENUDIR="$BASEDIR/.menus/"
 readonly CONFIGDIR="$BASEDIR/.config/"
 readonly CONTAINDIR="$BASEDIR/.containers/"
 readonly BACKUPDIR="$BASEDIR/.backups/"
-readonly LOGFILE="$BASEDIR/media-docker-$(date +%s).log"
-readonly CURRENT_UID=$UID
+readonly LOGFILE="$BASEDIR/.logs/media-docker-$(date +%s).log"
 
 # colors
 readonly RED='\033[0;31m'
@@ -100,7 +101,11 @@ trap finish EXIT
 
 # main
 main() {
+  # ensure log dir exists
+  mkdir -p "$(dirname "${LOGFILE}")"
+
   # prereqs for processes
+  run_sh "$SCRIPTDIR" "arch_is_supported" "$ARCH"
   run_sh "$SCRIPTDIR" "root_check"
   run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR"
   run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR"

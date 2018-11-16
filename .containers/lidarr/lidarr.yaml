@@ -1,7 +1,6 @@
 services:
   # Lidarr
   lidarr:
-    image: linuxserver/lidarr:latest
     container_name: lidarr
     volumes:
       - ${BASE_DIR}/lidarr/config:/config

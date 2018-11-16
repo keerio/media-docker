@@ -1,0 +1,4 @@
+services:
+  # Couchpotato
+  couchpotato:
+    image: linuxserver/couchpotato:latest

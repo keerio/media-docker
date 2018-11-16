@@ -1,0 +1,4 @@
+services:
+  # Tautulli
+  tautulli:
+    image: lsioarmhf/tautulli:latest

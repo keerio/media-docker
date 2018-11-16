@@ -1,0 +1,4 @@
+services:
+  # Muximux
+  muximux:
+    image: linuxserver/muximux:latest

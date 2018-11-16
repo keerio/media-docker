@@ -1,7 +1,6 @@
 services:
   # Ombi
   ombi:
-    image: linuxserver/ombi:latest
     container_name: ombi
     volumes:
       - ${BASE_DIR}/ombi/config:/config

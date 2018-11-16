@@ -1,7 +1,6 @@
 services:
   # Couchpotato
   couchpotato:
-    image: linuxserver/couchpotato:latest
     container_name: couchpotato
     volumes:
       - ${BASE_DIR}/couchpotato/config:/config

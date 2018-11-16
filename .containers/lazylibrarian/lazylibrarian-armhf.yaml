@@ -1,0 +1,4 @@
+services:
+  # LazyLibrarian
+  lazylibrarian:
+    image: lsioarmhf/lazylibrarian:latest

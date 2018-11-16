@@ -1,7 +1,6 @@
 services:
   # Bazarr
   bazarr:
-    image: linuxserver/bazarr:latest
     container_name: bazarr
     volumes:
       - ${BASE_DIR}/bazarr/config:/config

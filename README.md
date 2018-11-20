@@ -34,13 +34,13 @@ sudo media-docker
 ```
 
 ## services
-a full list of available services and where to access them can be found in the wiki [here.](https://github.com/joskore/media-docker/wiki/services)
+a full list of available services and where to access them can be found in the wiki [here.](https://media-docker.com/docs/services/)
 
 ## system requirements
-system requirements, along with tested configurations, can be found in the wiki [here.](https://github.com/joskore/media-docker/wiki/system-requirements)
+system requirements, along with tested configurations, can be found in the wiki [here.](https://media-docker.com/docs/requirements/)
 
 ## what are those??
-an overview of the component files involved in this process can be found in the wiki [here.](https://github.com/joskore/media-docker/wiki/files)
+an overview of the component files involved in this process can be found in the wiki [here.](https://media-docker.com/docs/files/)
 
 ### vpn providers
 a listing of supported VPN providers for torrenting-over-vpn, provided via the haugene\transmission-openvpn container, can be found in the container's repository [here.](https://github.com/haugene/docker-transmission-openvpn#supported-providers)

@@ -56,7 +56,7 @@
   description: Application Dashboard
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/heimdall/
+    url: https://hub.docker.com/r/linuxserver/heimdall/
   url: https://heimdall.${DOMAIN}
   ports: 
     - 81
@@ -70,7 +70,7 @@
   description: NZB Downloader
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/sabnzbd/
+    url: https://hub.docker.com/r/linuxserver/sabnzbd/
   url: https://sab.${DOMAIN}
   ports: 
     - 8080
@@ -83,7 +83,7 @@
   description: NZB Downloader
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/nzbget/
+    url: https://hub.docker.com/r/linuxserver/nzbget/
   url: https://nzbget.${DOMAIN}
   ports: 
     - 6789
@@ -96,7 +96,7 @@
   description: Book / Comic Interface
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/ubooquity/
+    url: https://hub.docker.com/r/linuxserver/ubooquity/
   url: 
     - https://ubooquity.${DOMAIN}
     - https://admin-ubooquity.${DOMAIN}
@@ -111,8 +111,8 @@
 - name: Transmission
   description: Torrenting over VPN
   maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/haugene/transmission-openvpn/
+    name: haugene
+    url: https://hub.docker.com/r/haugene/transmission-openvpn/
   url: 
     - https://transmission.${DOMAIN}
   ports: 
@@ -126,7 +126,7 @@
   description: NZB Meta Searcher
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/hyrda2/
+    url: https://hub.docker.com/r/linuxserver/hyrda2/
   url: 
     - https://hydra.${DOMAIN}
   ports: 
@@ -140,7 +140,7 @@
   description: TorzNab Meta Searcher
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/jackett/
+    url: https://hub.docker.com/r/linuxserver/jackett/
   url: 
     - https://jackett.${DOMAIN}
   ports: 
@@ -154,7 +154,7 @@
   description: TV Management
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/sonarr/
+    url: https://hub.docker.com/r/linuxserver/sonarr/
   url: 
     - https://sonarr.${DOMAIN}
   ports: 
@@ -168,7 +168,7 @@
   description: Movie Management
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/radarr/
+    url: https://hub.docker.com/r/linuxserver/radarr/
   url: 
     - https://radarr.${DOMAIN}
   ports: 
@@ -182,7 +182,7 @@
   description: Music Management
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/lidarr/
+    url: https://hub.docker.com/r/linuxserver/lidarr/
   url: 
     - https://lidarr.${DOMAIN}
   ports: 
@@ -196,7 +196,7 @@
   description: Subtitle Management
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/bazarr/
+    url: https://hub.docker.com/r/linuxserver/bazarr/
   url: 
     - https://bazarr.${DOMAIN}
   ports: 
@@ -208,7 +208,7 @@
   description: Comic Management
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/mylar/
+    url: https://hub.docker.com/r/linuxserver/mylar/
   url: 
     - https://mylar.${DOMAIN}
   ports: 
@@ -222,7 +222,7 @@
   description: Book Management
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/lazylibrarian/
+    url: https://hub.docker.com/r/linuxserver/lazylibrarian/
   url: 
     - https://lazylibrarian.${DOMAIN}
   ports: 
@@ -236,7 +236,7 @@
   description: Plex Media Requests
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/ombi/
+    url: https://hub.docker.com/r/linuxserver/ombi/
   url: 
     - https://ombi.${DOMAIN}
   ports: 
@@ -250,7 +250,7 @@
   description: Plex Statistics
   maintainer:
     name: tautulli
-    url: https://hub.docker.com/tautulli/tautulli/
+    url: https://hub.docker.com/r/tautulli/tautulli/
   url: 
     - https://tautulli.${DOMAIN}
   ports: 
@@ -264,7 +264,7 @@
   description: Media Dashboard
   maintainer:
     name: morpheus65535
-    url: https://hub.docker.com/morpheus65535/oscarr/
+    url: https://hub.docker.com/r/morpheus65535/oscarr/
   url: 
     - https://oscarr.${DOMAIN}
   ports: 
@@ -276,7 +276,7 @@
   description: Web Calibre Client
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/calibre-web/
+    url: https://hub.docker.com/r/linuxserver/calibre-web/
   url: 
     - https://calibre.${DOMAIN}
   ports: 
@@ -290,7 +290,7 @@
   description: Movie Downloader
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/couchpotato/
+    url: https://hub.docker.com/r/linuxserver/couchpotato/
   url: 
     - https://couchpotato.${DOMAIN}
   ports: 
@@ -304,7 +304,7 @@
   description: Open Media Server
   maintainer:
     name: emby
-    url: https://hub.docker.com/embt/embyserver/
+    url: https://hub.docker.com/r/emby/embyserver/
   url: 
     - https://emby.${DOMAIN}
   ports: 
@@ -318,7 +318,7 @@
   description: Application Dashboard
   maintainer:
     name: organizrtools
-    url: https://hub.docker.com/organizrtools/organizr-v2/
+    url: https://hub.docker.com/r/organizrtools/organizr-v2/
   url: 
     - https://organizr.${DOMAIN}
   ports: 
@@ -332,7 +332,7 @@
   description: Docker Web UI
   maintainer:
     name: portainer
-    url: https://hub.docker.com/portainer/portainer/
+    url: https://hub.docker.com/r/portainer/portainer/
   url: 
     - https://portainer.${DOMAIN}
   ports: 
@@ -346,7 +346,7 @@
   description: Application Dashboard
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/htpcmanager/
+    url: https://hub.docker.com/r/linuxserver/htpcmanager/
   url: 
     - https://htpcmanager.${DOMAIN}
   ports: 
@@ -360,7 +360,7 @@
   description: Container Update
   maintainer:
     name: v2tec
-    url: https://hub.docker.com/v2tec/watchtower/
+    url: https://hub.docker.com/r/v2tec/watchtower/
   url:
   ports:
   arch:
@@ -372,7 +372,7 @@
   description: Movie Snatcher
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/watcher/
+    url: https://hub.docker.com/r/linuxserver/watcher/
   url: 
     - https://watcher.${DOMAIN}
   ports: 
@@ -384,7 +384,7 @@
   description: Application Dashboard
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/muximux/
+    url: https://hub.docker.com/r/linuxserver/muximux/
   url: 
     - https://muximux.${DOMAIN}
   ports: 
@@ -398,7 +398,7 @@
   description: Music Library Manager
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/beets/
+    url: https://hub.docker.com/r/linuxserver/beets/
   url: 
     - https://beets.${DOMAIN}
   ports: 
@@ -412,7 +412,7 @@
   description: Indexing Server
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/cardigann/
+    url: https://hub.docker.com/r/linuxserver/cardigann/
   url: 
     - https://cardigann.${DOMAIN}
   ports: 
@@ -426,7 +426,7 @@
   description: Music Management
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/linuxserver/headphones/
+    url: https://hub.docker.com/r/linuxserver/headphones/
   url: 
     - https://headphones.${DOMAIN}
   ports: 

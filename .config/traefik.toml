@@ -1,7 +1,7 @@
 # Traefik configuration file
 # Replace #DOMAIN# with the base domain you would like Traefik to use
 # for reverse proxying.
-# 
+#
 # Replace #EMAIL_ADDRESS# with the email address you would like to receive
 # Let's Encrypt notifications at.
 
@@ -30,3 +30,6 @@ storage = "acme.json"
 entryPoint = "https"
 onHostRule = true
 onDemand = false
+
+[acme.httpChallenge]
+  entryPoint = "https"

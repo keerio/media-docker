@@ -16,7 +16,6 @@ services:
       - OPENVPN_USERNAME=${VPN_USER}
       - OPENVPN_PASSWORD=${VPN_PASS}
       - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
-      - TRANSMISSION_RPC_HOST_WHITELIST=*.${DOMAIN}
     cap_add:
       - NET_ADMIN
     devices:
@@ -27,8 +26,8 @@ services:
       - 9091
     restart: always
 
-  vpn_proxy:
-    container_name: vpn_proxy
+  transmission_proxy:
+    container_name: transmission_proxy
     depends_on:
       - transmission
     links:

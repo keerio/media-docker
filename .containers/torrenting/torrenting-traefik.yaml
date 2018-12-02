@@ -1,7 +1,10 @@
 services:
   ## Torrenting over VPN
   # Transmission - OpenVPN
-  vpn_proxy:
+  transmission:
+    environment: 
+      - TRANSMISSION_RPC_HOST_WHITELIST=*.${DOMAIN}
+  transmission_proxy:
     labels:
       - traefik.backend=vpn_proxy
       - traefik.frontend.rule=Host:transmission.${DOMAIN}

@@ -21,6 +21,7 @@ menu_user() {
         "$(run_sh "$SCRIPTDIR" "env_get" "$SELECTION" "$BASEDIR/.env")" \
 
       run_sh "$MENUDIR" "menu_user"
+      exit
     ;;
   esac
 }

@@ -1,0 +1,5 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - GANDIV5_API_KEY=${GANDIV5_API_KEY}

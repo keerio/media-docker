@@ -1,0 +1,5 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - SELECTEL_API_TOKEN=${SELECTEL_API_TOKEN}

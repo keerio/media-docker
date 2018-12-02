@@ -1,0 +1,6 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - CF_API_EMAIL=${CF_API_EMAIL}
+      - CF_API_KEY=${CF_API_KEY}

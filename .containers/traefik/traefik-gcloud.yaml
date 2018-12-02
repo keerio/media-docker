@@ -1,0 +1,6 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - GCE_PROJECT=${GCE_PROJECT}
+      - GCE_SERVICE_ACCOUNT_FILE=${GCE_SERVICE_ACCOUNT_FILE}

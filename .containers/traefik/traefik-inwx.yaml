@@ -1,0 +1,6 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - INWX_USERNAME=${INWX_USERNAME}
+      - INWX_PASSWORD=${INWX_PASSWORD}

@@ -1,0 +1,6 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - NAMECHEAP_API_USER=${NAMECHEAP_API_USER}
+      - NAMECHEAP_API_KEY=${NAMECHEAP_API_KEY}

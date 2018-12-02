@@ -1,0 +1,8 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - HTTPREQ_ENDPOINT=${HTTPREQ_ENDPOINT}
+      - HTTPREQ_MODE=${HTTPREQ_MODE}
+      - HTTPREQ_USERNAME=${HTTPREQ_USERNAME}
+      - HTTPREQ_PASSWORD=${HTTPREQ_PASSWORD}

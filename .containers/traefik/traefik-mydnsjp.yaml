@@ -1,0 +1,6 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - MYDNSJP_MASTER_ID=${MYDNSJP_MASTER_ID}
+      - MYDNSJP_PASSWORD=${MYDNSJP_PASSWORD}

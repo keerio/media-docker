@@ -9,6 +9,7 @@ compose_create() {
   local PROXY="N"
 
   ENABLED_APPS=$(run_sh "$SCRIPTDIR" "apps_active_list" "$BASEDIR/.apps")
+  LE_DNS_PROV=$(run_sh "$SCRIPTDIR" "env_get" "LE_CHLG_PROV")
 
   if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "traefik") -eq 0 ]] ; then
     PROXY="Y"
@@ -45,6 +46,11 @@ compose_create() {
       run_sh "$SCRIPTDIR" "env_set" "$app" "N" ".apps"
     fi
   done
+
+  if [[ -n ${LE_DNS_PROV} ]] ; then
+    COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+      "${CONTAINDIR}/traefik/traefik-${LE_DNS_PROV}.yaml")
+  fi
 
   COMPOSE_FILES=("${COMPOSE_FILES[@]}" "${CONTAINDIR}/end.yaml")
 

@@ -1,0 +1,5 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - DREAMHOST_API_KEY=${DREAMHOST_API_KEY}

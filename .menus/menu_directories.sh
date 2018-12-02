@@ -22,6 +22,7 @@ menu_directories() {
         "$(run_sh "$SCRIPTDIR" "env_get" "$SELECTION" "$BASEDIR/.env")"
 
       run_sh "$MENUDIR" "menu_directories"
+      exit
     ;;
   esac
 }

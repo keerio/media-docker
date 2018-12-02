@@ -36,4 +36,5 @@ menu_guided() {
   run_sh "$SCRIPTDIR" "compose_up"
 
   run_sh "$MENUDIR" "menu_main"
+  exit
 }

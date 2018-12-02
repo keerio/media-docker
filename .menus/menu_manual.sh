@@ -57,6 +57,7 @@ menu_manual() {
     ;;
     *)
       run_sh "$MENUDIR" "menu_main"
+      exit
     ;;
   esac
 }

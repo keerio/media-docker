@@ -1,0 +1,5 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - VSCALE_API_TOKEN=${VSCALE_API_TOKEN}

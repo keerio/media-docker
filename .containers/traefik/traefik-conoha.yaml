@@ -1,0 +1,7 @@
+services:
+  # Traefik
+  traefik:
+    environment:
+      - CONOHA_TENANT_ID=${CONOHA_TENANT_ID}
+      - CONOHA_API_USERNAME=${CONOHA_API_USERNAME}
+      - CONOHA_API_PASSWORD=${CONOHA_API_PASSWORD}

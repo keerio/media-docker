@@ -12,5 +12,5 @@ apt_prereqs_install() {
 
   run_sh "$SCRIPTDIR" "apt_install" "apt-transport-https" \
     "ca-certificates" "software-properties-common" \
-    "curl" "git" "grep" "sed" "jq"
+    "curl" "git" "grep" "sed" "jq" "htpasswd"
 }

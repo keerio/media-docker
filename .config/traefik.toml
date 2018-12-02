@@ -11,6 +11,8 @@ defaultEntryPoints = ["http","https"]
 address = ":8080"
 
 [entryPoints]
+  [entryPoints.traefik.auth.basic]
+    usersfile = "/traefik.passwd"
   [entryPoints.http]
   address = ":80"
     [entryPoints.http.redirect]

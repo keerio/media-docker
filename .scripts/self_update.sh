@@ -14,7 +14,7 @@ self_update() {
 
   if [ -d "${DIRECTORY}/.git/" ] ; then
     info "Pulling changes from Git."
-    sudo git -C "${DIRECTORY}" pull origin "${REPO}" \
+    sudo git -C "${DIRECTORY}" pull origin "${BRANCH}" \
       > /dev/null 2>&1 || err "Error occured when updating from Git."
   else
     info "Git repository not in place, installing."

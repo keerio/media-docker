@@ -5,8 +5,7 @@ services:
     container_name: transmission
     volumes:
       - ${BASE_DIR}/transmission:/data
-      - ${DOWNLOAD_DIR}/complete:/data/completed
-      - ${DOWNLOAD_DIR}/incomplete:/data/incomplete
+      - ${DOWNLOAD_DIR}:/downloads
       - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=1000
@@ -16,6 +15,8 @@ services:
       - OPENVPN_USERNAME=${VPN_USER}
       - OPENVPN_PASSWORD=${VPN_PASS}
       - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
+      - TRANSMISSION_DOWNLOAD_DIR=/downloads/complete
+      - TRANSMISSION_INCOMPLETE_DIR=/downloads/incomplete
     cap_add:
       - NET_ADMIN
     devices:

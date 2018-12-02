@@ -13,7 +13,7 @@ self_update() {
   else
     info "Git repository not in place, installing."
     sudo rm -r "${DIRECTORY}" && mkdir "${DIRECTORY}" && cd "${DIRECTORY}"
-    sudo git clone https://github.com/joskore/media-docker/ "${DIRECTORY}"
+    git clone https://github.com/joskore/media-docker/ "${DIRECTORY}"
   fi
 
   cd "${DIRECTORY}"

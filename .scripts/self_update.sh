@@ -18,7 +18,7 @@ self_update() {
 
   cd "${DIRECTORY}"
 
-  sudo chmod +x "${DIRECTORY}/${SOURCENAME}" \
+  sudo chmod +x "${SOURCENAME}" \
     > /dev/null 2>&1 \
       || err "Error occurred while making $SOURCENAME executable."
 }

@@ -8,5 +8,5 @@ dnf_prereqs_install() {
 
   run_sh "$SCRIPTDIR" "dnf_install" \
     "curl" "git" "grep" "sed" "jq" \
-    "newt"
+    "newt" "httpd-tools"
 }

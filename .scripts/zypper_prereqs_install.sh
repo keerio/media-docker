@@ -8,5 +8,5 @@ zypper_prereqs_install() {
 
   run_sh "$SCRIPTDIR" "zypp_install" \
     "curl" "git-core" "grep" "sed" "jq" \
-    "newt" "htpasswd"
+    "newt"
 }

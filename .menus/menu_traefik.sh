@@ -23,6 +23,10 @@ menu_traefik() {
     [Yy]*)
         sudo mkdir -p "${DIRECTORY}/traefik/" \
           > /dev/null 2>&1 || err "Error occured creating Traefik directory."
+
+        run_sh "$MENUDIR" "menu_user"
+        run_sh "$SCRIPTDIR" "password_crypt" "${DIRECTORY}/traefik/traefik.passwd"
+        
         sudo cp "$CONFIGDIR/traefik.toml" "$DIRECTORY/traefik/traefik.toml" \
           > /dev/null 2>&1 || err "Error occured copying traefik.toml."
         sudo touch "${DIRECTORY}/traefik/acme.json" \

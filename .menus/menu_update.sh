@@ -24,6 +24,6 @@ menu_update() {
     *)
     ;;
   esac
-  
+
   run_sh "$MENUDIR" "menu_main"
 }

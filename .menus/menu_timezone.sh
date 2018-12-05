@@ -27,4 +27,6 @@ menu_timezone() {
       run_sh "$SCRIPTDIR" "timezone_set" "$SELECTION"
     ;;
   esac
+
+  run_sh "$MENUDIR" "menu_manual"
 }

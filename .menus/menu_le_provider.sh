@@ -21,6 +21,7 @@ menu_le_provider() {
 
   case $SELECTION in
     "Exit")
+      run_sh "$MENUDIR" "menu_manual"
     ;;
     *)
       run_sh "$SCRIPTDIR" "env_set" \

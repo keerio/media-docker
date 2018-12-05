@@ -57,4 +57,5 @@ menu_apps() {
   done
 
   run_sh "$SCRIPTDIR" "compose_create"
+  run_sh "$MENUDIR" "menu_manual"
 }

@@ -14,6 +14,7 @@ menu_le_challenge_select() {
 
   case $SELECTION in
     "Exit")
+      run_sh "$MENUDIR" "menu_manual"
     ;;
     "http")
       run_sh "$SCRIPTDIR" "toml_write" \

@@ -14,6 +14,7 @@ menu_user() {
 
   case $SELECTION in
     "Exit")
+      run_sh "$MENUDIR" "menu_manual"
     ;;
     *)
       run_sh "$MENUDIR" "menu_env_update" \

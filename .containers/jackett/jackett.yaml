@@ -4,7 +4,7 @@ services:
     container_name: jackett
     volumes:
       - ${BASE_DIR}/jackett/config:/config
-      - ${BASE_DIR}/jackett/blackhole:/downloads
+      - ${DOWNLOAD_DIR}/jackett/blackhole:/downloads
       - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=1000

@@ -5,6 +5,6 @@ services:
       - traefik.backend=hydra
       - traefik.frontend.rule=Host:hydra.${DOMAIN}
       - traefik.docker.network=proxied
-      - traefik.port=5075
+      - traefik.port=5076
     expose:
-      - 5075
+      - 5076

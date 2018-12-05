@@ -4,7 +4,7 @@ services:
     container_name: hydra
     volumes:
       - ${BASE_DIR}/hydra/config:/config
-      - ${BASE_DIR}/hydra/blackhole:/downloads
+      - ${DOWNLOAD_DIR}/hydra/blackhole:/downloads
     environment:
       - PUID=1000
       - PGID=1000

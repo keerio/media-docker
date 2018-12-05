@@ -2,4 +2,4 @@ services:
   # NZBHydra
   hydra:
     ports:
-      - 5075:5075
+      - 5076:5076

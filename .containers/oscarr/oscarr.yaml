@@ -3,7 +3,7 @@ services:
   oscarr:
     container_name: oscarr
     volumes:
-      - ${BASE_DIR}/morpheus65535/config:/oscarr/data
+      - ${BASE_DIR}/oscarr/config:/oscarr/data
     environment:
       - PUID=1000
       - PGID=1000

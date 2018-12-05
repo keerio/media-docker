@@ -4,7 +4,7 @@ services:
     container_name: beets
     volumes:
       - ${BASE_DIR}/beets/config:/config
-      - ${MEDIA_DIR}/Music:/movies
+      - ${MEDIA_DIR}/Music:/music
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=1000

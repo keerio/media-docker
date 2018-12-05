@@ -3,7 +3,7 @@ set -euo pipefail
 
 menu_main() {
   local -a OPTIONS
-  OPTIONS+=("Manual Config" "Manually perform configuration and installation.")
+  OPTIONS+=("Configuration" "Manually perform configuration and installation.")
   OPTIONS+=("Update" "Update files from GitHub.")
   OPTIONS+=("Docker Prune" "Cleanup Docker system.")
   OPTIONS+=(".ENV" "View or edit .env.")

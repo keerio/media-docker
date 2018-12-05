@@ -12,4 +12,6 @@ password_crypt() {
 
   touch "$FILE"
   htpasswd -db "$FILE" "$USER" "$PASS"
+
+  run_sh "$SCRIPTDIR" "secrets_remove"
 }

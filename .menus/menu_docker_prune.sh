@@ -23,5 +23,5 @@ menu_docker_prune() {
     ;;
   esac
   
-  run_sh "$MENUDIR" "menu_manual"
+  run_sh "$MENUDIR" "menu_main"
 }

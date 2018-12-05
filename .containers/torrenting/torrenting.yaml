@@ -8,8 +8,8 @@ services:
       - ${DOWNLOAD_DIR}:/downloads
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TIMEZONE}
       - OPENVPN_PROVIDER=${VPN_PROVIDER}
       - OPENVPN_USERNAME=${VPN_USER}

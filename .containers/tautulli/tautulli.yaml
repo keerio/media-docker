@@ -6,8 +6,8 @@ services:
       - ${BASE_DIR}/tautulli/config:/config
       - ${BASE_DIR}/plex/config/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TIMEZONE}
     networks:
       - proxied

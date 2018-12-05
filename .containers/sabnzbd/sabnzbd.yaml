@@ -6,8 +6,8 @@ services:
       - ${BASE_DIR}/sabnzbd/config:/config
       - ${DOWNLOAD_DIR}:/downloads
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TIMEZONE}
     networks:
       - internal

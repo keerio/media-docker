@@ -6,8 +6,8 @@ services:
       - ${BASE_DIR}/calibreweb/config:/config
       - ${MEDIA_DIR_BOOKS}:/books
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TIMEZONE}
     networks:
       - proxied

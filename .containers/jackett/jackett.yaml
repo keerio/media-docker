@@ -7,8 +7,8 @@ services:
       - ${DOWNLOAD_DIR}/jackett/blackhole:/downloads
       - /etc/localtime:/etc/localtime:ro
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TIMEZONE}
     networks:
       - internal

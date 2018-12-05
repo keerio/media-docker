@@ -76,3 +76,11 @@
 - name: VPN_PASS
   description: OpenVPN password
   example: "!@mveri5mart"
+
+- name: PUID
+  description: User id to run containers, default 1000.
+  example: 1000
+
+- name: PGID
+  description: Group id to run containers, default 1000.
+  example: 1000

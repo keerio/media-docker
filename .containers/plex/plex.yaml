@@ -9,8 +9,8 @@ services:
       - ${MEDIA_DIR_MOVIES}:/data/movies
       - ${MEDIA_DIR_MUSIC}:/data/music
     environment:
-      - PUID=1000
-      - PGID=1000
+      - PUID=${PUID}
+      - PGID=${PGID}
       - TZ=${TIMEZONE}
       - PLEX_CLAIM=${PLEX_CLAIM_TOKEN}
     networks:

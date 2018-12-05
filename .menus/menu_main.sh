@@ -3,7 +3,6 @@ set -euo pipefail
 
 menu_main() {
   local -a OPTIONS
-  OPTIONS+=("Guided Installer" "Walk through configuration and installation.")
   OPTIONS+=("Manual Config" "Manually perform configuration and installation.")
   OPTIONS+=("Update" "Update files from GitHub.")
   OPTIONS+=("Docker Prune" "Cleanup Docker system.")
@@ -17,11 +16,7 @@ menu_main() {
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
 
   case $SELECTION in
-    "Guided Installer")
-      info "Starting guided installer process."
-      run_sh "$MENUDIR" "menu_guided" || run_sh "$MENUDIR" "menu_main"
-    ;;
-    "Manual Config")
+    "Configuration")
       info "Starting manual app configuration process."
       run_sh "$MENUDIR" "menu_manual" || run_sh "$MENUDIR" "menu_main"
     ;;

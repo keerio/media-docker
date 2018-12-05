@@ -4,7 +4,7 @@ services:
     container_name: radarr
     volumes:
       - ${BASE_DIR}/radarr/config:/config
-      - ${MEDIA_DIR}/Movies:/movies
+      - ${MEDIA_DIR_MOVIES}:/movies
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=1000

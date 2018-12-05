@@ -4,8 +4,8 @@ services:
     container_name: bazarr
     volumes:
       - ${BASE_DIR}/bazarr/config:/config
-      - ${MEDIA_DIR}/Movies:/movies
-      - ${MEDIA_DIR}/TV:/tv
+      - ${MEDIA_DIR_MOVIES}:/movies
+      - ${MEDIA_DIR_TV}:/tv
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=1000

@@ -29,9 +29,25 @@
   description: Base directory path for storage.
   example: /mnt/media/data/
 
-- name: MEDIA_DIR
-  description: Base media directory path for storage.
-  example: /mnt/media/data/library/
+- name: MEDIA_DIR_MOVIES
+  description: Base media directory path for movie storage.
+  example: /mnt/media/data/library/Movies
+
+- name: MEDIA_DIR_MUSIC
+  description: Base media directory path for music storage.
+  example: /mnt/media/data/library/Music
+
+- name: MEDIA_DIR_TV
+  description: Base media directory path for TV storage.
+  example: /mnt/media/data/library/TV
+
+- name: MEDIA_DIR_BOOKS
+  description: Base media directory path for book storage.
+  example: /mnt/media/data/library/Books
+
+- name: MEDIA_DIR_COMICS
+  description: Base media directory path for comic storage.
+  example: /mnt/media/data/library/Comics
 
 - name: DOWNLOAD_DIR
   description: Base directory path for download swap.

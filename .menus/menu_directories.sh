@@ -4,7 +4,11 @@ set -euo pipefail
 menu_directories() {
   local -a OPTIONS
   OPTIONS+=("BASE_DIR" "Base directory for general storage.")
-  OPTIONS+=("MEDIA_DIR" "Base directory for media library.")
+  OPTIONS+=("MEDIA_DIR_MOVIES" "Base directory for movies.")
+  OPTIONS+=("MEDIA_DIR_MUSIC" "Base directory for music.")
+  OPTIONS+=("MEDIA_DIR_TV" "Base directory for TV.")
+  OPTIONS+=("MEDIA_DIR_BOOKS" "Base directory for books.")
+  OPTIONS+=("MEDIA_DIR_COMICS" "Base directory for comics.")
   OPTIONS+=("DOWNLOAD_DIR" "Directory for download / swap.")
 
   local SELECTION

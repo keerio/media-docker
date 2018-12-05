@@ -4,7 +4,7 @@ services:
     container_name: watcher
     volumes:
       - ${BASE_DIR}/watcher/config:/config
-      - ${MEDIA_DIR}/Movies:/movies
+      - ${MEDIA_DIR_MOVIES}:/movies
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=1000

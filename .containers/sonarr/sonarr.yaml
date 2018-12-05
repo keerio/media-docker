@@ -4,7 +4,7 @@ services:
     container_name: sonarr
     volumes: 
       - ${BASE_DIR}/sonarr/config:/config
-      - ${MEDIA_DIR}/TV:/tv
+      - ${MEDIA_DIR_TV}:/tv
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=1000

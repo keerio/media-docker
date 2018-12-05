@@ -4,7 +4,7 @@ services:
     container_name: lidarr
     volumes:
       - ${BASE_DIR}/lidarr/config:/config
-      - ${MEDIA_DIR}/Music:/music
+      - ${MEDIA_DIR_MUSIC}:/music
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=1000

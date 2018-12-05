@@ -5,9 +5,9 @@ services:
     hostname: plex
     volumes:
       - ${BASE_DIR}/plex/config:/config
-      - ${MEDIA_DIR}/TV:/data/tv
-      - ${MEDIA_DIR}/Movies:/data/movies
-      - ${MEDIA_DIR}/Music:/data/music
+      - ${MEDIA_DIR_TV}:/data/tv
+      - ${MEDIA_DIR_MOVIES}:/data/movies
+      - ${MEDIA_DIR_MUSIC}:/data/music
     environment:
       - PUID=1000
       - PGID=1000

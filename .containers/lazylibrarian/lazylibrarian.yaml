@@ -4,7 +4,7 @@ services:
     container_name: lazylibrarian
     volumes:
       - ${BASE_DIR}/lazylibrarian/config:/config
-      - ${MEDIA_DIR}/Books:/books
+      - ${MEDIA_DIR_BOOKS}:/books
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=1000

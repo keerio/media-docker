@@ -13,17 +13,33 @@
 # ---------------------------------------------------------------------------------------
 #
 
-- name: USER_NAME
-  description: username for account that will be created by media-docker.
-  example: joskore
+- name: REPOSITORY
+  description: repository for self-update process to pull from.
+  example: https://github.com/joskore/media-docker
 
-- name: PASSWORD
-  description: password for account that will be created by media-docker.
-  example: iM@gr8Password!
+- name: BRANCH
+  description: branch of the repository to update from.
+  example: master
 
-- name: PLEX_CLAIM_TOKEN
-  description: claim token for plex server from https://www.plex.tv/claim/
-  example: claim-TcoQvJEUxjycmN8KdxGDx
+- name: COMPOSE_TIMEOUT
+  description: timeout for compose operations
+  example: 180
+
+- name: TRAEFIK_AUTH
+  description: should traefik basic auth be used
+  example: N
+
+- name: PUID
+  description: User id to run containers, default 1000.
+  example: 1000
+
+- name: PGID
+  description: Group id to run containers, default 1000.
+  example: 1000
+
+- name: TIMEZONE
+  description: Local timezone.
+  example: America/Montevideo
 
 - name: BASE_DIR
   description: Base directory path for storage.
@@ -53,17 +69,29 @@
   description: Base directory path for download swap.
   example: /mnt/media/data/downloads/
 
-- name: TIMEZONE
-  description: Local timezone.
-  example: America/Montevideo
+- name: USER_NAME
+  description: username for account that will be used for traefik auth.
+  example: joskore
+
+- name: PASSWORD
+  description: password for account that will be used for traefik auth.
+  example: iM@gr8Password!
+
+- name: EMAIL_ADDRESS
+  description: Email used for Let's Encrpyt notifications.
+  example: jos@ellips.es
 
 - name: DOMAIN
   description: Domain name used by Traefik for reverse proxying.
   example: media-docker.com
 
-- name: EMAIL_ADDRESS
-  description: Email used for Let's Encrpyt notifications.
-  example: jos@ellips.es
+- name: LE_CHLG_PROVIDER
+  description: set if using dns challenge let's encrypt provider
+  example: cloudflare
+
+- name: PLEX_CLAIM_TOKEN
+  description: claim token for plex server from https://www.plex.tv/claim/
+  example: claim-TcoQvJEUxjycmN8KdxGDx
 
 - name: VPN_PROVIDER
   description: OpenVPN provider
@@ -76,11 +104,3 @@
 - name: VPN_PASS
   description: OpenVPN password
   example: "!@mveri5mart"
-
-- name: PUID
-  description: User id to run containers, default 1000.
-  example: 1000
-
-- name: PGID
-  description: Group id to run containers, default 1000.
-  example: 1000

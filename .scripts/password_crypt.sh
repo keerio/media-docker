@@ -6,12 +6,10 @@ password_crypt() {
   local PASS
   local FILE
 
-  FILE=${1:-"$BASEDIR/.htpasswd"}
-  USER=${2:-"$(run_sh "$SCRIPTDIR" "env_get" "USER_NAME")"}
-  PASS=${3:-"$(run_sh "$SCRIPTDIR" "env_get" "PASSWORD")"}
+  FILE=${1:-".htpasswd"}
+  USER=${2:-}
+  PASS=${3:-}
 
   touch "$FILE"
   htpasswd -db "$FILE" "$USER" "$PASS"
-
-  run_sh "$SCRIPTDIR" "secrets_remove"
 }

@@ -49,7 +49,6 @@ menu_manual() {
       run_sh "$MENUDIR" "menu_env_update" \
         "PLEX_CLAIM_TOKEN" \
         "$(run_sh "$SCRIPTDIR" "env_get" "PLEX_CLAIM_TOKEN" "$BASEDIR/.env")" \
-        "$BASEDIR/.env"
     ;;
     "Start")
       info "Starting Docker containers."

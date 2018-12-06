@@ -7,12 +7,17 @@ compose_create() {
   local -a COMPOSE_FILES
   local COMPOSE
   local PROXY="N"
+  local TRAEFIK_AUTH="N"
 
   ENABLED_APPS=$(run_sh "$SCRIPTDIR" "apps_active_list" "$BASEDIR/.apps")
   LE_DNS_PROV=$(run_sh "$SCRIPTDIR" "env_get" "LE_CHLG_PROV")
 
   if [[ $(run_sh "$SCRIPTDIR" "app_is_active" "traefik") -eq 0 ]] ; then
     PROXY="Y"
+  fi
+
+  if [[ "$(run_sh "$SCRIPTDIR" "env_get" "TRAEFIK_AUTH")" = "Y" ]] ; then
+    TRAEFIK_AUTH="Y"
   fi
 
   if [[ -f "${BASEDIR}/docker-compose.yml" ]] ; then
@@ -36,6 +41,11 @@ compose_create() {
           if [[ "$PROXY" = "Y" ]] ; then
             COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
               "${CONTAINDIR}/${app}/${app}-traefik.yaml")
+            if [[ "$TRAEFIK_AUTH" = "Y" ]] ; then
+              COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+                "${CONTAINDIR}/${app}/${app}-auth.yaml")
+              info "adding auth to file"
+            fi
           else
             COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
               "${CONTAINDIR}/${app}/${app}-port.yaml")
@@ -47,7 +57,7 @@ compose_create() {
     fi
   done
 
-  if [[ -n ${LE_DNS_PROV} ]] ; then
+  if [[ ${LE_DNS_PROV} != "HTTP" ]] ; then
     COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
       "${CONTAINDIR}/traefik/traefik-${LE_DNS_PROV}.yaml")
   fi

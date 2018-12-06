@@ -2,6 +2,11 @@
 set -euo pipefail
 
 menu_le_challenge_select() {
+  local DIRECTORY
+  local FILE
+  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "BASE_DIR")"
+  FILE="${DIRECTORY}/traefik/traefik.toml"
+
   local -a OPTIONS
   OPTIONS+=("http" "HTTP request challenge")
   OPTIONS+=("dns" "DNS request challenge")
@@ -14,11 +19,11 @@ menu_le_challenge_select() {
 
   case $SELECTION in
     "Exit")
-      run_sh "$MENUDIR" "menu_manual"
     ;;
     "http")
       run_sh "$SCRIPTDIR" "toml_write" \
         "$FILE" "acme.httpChallenge.entryPoint" "https"
+      run_sh "$SCRIPTDIR" "env_set" "LE_CHLG_PROV" "HTTP"
     ;;
     "dns")
       run_sh "$MENUDIR" "menu_le_provider"

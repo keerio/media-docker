@@ -115,6 +115,6 @@ main() {
   run_sh "$MENUDIR" "cli" "${ARGS[@]:-}"
 
   # start menu
-  run_sh "$MENUDIR" "menu_main"
+  run_sh "$MENUDIR" "menu_main" || true
 }
 main

@@ -2,38 +2,35 @@
 set -euo pipefail
 
 menu_traefik_toml() {
-  local FILE="${DIRECTORY}/traefik/traefik.toml"
+  local DIRECTORY
+  local FILE
   local DOMAIN
   local EMAIL_ADDRESS
 
-  local -a OPTIONS
-  OPTIONS+=("DOMAIN" "Domain for usage with Traefik reverse proxy.")
-  OPTIONS+=("EMAIL_ADDRESS" "Email for usage with Traefik reverse proxy.")
+  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "BASE_DIR")"
+  FILE="${DIRECTORY}/traefik/traefik.toml"
 
-  local SELECTION
-  SELECTION=$(whiptail --fb --clear --title "media-docker Configuration" \
-    --cancel-button "Exit" --menu "Select a traefik item to update." 0 0 0 \
-    "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
+  if [[ -f "${FILE}" ]] ; then
+    run_sh "$SCRIPTDIR" "file_backup" "${FILE}"
+  else
+    echo >> "${FILE}"
+  fi
 
-  case $SELECTION in
-    "Exit")
-    ;;
-    *)
-      run_sh "$MENUDIR" "menu_env_update" \
-        "$SELECTION" \
-        "$(run_sh "$SCRIPTDIR" "env_get" "$SELECTION" "$BASEDIR/.env")"
-
-      run_sh "$MENUDIR" "menu_traefik_toml"
-      exit
-    ;;
-  esac
+  run_sh "$MENUDIR" "menu_traefik_conf"
 
   DOMAIN=$(run_sh "$SCRIPTDIR" "env_get" "DOMAIN")
   EMAIL_ADDRESS=$(run_sh "$SCRIPTDIR" "env_get" "EMAIL_ADDRESS")
 
   run_sh "$MENUDIR" "menu_user"
+
   run_sh "$SCRIPTDIR" \
-    "password_crypt" "${DIRECTORY}/traefik/traefik.passwd"
+    "password_crypt" "${DIRECTORY}/traefik/traefik.passwd" \
+    "$(run_sh "$SCRIPTDIR" "env_get" "USER_NAME")" \
+    "$(run_sh "$SCRIPTDIR" "env_get" "PASSWORD")"
+
+  run_sh "$SCRIPTDIR" "secrets_remove"
+
+  run_sh "$MENUDIR" "menu_traefik_auth"
 
   run_sh "$SCRIPTDIR" "toml_write" "$FILE" \
     "defaultEntryPoints" "[\"http\",\"https\"]"

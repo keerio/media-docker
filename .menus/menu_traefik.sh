@@ -28,12 +28,12 @@ menu_traefik() {
         sudo chmod 600 "${DIRECTORY}/traefik/acme.json" \
           > /dev/null 2>&1 || err "Error occured creating acme.json."
         run_sh "$MENUDIR" "menu_traefik_toml"
-        run_sh "$SCRIPTDIR" "compose_create"
     ;;
     *)
     ;;
   esac
 
+  run_sh "$SCRIPTDIR" "compose_create"
   run_sh "$SCRIPTDIR" "editor_open" "${DIRECTORY}/traefik/traefik.toml"
   run_sh "$MENUDIR" "menu_manual"
   exit

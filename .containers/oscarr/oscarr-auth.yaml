@@ -1,0 +1,4 @@
+services:
+  oscarr:
+    labels:
+      - traefik.frontend.auth.basic.usersFile=${BASE_DIR}/traefik/traefik.passwd

@@ -6,7 +6,11 @@ yum_prereqs_install() {
   NOREMOVE=${1-:"N"}
 
   if [[ "${NOREMOVE}" = "N" ]] ; then
-    sudo yum -y remove docker docker-engine docker.io \
+    sudo yum -y remove docker docker-client \
+      docker-common docker-latest \
+      docker-latest-logrotate docker-logrotate \
+      docker-selinux docker-engine-selinux \
+      docker-engine \
       > /dev/null 2>&1 \
       || true
   fi

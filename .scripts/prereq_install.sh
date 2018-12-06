@@ -11,22 +11,22 @@ prereq_install() {
 
   case $PACKAGE_MAN in
     apt)
-      run_sh "$SCRIPTDIR" "apt_prereqs_install" "${NOREMOVE}"
+      run_sh "${SCRIPTDIR}" "apt_prereqs_install" "${NOREMOVE}"
     ;;
     dnf)
-      run_sh "$SCRIPTDIR" "dnf_prereqs_install" "${NOREMOVE}"
+      run_sh "${SCRIPTDIR}" "dnf_prereqs_install" "${NOREMOVE}"
     ;;
     yum)
-      run_sh "$SCRIPTDIR" "yum_prereqs_install" "${NOREMOVE}"
+      run_sh "${SCRIPTDIR}" "yum_prereqs_install" "${NOREMOVE}"
     ;;
     pacman)
-      run_sh "$SCRIPTDIR" "pacman_prereqs_install" "${NOREMOVE}"
+      run_sh "${SCRIPTDIR}" "pacman_prereqs_install" "${NOREMOVE}"
     ;;
     emerge)
-      run_sh "$SCRIPTDIR" "emerge_prereqs_install" "${NOREMOVE}"
+      run_sh "${SCRIPTDIR}" "emerge_prereqs_install" "${NOREMOVE}"
     ;;
     zypp)
-      run_sh "$SCRIPTDIR" "zypper_prereqs_install" "${NOREMOVE}"
+      run_sh "${SCRIPTDIR}" "zypper_prereqs_install" "${NOREMOVE}"
     ;;
     *)
       err "Could not detect package manager."
@@ -34,14 +34,17 @@ prereq_install() {
   esac
 
   if [[ ! $(command -v "docker") ]] ; then
-    run_sh "$SCRIPTDIR" "docker_install"
+    run_sh "${SCRIPTDIR}" "docker_install"
   fi
 
+  info "Setting Docker to start up with system."
+  run_sh "${SCRIPTDIR}" "docker_startup"
+
   if [[ ! $(command -v "docker-compose") ]] ; then
-    run_sh "$SCRIPTDIR" "compose_install"
+    run_sh "${SCRIPTDIR}" "compose_install"
   fi
 
   if [[ ! $(command -v "yq") ]] ; then
-    run_sh "$SCRIPTDIR" "yq_install"
+    run_sh "${SCRIPTDIR}" "yq_install"
   fi
 }

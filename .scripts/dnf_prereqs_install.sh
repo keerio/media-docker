@@ -6,7 +6,11 @@ dnf_prereqs_install() {
   NOREMOVE=${1-:"N"}
 
   if [[ "${NOREMOVE}" = "N" ]] ; then
-    sudo dnf -y remove docker docker-engine docker.io \
+    sudo dnf -y remove docker docker-client \
+      docker-client-latest docker-common \
+      docker-latest docker-latest-logrotate \
+      docker-logrotate docker-selinux \
+      docker-engine-selinux docker-engine \
       > /dev/null 2>&1 \
       || true
   fi

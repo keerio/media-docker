@@ -3,7 +3,7 @@ set -euo pipefail
 
 init_detect() {
   local INITSYS
-  if [[ $(/sbin/init --version) =~ upstart ]]; then
+  if [[ $(/sbin/init --version > /dev/null 2>&1) =~ upstart ]]; then
     INITSYS="upstart"
   elif [[ $(systemctl) =~ -\.mount ]]; then
     INITSYS="systemd"

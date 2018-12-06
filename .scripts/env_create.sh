@@ -30,6 +30,8 @@ env_create() {
       "TIMEZONE" "$(run_sh "$SCRIPTDIR" "timezone_get")" "${DESTDIR}/.env"
   fi
 
+  run_sh "$SCRIPTDIR" "env_merge" "${DESTDIR}/.env" "${SOURCEDIR}/.env"
+
   local MEDIA_DIR
   MEDIA_DIR="$(run_sh "$SCRIPTDIR" "env_get" "MEDIA_DIR")"
 
@@ -61,13 +63,5 @@ env_create() {
     && [[ -z "$(run_sh "$SCRIPTDIR" "env_get" "MEDIA_DIR_COMICS")" ]] ; then
     run_sh "$SCRIPTDIR" "env_set" \
       "MEDIA_DIR_MOVIES" "${MEDIA_DIR}/Comics" "${DESTDIR}/.env"
-  fi
-
-  if [[ -z "$(run_sh "$SCRIPTDIR" "env_get" "PUID")" ]] ; then
-    run_sh "$SCRIPTDIR" "env_set" "PUID" "1000" "${DESTDIR}/.env"
-  fi
-
-  if [[ -z "$(run_sh "$SCRIPTDIR" "env_get" "PGID")" ]] ; then
-    run_sh "$SCRIPTDIR" "env_set" "PGID" "1000" "${DESTDIR}/.env"
   fi
 }

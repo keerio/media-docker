@@ -12,7 +12,9 @@ env_list_keys() {
   RESULT=($(IFS='\r\n' sudo cat "$FILE"))
   for res in "${RESULT[@]}" ; do
     IFS="=" read -ra res <<< "$res"
+    set +u
     KEYS=("${KEYS[@]}" "$(echo "${res[0]}" | tr -d "\r")")
+    set -u
   done
 
   echo "${KEYS[@]}"

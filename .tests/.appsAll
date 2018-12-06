@@ -1,0 +1,34 @@
+# APP CONFIGURATION
+# app=Y to enable
+# app=N to disable
+#
+bazarr=Y
+beets=Y
+calibreweb=Y
+cardigann=Y
+couchpotato=Y
+emby=Y
+headphones=Y
+heimdall=Y
+htpcmanager=Y
+jackett=Y
+lazylibrarian=Y
+lidarr=Y
+muximux=Y
+mylar=Y
+nzbget=Y
+nzbhydra=Y
+ombi=Y
+organizr=Y
+oscarr=Y
+plex=Y
+portainer=Y
+radarr=Y
+sabnzbd=Y
+sonarr=Y
+tautulli=Y
+torrenting=Y
+traefik=Y
+ubooquity=Y
+watcher=Y
+watchtower=Y

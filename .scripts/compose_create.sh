@@ -46,6 +46,10 @@ compose_create() {
                 "${CONTAINDIR}/${app}/${app}-auth.yaml")
               info "adding auth to file"
             fi
+            if [[ "$app" = "plex" ]] ; then
+              COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+                "${CONTAINDIR}/${app}/${app}-port.yaml")
+            fi
           else
             COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
               "${CONTAINDIR}/${app}/${app}-port.yaml")

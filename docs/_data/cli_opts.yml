@@ -68,6 +68,8 @@
       description: Checks all Docker containers to ensure no port collisions exist internally.
     - name: t_unit
       description: Runs assorted development unit tests.
+    - name: t_compose
+      description: Runs a full generation of the docker-compose.yml, ensures it is valid, and brings up / takes down each container.
 
 - long-name: --help
   short-name: -h

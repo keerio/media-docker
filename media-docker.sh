@@ -77,7 +77,7 @@ run_sh() {
 #/
 #/ Options:
 #/
-#/   -p, --prereq: Install pre-requisites.
+#/   -p, --prereq <noremove/test>: Install pre-requisites.
 #/   -a, --apps: View or edit your .apps file
 #/   -e, --env: View or edit your .env file
 #/   -c, --compose <up/down/restart/pull/create>: Rebuild your compose environment from selected options

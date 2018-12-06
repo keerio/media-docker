@@ -18,6 +18,8 @@
   short-name: -p
   description: Install prerequisites for media-docker.
   arguments:
+    - name: noremove
+      description: Installs without removing legacy packages.
     - name: test
       description: Installs only testing dependencies.
 

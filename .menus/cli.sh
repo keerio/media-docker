@@ -45,6 +45,9 @@ cli() {
     case $SELECTED in
       p)
         case ${OPTARG} in
+          noremove)
+            run_sh "$SCRIPTDIR" "prereq_install" "Y"
+          ;;
           test)
             run_sh "$SCRIPTDIR" "yq_install"
           ;;

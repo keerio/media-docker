@@ -5,6 +5,7 @@ set -euo pipefail
 menu_le_provider() {
   local -a PROVIDERS
   local -a OPTIONS
+  local SEL_PROVIDER
 
   PROVIDERS=($(run_sh "$SCRIPTDIR" \
     "env_list_keys" "${CONFIGDIR}/.dnsProviders"))
@@ -26,7 +27,9 @@ menu_le_provider() {
     *)
       run_sh "$SCRIPTDIR" "env_set" \
         "LE_CHLG_PROV" "$SELECTION" "$BASEDIR/.env"
-      run_sh "$MENUDIR" "menu_le_provider_config" "$SELECTION"
+      SEL_PROVIDER=$(run_sh "$SCRIPTDIR" "env_get" \
+        "LE_CHLG_PROV" "$BASEDIR/.env")
+      run_sh "$MENUDIR" "menu_le_provider_config" "$SEL_PROVIDER"
     ;;
   esac
 }

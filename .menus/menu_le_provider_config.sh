@@ -32,7 +32,7 @@ menu_le_provider_config() {
         "$SELECTION" \
         "$(run_sh "$SCRIPTDIR" "env_get" "$SELECTION" "$BASEDIR/.env")"
 
-      run_sh "$MENUDIR" "menu_le_provider_config"
+      run_sh "$MENUDIR" "menu_le_provider_config" "$PROVIDER"
       exit
     ;;
   esac

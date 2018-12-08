@@ -2,31 +2,41 @@
 set -euo pipefail
 
 menu_timezone() {
-  local CURRTZ
-  local -a TIMEZONES
+  local HOST_TZ
+  local ENV_TZ
+  local SELECT_TZ
   local -a OPTIONS
 
-  TIMEZONES=$(run_sh "$SCRIPTDIR" "timezone_list")
-  CURRTZ=$(run_sh "$SCRIPTDIR" "timezone_get")
+  HOST_TZ=$(run_sh "$SCRIPTDIR" "timezone_get")
+  ENV_TZ=$(run_sh "$SCRIPTDIR" "env_get" "TIMEZONE")
 
-  for tz in $TIMEZONES ; do
-    if [ "$tz" = "$CURRTZ" ] ; then
-      OPTIONS=("${OPTIONS[@]}" "$tz" "" "ON")
-    else
-      OPTIONS=("${OPTIONS[@]}" "$tz" "" "OFF")
-    fi
-  done
+  OPTIONS+=("Use Current Host Value " "${HOST_TZ}")
+  OPTIONS+=("Use Current .ENV Value " "${ENV_TZ}")
+  OPTIONS+=("New Value " "Select New Timezone")
 
-  SELECTION=$(whiptail --title "media-docker Configuration" --radiolist \
-    "Select the desired timezone." 0 0 0 \
-    "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "$CURRTZ")
+  local SELECTION
+  SELECTION=$(whiptail --fb --clear --title "media-docker Configuration" \
+    --cancel-button "Exit" \
+    --menu "Select a timezone option." 0 0 0 \
+    "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
 
   case $SELECTION in
-    *)
-      run_sh "$SCRIPTDIR" "env_set" "TIMEZONE" "$SELECTION" ".env"
-      run_sh "$SCRIPTDIR" "timezone_set" "$SELECTION"
+    "Exit")
+      SELECT_TZ="$HOST_TZ"
+    ;;
+    "Use Current Host Value ")
+      SELECT_TZ="$HOST_TZ"
+    ;;
+    "Use Current .ENV Value ")
+      SELECT_TZ="$ENV_TZ"
+    ;;
+    "New Value ")
+      SELECT_TZ=$(run_sh "$MENUDIR" "menu_timezone_list")
     ;;
   esac
+
+  run_sh "$SCRIPTDIR" "env_set" "TIMEZONE" "$SELECT_TZ" ".env"
+  run_sh "$SCRIPTDIR" "timezone_set" "$SELECT_TZ"
 
   run_sh "$MENUDIR" "menu_manual"
 }

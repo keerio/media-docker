@@ -4,7 +4,7 @@ services:
     container_name: nzbget
     volumes:
       - ${BASE_DIR}/nzbget/config:/config
-      - ${DOWNLOAD_DIR}/nzbget:/downloads
+      - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

@@ -1,0 +1,4 @@
+services:
+  cadvisor:
+    ports:
+      - 8086:8080

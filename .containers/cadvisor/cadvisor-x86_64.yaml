@@ -1,0 +1,3 @@
+services:
+  cadvisor:
+    image: google/cadvisor:latest

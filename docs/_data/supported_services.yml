@@ -245,6 +245,18 @@
     - x86_64
     - armhf
     - aarch64
+  
+- name: cAdvisor
+  description: Container Advisor
+  maintainer:
+    name: google
+    url: https://hub.docker.com/r/google/cadvisor/
+  url: 
+    - https://cadvisor.${DOMAIN}
+  ports: 
+    - 8086
+  arch:
+    - x86_64
 
 - name: Tautulli
   description: Plex Statistics

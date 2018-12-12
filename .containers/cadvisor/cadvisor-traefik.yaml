@@ -1,0 +1,9 @@
+services:
+  cadvisor:
+    labels:
+      - traefik.backend=cadvisor
+      - traefik.frontend.rule=Host:cadvisor.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8080
+    expose:
+      - 8080

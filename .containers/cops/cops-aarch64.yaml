@@ -1,0 +1,3 @@
+services:
+  cops:
+    image: lsioarmhf/cops-aarch64:latest

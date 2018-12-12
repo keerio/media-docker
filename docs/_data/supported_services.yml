@@ -286,6 +286,20 @@
     - armhf
     - aarch64
 
+- name: COPS
+  description: Calibre OPDS (and HTML) PHP Server
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/cops/
+  url: 
+    - https://cops.${DOMAIN}
+  ports: 
+    - 8084
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
 - name: CouchPotato
   description: Movie Downloader
   maintainer:

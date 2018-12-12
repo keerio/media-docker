@@ -1,0 +1,4 @@
+services:
+  cops:
+    ports:
+      - 8084:80

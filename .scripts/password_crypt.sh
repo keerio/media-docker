@@ -11,5 +11,5 @@ password_crypt() {
   PASS=${3:-}
 
   touch "$FILE"
-  htpasswd -db "$FILE" "$USER" "$PASS"
+  htpasswd -b "$FILE" "$USER" "$PASS"
 }

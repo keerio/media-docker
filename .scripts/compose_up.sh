@@ -9,5 +9,5 @@ compose_up() {
         > /dev/null 2>&1 || err "Error occured creating Docker network."
   fi
   sudo docker-compose up --force-recreate -d \
-    > /dev/null 2>&1 || err "Error occured bringing up containers."
+    | tee -a "$LOGFILE" || err "Error occured bringing up containers."
 }

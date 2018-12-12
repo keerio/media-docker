@@ -18,180 +18,6 @@
 # ---------------------------------------------------------------------------------------
 #
 
-- name: Plex
-  description: Movie / TV / Music interface
-  maintainer:
-    name: plexinc
-    url: https://hub.docker.com/r/plexinc/pms-docker/
-  url: https://plex.${DOMAIN}
-  ports: 
-    - 32400
-    - 32469
-    - 3005
-    - 8324
-    - 1900
-    - 5353
-    - 32410
-    - 32412
-    - 32413
-    - 32414
-  arch:
-    - x86_64
-
-- name: Traefik
-  description: Reverse Proxy / SSL Termination
-  maintainer:
-    name: traefik
-    url: https://hub.docker.com/_/traefik/
-  url: https://traefik.${DOMAIN}
-  ports: 
-    - 80
-    - 443
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Heimdall
-  description: Application Dashboard
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/heimdall/
-  url: https://heimdall.${DOMAIN}
-  ports: 
-    - 81
-    - 444
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: sabNZBd
-  description: NZB Downloader
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/sabnzbd/
-  url: https://sab.${DOMAIN}
-  ports: 
-    - 8080
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: NZBGet
-  description: NZB Downloader
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/nzbget/
-  url: https://nzbget.${DOMAIN}
-  ports: 
-    - 6789
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-    
-- name: Ubooquity
-  description: Book / Comic Interface
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/ubooquity/
-  url: 
-    - https://ubooquity.${DOMAIN}
-    - https://admin-ubooquity.${DOMAIN}
-  ports: 
-    - 2202
-    - 2203
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Transmission
-  description: Torrenting over VPN
-  maintainer:
-    name: haugene
-    url: https://hub.docker.com/r/haugene/transmission-openvpn/
-  url: 
-    - https://transmission.${DOMAIN}
-  ports: 
-    - 9091
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: NZBHydra
-  description: NZB Meta Searcher
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/hyrda2/
-  url: 
-    - https://hydra.${DOMAIN}
-  ports: 
-    - 5075
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Jackett
-  description: TorzNab Meta Searcher
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/jackett/
-  url: 
-    - https://jackett.${DOMAIN}
-  ports: 
-    - 9117
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Sonarr
-  description: TV Management
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/sonarr/
-  url: 
-    - https://sonarr.${DOMAIN}
-  ports: 
-    - 8989
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Radarr
-  description: Movie Management
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/radarr/
-  url: 
-    - https://radarr.${DOMAIN}
-  ports: 
-    - 7878
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Lidarr
-  description: Music Management
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/lidarr/
-  url: 
-    - https://lidarr.${DOMAIN}
-  ports: 
-    - 8686
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
 - name: Bazarr
   description: Subtitle Management
   maintainer:
@@ -204,48 +30,20 @@
   arch:
     - x86_64
 
-- name: Mylar
-  description: Comic Management
+- name: Beets
+  description: Music Library Manager
   maintainer:
     name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/mylar/
+    url: https://hub.docker.com/r/linuxserver/beets/
   url: 
-    - https://mylar.${DOMAIN}
+    - https://beets.${DOMAIN}
   ports: 
-    - 8090
+    - 8337
   arch:
     - x86_64
     - armhf
     - aarch64
 
-- name: LazyLibrarian
-  description: Book Management
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/lazylibrarian/
-  url: 
-    - https://lazylibrarian.${DOMAIN}
-  ports: 
-    - 5299
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Ombi
-  description: Plex Media Requests
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/ombi/
-  url: 
-    - https://ombi.${DOMAIN}
-  ports: 
-    - 3579
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-  
 - name: cAdvisor
   description: Container Advisor
   maintainer:
@@ -258,32 +56,6 @@
   arch:
     - x86_64
 
-- name: Tautulli
-  description: Plex Statistics
-  maintainer:
-    name: tautulli
-    url: https://hub.docker.com/r/tautulli/tautulli/
-  url: 
-    - https://tautulli.${DOMAIN}
-  ports: 
-    - 8181
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Oscarr
-  description: Media Dashboard
-  maintainer:
-    name: morpheus65535
-    url: https://hub.docker.com/r/morpheus65535/oscarr/
-  url: 
-    - https://oscarr.${DOMAIN}
-  ports: 
-    - 5656
-  arch:
-    - x86_64
-
 - name: Calibre Web
   description: Web Calibre Client
   maintainer:
@@ -293,6 +65,20 @@
     - https://calibre.${DOMAIN}
   ports: 
     - 8083
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Cardigann
+  description: Indexing Server
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/cardigann/
+  url: 
+    - https://cardigann.${DOMAIN}
+  ports: 
+    - 5060
   arch:
     - x86_64
     - armhf
@@ -340,127 +126,18 @@
     - armhf
     - aarch64
 
-- name: Organizr
-  description: Application Dashboard
+- name: Glances
+  description: An Eye on your server
   maintainer:
-    name: organizrtools
-    url: https://hub.docker.com/r/organizrtools/organizr-v2/
+    name: nicolargo
+    url: https://hub.docker.com/r/nicolargo/glances/
   url: 
-    - https://organizr.${DOMAIN}
+    - https://glances.${DOMAIN}
   ports: 
-    - 8081
+    - 61208
+    - 61209
   arch:
     - x86_64
-    - armhf
-    - aarch64
-
-- name: Medusa
-  description: Automatic Video Library Manager for TV Shows.
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/medusa/
-  url:
-    - https://medusa.${DOMAIN}
-  ports:
-    - 8082
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Portainer
-  description: Docker Web UI
-  maintainer:
-    name: portainer
-    url: https://hub.docker.com/r/portainer/portainer/
-  url: 
-    - https://portainer.${DOMAIN}
-  ports: 
-    - 9000
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: HTPCManager
-  description: Application Dashboard
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/htpcmanager/
-  url: 
-    - https://htpcmanager.${DOMAIN}
-  ports: 
-    - 8085
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Watchtower
-  description: Container Update
-  maintainer:
-    name: v2tec
-    url: https://hub.docker.com/r/v2tec/watchtower/
-  url:
-  ports:
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Watcher
-  description: Movie Snatcher
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/watcher/
-  url: 
-    - https://watcher.${DOMAIN}
-  ports: 
-    - 9090
-  arch:
-    - x86_64
-
-- name: MuxiMux
-  description: Application Dashboard
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/muximux/
-  url: 
-    - https://muximux.${DOMAIN}
-  ports: 
-    - 82
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Beets
-  description: Music Library Manager
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/beets/
-  url: 
-    - https://beets.${DOMAIN}
-  ports: 
-    - 8337
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
-
-- name: Cardigann
-  description: Indexing Server
-  maintainer:
-    name: linuxserver.io
-    url: https://hub.docker.com/r/linuxserver/cardigann/
-  url: 
-    - https://cardigann.${DOMAIN}
-  ports: 
-    - 5060
-  arch:
-    - x86_64
-    - armhf
-    - aarch64
 
 - name: Headphones
   description: Music Management
@@ -476,15 +153,339 @@
     - armhf
     - aarch64
 
-- name: Glances
-  description: An Eye on your server
+- name: Heimdall
+  description: Application Dashboard
   maintainer:
-    name: nicolargo
-    url: https://hub.docker.com/r/nicolargo/glances/
-  url: 
-    - https://glances.${DOMAIN}
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/heimdall/
+  url: https://heimdall.${DOMAIN}
   ports: 
-    - 61208
-    - 61209
+    - 81
+    - 444
   arch:
     - x86_64
+    - armhf
+    - aarch64
+  
+- name: HTPCManager
+  description: Application Dashboard
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/htpcmanager/
+  url: 
+    - https://htpcmanager.${DOMAIN}
+  ports: 
+    - 8085
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Jackett
+  description: TorzNab Meta Searcher
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/jackett/
+  url: 
+    - https://jackett.${DOMAIN}
+  ports: 
+    - 9117
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: LazyLibrarian
+  description: Book Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/lazylibrarian/
+  url: 
+    - https://lazylibrarian.${DOMAIN}
+  ports: 
+    - 5299
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Lidarr
+  description: Music Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/lidarr/
+  url: 
+    - https://lidarr.${DOMAIN}
+  ports: 
+    - 8686
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+
+- name: Medusa
+  description: Automatic Video Library Manager for TV Shows.
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/medusa/
+  url:
+    - https://medusa.${DOMAIN}
+  ports:
+    - 8082
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Mylar
+  description: Comic Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/mylar/
+  url: 
+    - https://mylar.${DOMAIN}
+  ports: 
+    - 8090
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: MuxiMux
+  description: Application Dashboard
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/muximux/
+  url: 
+    - https://muximux.${DOMAIN}
+  ports: 
+    - 82
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: NZBGet
+  description: NZB Downloader
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/nzbget/
+  url: https://nzbget.${DOMAIN}
+  ports: 
+    - 6789
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: NZBHydra
+  description: NZB Meta Searcher
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/hyrda2/
+  url: 
+    - https://hydra.${DOMAIN}
+  ports: 
+    - 5075
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Ombi
+  description: Plex Media Requests
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/ombi/
+  url: 
+    - https://ombi.${DOMAIN}
+  ports: 
+    - 3579
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Organizr
+  description: Application Dashboard
+  maintainer:
+    name: organizrtools
+    url: https://hub.docker.com/r/organizrtools/organizr-v2/
+  url: 
+    - https://organizr.${DOMAIN}
+  ports: 
+    - 8081
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Oscarr
+  description: Media Dashboard
+  maintainer:
+    name: morpheus65535
+    url: https://hub.docker.com/r/morpheus65535/oscarr/
+  url: 
+    - https://oscarr.${DOMAIN}
+  ports: 
+    - 5656
+  arch:
+    - x86_64
+
+- name: Plex
+  description: Movie / TV / Music interface
+  maintainer:
+    name: plexinc
+    url: https://hub.docker.com/r/plexinc/pms-docker/
+  url: https://plex.${DOMAIN}
+  ports: 
+    - 32400
+    - 32469
+    - 3005
+    - 8324
+    - 1900
+    - 5353
+    - 32410
+    - 32412
+    - 32413
+    - 32414
+  arch:
+    - x86_64
+
+- name: Portainer
+  description: Docker Web UI
+  maintainer:
+    name: portainer
+    url: https://hub.docker.com/r/portainer/portainer/
+  url: 
+    - https://portainer.${DOMAIN}
+  ports: 
+    - 9000
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Radarr
+  description: Movie Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/radarr/
+  url: 
+    - https://radarr.${DOMAIN}
+  ports: 
+    - 7878
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: sabNZBd
+  description: NZB Downloader
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/sabnzbd/
+  url: https://sab.${DOMAIN}
+  ports: 
+    - 8080
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Sonarr
+  description: TV Management
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/sonarr/
+  url: 
+    - https://sonarr.${DOMAIN}
+  ports: 
+    - 8989
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Tautulli
+  description: Plex Statistics
+  maintainer:
+    name: tautulli
+    url: https://hub.docker.com/r/tautulli/tautulli/
+  url: 
+    - https://tautulli.${DOMAIN}
+  ports: 
+    - 8181
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Traefik
+  description: Reverse Proxy / SSL Termination
+  maintainer:
+    name: traefik
+    url: https://hub.docker.com/_/traefik/
+  url: https://traefik.${DOMAIN}
+  ports: 
+    - 80
+    - 443
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
+- name: Transmission
+  description: Torrenting over VPN
+  maintainer:
+    name: haugene
+    url: https://hub.docker.com/r/haugene/transmission-openvpn/
+  url: 
+    - https://transmission.${DOMAIN}
+  ports: 
+    - 9091
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+    
+- name: Ubooquity
+  description: Book / Comic Interface
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/ubooquity/
+  url: 
+    - https://ubooquity.${DOMAIN}
+    - https://admin-ubooquity.${DOMAIN}
+  ports: 
+    - 2202
+    - 2203
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+  
+  - name: Watcher
+  description: Movie Snatcher
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/watcher/
+  url: 
+    - https://watcher.${DOMAIN}
+  ports: 
+    - 9090
+  arch:
+    - x86_64
+
+- name: Watchtower
+  description: Container Update
+  maintainer:
+    name: v2tec
+    url: https://hub.docker.com/r/v2tec/watchtower/
+  url:
+  ports:
+  arch:
+    - x86_64
+    - armhf
+    - aarch64

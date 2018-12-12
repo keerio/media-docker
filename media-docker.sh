@@ -65,7 +65,7 @@ log() {
   MSG="[${LOGLVLS[$LVL]}] [$(date +'%Y-%m-%dT%H:%M:%S%z')] $*"
 
   if [[ ${_VERBOSE} -ge ${LVL} ]] ; then
-    echo -e "${COL}${MSG}${NOCOL}"
+    echo -e "${COL}${MSG}${NOCOL}" >&2
   fi
 
   touch "${LOGFILE}"

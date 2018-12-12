@@ -14,4 +14,6 @@ compose_up() {
   log 6 "Attempting to bring up Docker stack."
   sudo docker-compose up --force-recreate -d \
     | tee -a "$LOGFILE" || log 3 "Error occured bringing up containers."
+
+  run_sh "${SCRIPTDIR}" "compose_post"
 }

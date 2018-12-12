@@ -9,6 +9,7 @@ menu_manual() {
   OPTIONS+=("Apps" "Enable or disable applications.")
   OPTIONS+=("Traefik" "Edit Traefik configuration.")
   OPTIONS+=("VPN Torrent" "Edit VPN torrenting configuration.")
+  OPTIONS+=("Kodi-Headless" "Edit Kodi-Headless configuration.")
   OPTIONS+=("Timezone" "Set timezone.")
   OPTIONS+=("Plex Claim" "Set Plex claim token.")
   OPTIONS+=("Start" "Start Docker containers.")
@@ -39,6 +40,10 @@ menu_manual() {
     "VPN Torrent")
       log 6 "Starting Torrent-over-VPN configuration process."
       run_sh "$MENUDIR" "menu_vpn"
+    ;;
+    "Kodi-Headless")
+      log 6 "Starting Kodi-Headless configuration process."
+      run_sh "$MENUDIR" "menu_kodi"
     ;;
     "Timezone")
       log 6 "Starting timezone update process."

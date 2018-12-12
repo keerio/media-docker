@@ -19,5 +19,5 @@ yum_prereqs_install() {
   log 6 "Installing prerequisite packages."
   run_sh "$SCRIPTDIR" "yum_install" \
     "curl" "git" "grep" "sed" "jq" \
-    "newt" "httpd-tools"
+    "newt" "httpd-tools" "xmlstarlet"
 }

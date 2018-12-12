@@ -1,0 +1,14 @@
+services:
+  kodi-headless:
+    labels:
+      - traefik.backend=kodi-headless
+      - traefik.frontend.rule=Host:kodi-headless.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8080
+    expose:
+      - 8080
+      - 9090
+      - 9777
+  kodi-mariadb:
+    expose:
+      - 3306

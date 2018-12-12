@@ -15,5 +15,5 @@ pacman_prereqs_install() {
   log 6 "Installing prerequisite packages."
   run_sh "$SCRIPTDIR" "pacman_install" \
     "curl" "git" "grep" "sed" "jq" \
-    "libnewt" "apache-tools"
+    "libnewt" "apache-tools" "xmlstarlet"
 }

@@ -209,6 +209,22 @@
     - armhf
     - aarch64
 
+- name: Kodi-Headless
+  description: A headless install of Kodi backed by MariaDB.
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/kodi-headless/
+  url: 
+    - https://kodi-headless.${DOMAIN}
+  ports: 
+    - 8087
+    - 9097
+    - 9777
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
 - name: LazyLibrarian
   description: Book Management
   maintainer:

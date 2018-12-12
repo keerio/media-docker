@@ -1,0 +1,9 @@
+services:
+  kodi-headless:
+    ports:
+      - 8087:8080
+      - 9097:9090
+      - 9777:9777/udp
+  kodi-mariadb:
+    ports:
+      - 3306:3306

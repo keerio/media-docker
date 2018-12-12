@@ -20,5 +20,6 @@ apt_prereqs_install() {
   log 6 "Installing prerequisite packages."
   run_sh "$SCRIPTDIR" "apt_install" "apt-transport-https" \
     "ca-certificates" "software-properties-common" \
-    "curl" "git" "grep" "sed" "jq" "apache2-utils"
+    "curl" "git" "grep" "sed" "jq" "apache2-utils" \
+    "xmlstarlet"
 }

@@ -15,5 +15,5 @@ zypper_prereqs_install() {
   log 6 "Installing prerequisite packages."
   run_sh "$SCRIPTDIR" "zypp_install" \
     "curl" "git-core" "grep" "sed" "jq" \
-    "newt" "apache2-utils"
+    "newt" "apache2-utils" "xmlstarlet"
 }

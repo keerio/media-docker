@@ -1,0 +1,27 @@
+services:
+  kodi-headless:
+    container_name: kodi-headless
+    volumes:
+      - ${BASE_DIR}/kodi-headless/config:/config/.kodi
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    depends_on:
+      - kodi-mariadb
+    networks:
+      - proxied
+      - internal
+    restart: unless-stopped
+  kodi-mariadb:
+    container_name: kodi-mariadb
+    volumes:
+      - ${BASE_DIR}/kodi-mariadb/data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - MYSQL_DATABASE=${MARIADB_DATABASE}
+      - MYSQL_USER=${MARIADB_USER}
+      - MYSQL_PASSWORD=${MARIADB_PASSWORD}
+    networks:
+      - internal
+    restart: unless-stopped

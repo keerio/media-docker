@@ -1,0 +1,5 @@
+services:
+  kodi-headless:
+    image: lsioarmhf/kodi-headless:latest
+  kodi-mariadb:
+    image: mariadb:latest

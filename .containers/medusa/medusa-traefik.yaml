@@ -1,0 +1,9 @@
+services:
+  medusa:
+    labels:
+      - traefik.backend=medusa
+      - traefik.frontend.rule=Host:medusa.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8081
+    expose:
+      - 8081

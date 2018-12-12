@@ -1,0 +1,15 @@
+services:
+  medusa:
+    container_name: medusa
+    volumes:
+      - ${BASE_DIR}/medusa/config:/config
+      - ${MEDIA_DIR_TV}:/tv
+      - ${DOWNLOAD_DIR}:/downloads
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    networks:
+      - internal
+      - proxied
+    restart: always

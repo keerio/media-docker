@@ -328,6 +328,20 @@
     - armhf
     - aarch64
 
+- name: Medusa
+  description: Automatic Video Library Manager for TV Shows.
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/medusa/
+  url:
+    - https://medusa.${DOMAIN}
+  ports:
+    - 8082
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
 - name: Portainer
   description: Docker Web UI
   maintainer:

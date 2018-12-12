@@ -2,12 +2,13 @@
 set -euo pipefail
 
 menu_env_update() {
-  local PROMPT="Update value for ${KEY}."
+  local PROMPT
   local KEY
   local VAL
 
   KEY=${1:-}
   VAL=${2:-}
+  PROMPT="Update value for ${KEY}."
 
   log 7 "Prompting for update of ${KEY}."
   VAL=$(whiptail --title "Update .env" --inputbox "$PROMPT" 0 0 "$VAL" \

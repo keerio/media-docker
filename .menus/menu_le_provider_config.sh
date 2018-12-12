@@ -25,7 +25,6 @@ menu_le_provider_config() {
 
   case $SELECTION in
     "Back")
-      run_sh "$MENUDIR" "menu_le_provider"
     ;;
     *)
       run_sh "$MENUDIR" "menu_env_update" \
@@ -33,7 +32,6 @@ menu_le_provider_config() {
         "$(run_sh "$SCRIPTDIR" "env_get" "$SELECTION" "$BASEDIR/.env")"
 
       run_sh "$MENUDIR" "menu_le_provider_config" "$PROVIDER"
-      exit
     ;;
   esac
 }

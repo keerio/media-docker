@@ -31,7 +31,7 @@ menu_le_challenge_select() {
       PROVIDER=$(run_sh "$SCRIPTDIR" "env_get" "LE_CHLG_PROV")
 
       run_sh "$SCRIPTDIR" "toml_write" \
-        "$FILE" "acme.dnsChallenge" "$PROVIDER"
+        "$FILE" "acme.dnsChallenge.provider" "$PROVIDER"
     ;;
   esac
 }

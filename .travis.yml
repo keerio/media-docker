@@ -19,6 +19,7 @@ jobs:
     - stage: test
       script: 
         - sudo bash ./media-docker.sh -t t_ports
+        - sudo bash ./media-docker.sh -t t_unit
         - sudo bash ./media-docker.sh -t t_compose
 branches:
   only:

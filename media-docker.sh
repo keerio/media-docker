@@ -82,8 +82,6 @@ run_sh() {
   local FILE="${2:-}"
   shift; shift
 
-  log 7 "Attempting to run script: ${FILE}"
-
   if [[ -f "${DIR}/${FILE}.sh" ]] ; then
     source "${DIR}/${FILE}.sh"
     ${FILE} "$@";

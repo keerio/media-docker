@@ -16,7 +16,7 @@ compose_install() {
   log 6 "Installing Docker Compose."
   sudo curl -fsSL "$URL" -o /usr/local/bin/docker-compose \
     > /dev/null 2>&1 \
-    || log 3 "Error downloading Docker Compose."
+    || log 3 "Error downloading Docker Compose from URL: ${URL}."
 
   sudo chmod +x /usr/local/bin/docker-compose \
     > /dev/null 2>&1 \

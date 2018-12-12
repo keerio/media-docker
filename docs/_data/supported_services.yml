@@ -223,7 +223,6 @@
     - armhf
     - aarch64
 
-
 - name: Medusa
   description: Automatic Video Library Manager for TV Shows.
   maintainer:
@@ -466,7 +465,7 @@
     - armhf
     - aarch64
   
-  - name: Watcher
+- name: Watcher
   description: Movie Snatcher
   maintainer:
     name: linuxserver.io

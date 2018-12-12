@@ -128,6 +128,7 @@ finish() {
   log 6 "Ensuring testing files are gone."
   sudo rm -f "${TESTDIR}/.apps-test" || true
   sudo rm -f "${TESTDIR}/docker-compose-test.yml" || true
+  sudo rm -f "${TESTDIR}/docker-compose.yml" || true
 }
 trap finish EXIT
 

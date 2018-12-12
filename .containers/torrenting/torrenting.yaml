@@ -25,7 +25,7 @@ services:
       - vpn
     expose:
       - 9091
-    restart: always
+    restart: unless-stopped
 
   transmission_proxy:
     container_name: transmission_proxy
@@ -36,5 +36,5 @@ services:
     networks:
       - vpn
       - proxied
-    restart: always
+    restart: unless-stopped
   ## /Torrenting over VPN

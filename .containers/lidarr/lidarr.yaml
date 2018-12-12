@@ -13,4 +13,4 @@ services:
     networks:
       - proxied
       - internal
-    restart: always
+    restart: unless-stopped

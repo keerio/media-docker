@@ -8,4 +8,4 @@ services:
     networks:
       - internal
       - proxied
-    restart: always
+    restart: unless-stopped

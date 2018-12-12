@@ -14,4 +14,4 @@ services:
       - internal
     depends_on:
       - plex    
-    restart: always
+    restart: unless-stopped

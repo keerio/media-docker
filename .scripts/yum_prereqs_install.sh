@@ -6,6 +6,7 @@ yum_prereqs_install() {
   NOREMOVE=${1-:"N"}
 
   if [[ "${NOREMOVE}" = "N" ]] ; then
+    log 6 "Removing legacy packages."
     sudo yum -y remove docker docker-client \
       docker-common docker-latest \
       docker-latest-logrotate docker-logrotate \
@@ -15,6 +16,7 @@ yum_prereqs_install() {
       || true
   fi
 
+  log 6 "Installing prerequisite packages."
   run_sh "$SCRIPTDIR" "yum_install" \
     "curl" "git" "grep" "sed" "jq" \
     "newt" "httpd-tools"

@@ -11,6 +11,7 @@ menu_le_challenge_select() {
   OPTIONS+=("http" "HTTP request challenge")
   OPTIONS+=("dns" "DNS request challenge")
 
+  log 7 "Opening Let's Encrypt challenge menu."
   local SELECTION
   SELECTION=$(whiptail --fb --clear --title "media-docker Configuration" \
     --cancel-button "Exit" \
@@ -19,17 +20,22 @@ menu_le_challenge_select() {
 
   case $SELECTION in
     "Exit")
+      log 7 "Exit selected, returning."
     ;;
     "http")
+      log 7 "HTTP selected."
+      log 6 "Writing [acme.httpChallenge] block."
       run_sh "$SCRIPTDIR" "toml_write" \
         "$FILE" "acme.httpChallenge.entryPoint" "https"
       run_sh "$SCRIPTDIR" "env_set" "LE_CHLG_PROV" "HTTP"
     ;;
     "dns")
+      log 7 "Opening Let's Encrypt provider menu."
       run_sh "$MENUDIR" "menu_le_provider"
 
       PROVIDER=$(run_sh "$SCRIPTDIR" "env_get" "LE_CHLG_PROV")
 
+      log 6 "Writing [acme.dnsChallenge] block."
       run_sh "$SCRIPTDIR" "toml_write" \
         "$FILE" "acme.dnsChallenge.provider" "$PROVIDER"
     ;;

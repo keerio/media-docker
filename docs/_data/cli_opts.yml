@@ -73,6 +73,23 @@
     - name: t_compose
       description: Runs a full generation of the docker-compose.yml, ensures it is valid, and brings up / takes down each container.
 
+- long-name: --verbose
+  short-name: -v
+  description: Include detailed logging to terminal.
+  arguments:
+
+- long-name: --debug
+  short-name: -x
+  description: Include debug information in terminal.
+  arguments:
+
+- long-name: --logLevel
+  short-name: -l
+  description: Set log level to specified number
+  arguments:
+    - name: n
+      description: Any number. Sets log level to this value.
+
 - long-name: --help
   short-name: -h
   description: Show usage message.
@@ -92,5 +109,8 @@
     #/   -u, --update: Update media-docker
     #/   -P, --prune: Prune the Docker system
     #/   -t, --test: Run tests
+    #/   -v, --verbose: Include detailed logging to terminal.
+    #/   -x, --debug: Include debug information in terminal.
+    #/   -l, --logLevel <n>: Sets log level to defined number `n`. Must be a number.
     #/   -h, --help: Display this help message
     #/

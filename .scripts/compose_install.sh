@@ -13,14 +13,14 @@ compose_install() {
   URL="https://github.com/docker/compose/releases/download/"\
 "${COMPOSE_VERSION}/docker-compose-$(uname -s)-${ARCH}"
 
-  info "Installing Docker Compose."
+  log 6 "Installing Docker Compose."
   sudo curl -fsSL "$URL" -o /usr/local/bin/docker-compose \
     > /dev/null 2>&1 \
-    || err "Error downloading Docker Compose."
+    || log 3 "Error downloading Docker Compose."
 
   sudo chmod +x /usr/local/bin/docker-compose \
     > /dev/null 2>&1 \
-    || err "Error installing Docker Compose."
+    || log 3 "Error installing Docker Compose."
 
-  info "Docker Compose installed"
+  log 6 "Docker Compose successfully installed."
 }

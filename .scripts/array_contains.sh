@@ -15,10 +15,13 @@ array_contains () {
     fi
   done
 
+  log 7 "Checking if array contains: ${VAL}."
   if [[ ${MAP["$VAL"]+_} ]] ; then
+    log 7 "Array contains ${VAL}."
     echo "0"
     return 0
   else
+    log 7 "Array does not contain ${VAL}."
     echo "1"
     return 1
   fi

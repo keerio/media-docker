@@ -2,7 +2,7 @@
 set -euo pipefail
 
 dnf_upgrade() {
-  info "Upgrading packages from dnf."
+  log 6 "Upgrading packages from dnf."
   sudo dnf -y upgrade > /dev/null 2>&1 \
-    || err "Error occurred while updating packages from dnf."
+    || log 3 "Error occurred while updating packages from dnf."
 }

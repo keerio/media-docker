@@ -22,7 +22,8 @@ get_source() {
   echo "${SOURCE}"
 }
 
-# script info
+# script info.
+_VERBOSE=3
 readonly ARGS=("$@")
 readonly ARCH="$(uname -m)"
 readonly SOURCENAME="$(get_source)"
@@ -38,23 +39,41 @@ readonly LOGFILE="$BASEDIR/.logs/media-docker-$(date +%s).log"
 
 # colors
 readonly RED='\033[0;31m'
-readonly GREEN='\033[0;32m'
-readonly BLUE='\e[34m'
+readonly YELLOW='\033[1;33m'
+readonly BLUE='\033[34m'
 readonly NOCOL='\033[0m'
 
-# logging functions
-info() {
-  echo -e "${BLUE}[INFO] [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
-    | tee -a "$LOGFILE" >&2 ;
-}
-err() {
-  echo -e "${RED}[ERR]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
-    | tee -a "$LOGFILE" >&2 ;
-  exit 1
-}
-success() {
-  echo -e "${GREEN}[SUCCESS]  [$(date +'%Y-%m-%dT%H:%M:%S%z')]  $*${NOCOL}" \
-    | tee -a "$LOGFILE" >&2 ;
+log() {
+  local -A LOGLVLS=([0]="EMERG" [1]="ALERT" [2]="CRIT" [3]="ERR" [4]="WARN" \
+    [5]="NOTICE" [6]="INFO" [7]="DEBUG")
+
+  local LVL=${1}
+  local COL
+  local MSG
+  shift
+
+  if [[ "${LVL}" -le 3 ]] ; then
+    COL="${RED}"
+  elif [[ "${LVL}" -le 5 ]] ; then
+    COL="${YELLOW}"
+  elif [[ "${LVL}" -le 7 ]] ; then
+    COL="${BLUE}"
+  else
+    COL="${NOCOL}"
+  fi
+
+  MSG="[${LOGLVLS[$LVL]}] [$(date +'%Y-%m-%dT%H:%M:%S%z')] $*"
+
+  if [[ ${_VERBOSE} -ge ${LVL} ]] ; then
+    echo -e "${COL}${MSG}${NOCOL}"
+  fi
+
+  touch "${LOGFILE}"
+  echo "${MSG}" >> "${LOGFILE}"
+
+  if [[ "${LVL}" -le 3 ]] ; then
+    exit 1
+  fi
 }
 
 # script runner
@@ -62,11 +81,14 @@ run_sh() {
   local DIR="${1:-}"
   local FILE="${2:-}"
   shift; shift
+
+  log 7 "Attempting to run script: ${FILE}"
+
   if [[ -f "${DIR}/${FILE}.sh" ]] ; then
     source "${DIR}/${FILE}.sh"
     ${FILE} "$@";
   else
-    err "${DIR}/${FILE}.sh not found."
+    log 3 "${DIR}/${FILE}.sh not found."
   fi
 }
 
@@ -84,16 +106,28 @@ run_sh() {
 #/   -u, --update: Update media-docker
 #/   -P, --prune: Prune the Docker system
 #/   -t, --test: Run tests
+#/   -v, --verbose: Include detailed logging to terminal.
+#/   -x, --debug: Include debug information in terminal.
+#/   -l, --logLevel <n>: Sets log level to defined number `n`. Must be a number.
 #/   -h, --help: Display this help message
 #/
 usage() { grep '^#/' "${SOURCENAME}" | cut -c4- ; exit 0 ; }
 
 finish() {
+  log 6 "Cleaning up after ourselves."
+
   if [[ $(service --status-all | grep -Fq 'docker') ]] ; then
+    log 6 "Restarting Docker service."
     sudo service docker restart || true
   fi
+
+  log 6 "Ensuring that our symlink is set."
   run_sh "$SCRIPTDIR" "self_symlink" || true
+
+  log 6 "Removing media-docker config temp file."
   run_sh "$SCRIPTDIR" "self_config_delete" || true
+
+  log 6 "Ensuring testing files are gone."
   sudo rm -f "${TESTDIR}/.apps-test" || true
   sudo rm -f "${TESTDIR}/docker-compose-test.yml" || true
 }
@@ -101,20 +135,42 @@ trap finish EXIT
 
 # main
 main() {
-  # ensure log dir exists
+  local -a PREREQ_CHECKS
   mkdir -p "$(dirname "${LOGFILE}")"
 
-  # prereqs for processes
-  run_sh "$SCRIPTDIR" "arch_is_supported" "$ARCH"
-  run_sh "$SCRIPTDIR" "root_check"
-  run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR"
-  run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR"
+  log 6 "Checking media-docker requirements."
+
+  set +u
+  log 6 "Checking that architecture is supported"
+  PREREQ_CHECKS=("${PREREQ_CHECKS[@]}" \
+    "$(run_sh "$SCRIPTDIR" "arch_is_supported" "$ARCH")")
+
+  log 6 "Checking that we are root."
+  PREREQ_CHECKS=("${PREREQ_CHECKS[@]}" \
+    "$(run_sh "$SCRIPTDIR" "root_check")")
+
+  log 6 "Ensuring .ENV is created and up to date."
+  PREREQ_CHECKS=("${PREREQ_CHECKS[@]}" \
+    "$(run_sh "$SCRIPTDIR" "env_create" "$CONFIGDIR" "$BASEDIR")")
+
+  log 6 "Ensuring .APPS is created and up to date."
+  PREREQ_CHECKS=("${PREREQ_CHECKS[@]}" \
+    "$(run_sh "$SCRIPTDIR" "apps_create" "$CONFIGDIR" "$BASEDIR")")
+
+  if [[ $(run_sh "${SCRIPTDIR}" "array_contains" \
+    "1" "${PREREQ_CHECKS[@]}") -eq 0 ]] ; then
+    log 3 "Prerequisite checking failed, exiting."
+  fi
+
+  set -u
+
+  log 6 "Stashing self config in .MDC"
   run_sh "$SCRIPTDIR" "self_config_store"
 
-  # run cli if options are included
+  log 6 "Detected CLI arguments included, passing to CLI menu."
   run_sh "$MENUDIR" "cli" "${ARGS[@]:-}"
 
-  # start menu
+  log 6 "Starting Whiptail GUI menu."
   run_sh "$MENUDIR" "menu_main" || true
 }
 main

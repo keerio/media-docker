@@ -13,48 +13,49 @@ menu_manual() {
   OPTIONS+=("Plex Claim" "Set Plex claim token.")
   OPTIONS+=("Start" "Start Docker containers.")
 
+  log 7 "Opening configuration menu."
   local SELECTION
-
   SELECTION=$(whiptail --fb --clear --title "media-docker Configuration" \
     --cancel-button "Exit" --menu "Select an option." 0 0 0 \
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
 
   case $SELECTION in
     "Install Prerequisites")
-      info "Starting prerequistes install."
+      log 6 "Starting prerequistes installation."
       run_sh "$SCRIPTDIR" "prereq_install"
     ;;
     "Directories")
-      info "Starting directory configuration process."
+      log 6 "Starting directory configuration process."
       run_sh "$MENUDIR" "menu_directories"
     ;;
     "Apps")
-      info "Starting manual app configuration process."
+      log 6 "Starting manual app configuration process."
       run_sh "$MENUDIR" "menu_apps"
     ;;
     "Traefik")
-      info "Starting Traefik configuration process."
+      log 6 "Starting Traefik configuration process."
       run_sh "$MENUDIR" "menu_traefik"
     ;;
     "VPN Torrent")
-      info "Starting Torrent-over-VPN configuration process."
+      log 6 "Starting Torrent-over-VPN configuration process."
       run_sh "$MENUDIR" "menu_vpn"
     ;;
     "Timezone")
-      info "Starting timezone update process."
+      log 6 "Starting timezone update process."
       run_sh "$MENUDIR" "menu_timezone"
     ;;
     "Plex Claim")
-      info "Starting Plex claim process."
+      log 6 "Starting Plex claim process."
       run_sh "$MENUDIR" "menu_env_update" \
         "PLEX_CLAIM_TOKEN" \
         "$(run_sh "$SCRIPTDIR" "env_get" "PLEX_CLAIM_TOKEN" "$BASEDIR/.env")" \
     ;;
     "Start")
-      info "Starting Docker containers."
+      log 6 "Starting Docker containers."
       run_sh "$SCRIPTDIR" "compose_up"
     ;;
     *)
+      log 7 "Returning to main menu."
       run_sh "$MENUDIR" "menu_main"
       exit
     ;;

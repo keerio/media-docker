@@ -3,6 +3,7 @@ set -euo pipefail
 docker_startup() {
   local INITSYS
 
+  log 7 "Attempting to set Docker to startup with init."
   INITSYS=$(run_sh "$SCRIPTDIR" "init_detect")
   case "$INITSYS" in
     systemd)

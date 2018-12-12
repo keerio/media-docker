@@ -10,9 +10,11 @@ file_backup() {
   FULLFILE=${1:-}
   FILENAME=$(basename "$FULLFILE")
 
+  log 7 "Ensuring backup directory exists."
   sudo mkdir -p "$BACKUPDIR" > /dev/null 2>&1 \
-    || err "Error when creating backup directory."
+    || log 3 "Error when creating backup directory."
+  log 6 "Backing up ${FILENAME}."
   sudo mv "$FULLFILE" "${BACKUPDIR}/${FILENAME}.${NOW}" \
     > /dev/null 2>&1 \
-    || err "Error when backing up ${FILENAME}."
+    || log 3 "Error occurred while backing up ${FILENAME}."
 }

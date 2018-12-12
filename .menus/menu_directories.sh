@@ -11,14 +11,15 @@ menu_directories() {
   OPTIONS+=("MEDIA_DIR_COMICS" "Base directory for comics.")
   OPTIONS+=("DOWNLOAD_DIR" "Directory for download / swap.")
 
+  log 7 "Opening directory configuration menu."
   local SELECTION
-
   SELECTION=$(whiptail --fb --clear --title "media-docker Configuration" \
     --cancel-button "Exit" --menu "Select a directory to update." 0 0 0 \
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
 
   case $SELECTION in
     "Exit")
+      log 7 "Exit selected, returning."
       run_sh "$MENUDIR" "menu_manual"
     ;;
     *)

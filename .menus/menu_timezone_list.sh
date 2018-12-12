@@ -17,6 +17,7 @@ menu_timezone_list() {
     fi
   done
 
+  log 7 "Opening timezone list menu."
   local SELECTION
   SELECTION=$(whiptail --title "media-docker Configuration" --radiolist \
     "Select the desired timezone." 0 0 0 \
@@ -24,6 +25,7 @@ menu_timezone_list() {
 
   case $SELECTION in
     *)
+      log 7 "Timezone: ${SELECTION} selected."
       echo "$SELECTION"
     ;;
   esac

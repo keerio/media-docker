@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2034
 set -euo pipefail
 
 cli() {
@@ -29,6 +30,15 @@ cli() {
       --test)
         PARSED_ARGS="${PARSED_ARGS:-}-t "
       ;;
+      --verbose)
+        PARSED_ARGS="${PARSED_ARGS:-}-v "
+      ;;
+      --debug)
+        PARSED_ARGS="${PARSED_ARGS:-}-x "
+      ;;
+      --logLevel)
+        PARSED_ARGS="${PARSED_ARGS:-}-l "
+      ;;
       --help)
         PARSED_ARGS="${PARSED_ARGS:-}-h "
       ;;
@@ -41,7 +51,7 @@ cli() {
 
   eval set -- "${PARSED_ARGS:-}"
 
-  while getopts ":p:aec:uPt:h" SELECTED ; do
+  while getopts ":p:aec:uPt:vxl:h" SELECTED ; do
     case $SELECTED in
       p)
         case ${OPTARG} in
@@ -111,6 +121,24 @@ cli() {
         esac
         exit
       ;;
+      v)
+        _VERBOSE=6
+      ;;
+      x)
+        _VERBOSE=7
+      ;;
+      l)
+        local level
+        if ! [[ "${OPTARG}" =~ ^[0-9]+$ ]] ; then
+          log 4 "Log level must be a number, but you passed: ${OPTARG}."
+          level=6
+        else
+          level=${OPTARG}
+        fi
+
+        log 6 "Setting log level to ${level}."
+        _VERBOSE=$level
+      ;;
       h)
         usage
         exit
@@ -127,7 +155,7 @@ cli() {
             exit
           ;;
           *)
-            err "${OPTARG} requires an argument."
+            log 3 "${OPTARG} requires an argument."
             exit
           ;;
         esac

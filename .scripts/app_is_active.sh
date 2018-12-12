@@ -15,9 +15,12 @@ app_is_active() {
     MAPAPPS["$app"]=1
   done
 
+  log 7 "Checking if ${APP} is active."
   if [[ ${MAPAPPS["$APP"]+_} ]] ; then
+    log 7 "${APP} is active."
     echo "0"
   else
+    log 7 "${APP} is not active."
     echo "1"
   fi
 }

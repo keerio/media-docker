@@ -2,12 +2,12 @@
 set -euo pipefail
 
 yum_update() {
-  info "Updating yum repositories."
+  log 6 "Updating yum repositories."
   sudo yum -y update > /dev/null 2>&1 \
-    || err "Error occurred updating yum repositories."
-  info "Cleaning up remnants of unused packages."
+    || log 3 "Error occurred updating yum repositories."
+  log 6 "Cleaning up remnants of unused packages."
   sudo yum -y autoremove > /dev/null 2>&1 \
-    || err "Failed to clean up unused packages."
+    || log 3 "Failed to clean up unused packages."
   sudo yum -y clean all > /dev/null 2>&1 \
-    || err "Failed to cleanup cache from yum."
+    || log 3 "Failed to cleanup cache from yum."
 }

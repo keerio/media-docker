@@ -8,10 +8,13 @@ env_create() {
   SOURCEDIR=${1:-}
   DESTDIR=${2:-}
 
+  log 7 "Checking if .ENV exists."
   if [[ ! -f "${DESTDIR}/.env" ]] ; then
+    log 7 ".ENV does not exist, creating."
     sudo cp "${SOURCEDIR}/.env" "${DESTDIR}/.env" \
-      > /dev/null 2>&1 || err "Error occured copying .env."
+      > /dev/null 2>&1 || log 3 "Error occured copying .env."
 
+    log 7 "Setting default .ENV values."
     run_sh "$SCRIPTDIR" "env_set" \
       "BASE_DIR" "$BASEDIR/" "${DESTDIR}/.env"
     run_sh "$SCRIPTDIR" "env_set" \
@@ -32,6 +35,7 @@ env_create() {
 
   run_sh "$SCRIPTDIR" "env_merge" "${DESTDIR}/.env" "${SOURCEDIR}/.env"
 
+  log 7 "Setting media directories where legacy media directory is set."
   local MEDIA_DIR
   MEDIA_DIR="$(run_sh "$SCRIPTDIR" "env_get" "MEDIA_DIR")"
 
@@ -64,4 +68,7 @@ env_create() {
     run_sh "$SCRIPTDIR" "env_set" \
       "MEDIA_DIR_MOVIES" "${MEDIA_DIR}/Comics" "${DESTDIR}/.env"
   fi
+
+  echo 0
+  return 0
 }

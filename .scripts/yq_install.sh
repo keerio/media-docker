@@ -21,14 +21,14 @@ yq_install() {
   URL="https://github.com/mikefarah/yq/releases/download/"\
 "${YQ_VERSION}/yq_$(uname -s)_$PARSEDARCH"
 
-  info "Installing yq."
+  log 6 "Installing yq."
   sudo curl -fsSL "$URL" -o /usr/local/bin/yq \
     > /dev/null 2>&1 \
-    || err "Error downloading yq."
+    || log 3 "Error downloading yq."
 
   sudo chmod +x /usr/local/bin/yq \
     > /dev/null 2>&1 \
-    || err "Error installing yq."
+    || log 3 "Error installing yq."
 
-  success "yq installed"
+  log 6 "yq installed"
 }

@@ -6,6 +6,7 @@ dnf_prereqs_install() {
   NOREMOVE=${1-:"N"}
 
   if [[ "${NOREMOVE}" = "N" ]] ; then
+    log 6 "Removing legacy packages."
     sudo dnf -y remove docker docker-client \
       docker-client-latest docker-common \
       docker-latest docker-latest-logrotate \
@@ -15,6 +16,7 @@ dnf_prereqs_install() {
       || true
   fi
 
+  log 6 "Installing prerequisite packages."
   run_sh "$SCRIPTDIR" "dnf_install" \
     "curl" "git" "grep" "sed" "jq" \
     "newt" "httpd-tools"

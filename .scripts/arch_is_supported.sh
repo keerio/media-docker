@@ -11,10 +11,13 @@ arch_is_supported(){
 
   for sup in ${SUPPORTED_ARCH[@]} ; do
     if [[ "$sup" == "$DETECTED_ARCH" ]] ; then
-      info "Detected architecture as: ${DETECTED_ARCH}."
-      return
+      log 6 "Detected architecture as: ${DETECTED_ARCH}."
+      echo 0
+      return 0
     fi
   done
 
-  err "Unsupported architecture detected: ${DETECTED_ARCH}."
+  log 4 "Unsupported architecture detected: ${DETECTED_ARCH}."
+  echo 1
+  return 1
 }

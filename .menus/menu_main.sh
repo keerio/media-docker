@@ -9,38 +9,39 @@ menu_main() {
   OPTIONS+=(".ENV" "View or edit .env.")
   OPTIONS+=(".APPS" "View or edit .apps.")
 
+  log 7 "Opening main menu."
   local SELECTION
-
   SELECTION=$(whiptail --fb --clear --title "media-docker Configuration" \
     --cancel-button "Exit" --menu "Select an option." 0 0 0 \
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
 
   case $SELECTION in
     "Configuration")
-      info "Starting manual app configuration process."
+      log 6 "Starting application configuration process."
       run_sh "$MENUDIR" "menu_manual" || run_sh "$MENUDIR" "menu_main"
     ;;
     "Update")
-      info "Starting media-docker update process."
+      log 6 "Starting media-docker update process."
       run_sh "$MENUDIR" "menu_update" "${BASEDIR}" \
         || run_sh "$MENUDIR" "menu_main"
     ;;
     "Docker Prune")
-      info "Asking for confirmation of Docker system prune."
+      log 6 "Asking for confirmation of Docker system prune."
       run_sh "$MENUDIR" "menu_docker_prune" \
         || run_sh "$MENUDIR" "menu_main"
     ;;
     ".ENV")
-      info "Opening .env."
+      log 6 "Opening .env."
       run_sh "$SCRIPTDIR" "editor_open" "${BASEDIR}/.env" \
         || run_sh "$MENUDIR" "menu_main"
     ;;
     ".APPS")
-      info "Opening .apps."
+      log 6 "Opening .apps."
       run_sh "$SCRIPTDIR" "editor_open" "${BASEDIR}/.apps" \
         || run_sh "$MENUDIR" "menu_main"
     ;;
     *)
+      log 7 "Exiting media-docker."
       return 0
     ;;
   esac

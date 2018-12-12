@@ -2,7 +2,9 @@
 set -euo pipefail
 
 self_config_store() {
+  log 7 "Checking if media-docker config temp file exists."
   if [[ ! -f "${BASEDIR}/.mdc" ]] ; then
+    log 7 "Creating media-docker config temp file."
     echo "# media-docker location config" >> "${BASEDIR}/.mdc"
 
     run_sh "$SCRIPTDIR" "env_set" \

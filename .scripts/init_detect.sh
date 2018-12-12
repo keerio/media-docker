@@ -12,8 +12,8 @@ init_detect() {
   elif [[ $(ps 1) =~ 'launchd' ]] ; then
     INITSYS="launchd"
   else
-    err "Could not determine init system."
+    log 3 "Could not determine init system."
   fi
-  info "Detected init system as: ${INITSYS}."
+  log 6 "Detected init system as: ${INITSYS}."
   echo "$INITSYS"
 }

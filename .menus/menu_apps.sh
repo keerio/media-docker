@@ -12,7 +12,7 @@ menu_apps() {
   APPS=$(run_sh "$SCRIPTDIR" "dir_array" "$CONTAINDIR")
 
   if [[ ! -f "$APPENV" ]] ; then
-    info ".apps not found, creating."
+    log 6 ".APPS not found, creating."
     echo "# APP CONFIGURATION" >> "$APPENV"
   fi
 
@@ -20,9 +20,10 @@ menu_apps() {
     local DESC
     local ENABLED
 
-    # pull description of app from file
+    log 7 "Reading description of ${app} from file."
     DESC=$(cat "$CONTAINDIR/$app/.description")
-    # determine if app has been enabled before
+
+    log 7 "Checking if ${app} has been previously enabled."
     ENABLED=$(run_sh "$SCRIPTDIR" "env_get" "$app" "$APPENV" || echo "N")
     case $ENABLED in
       [Yy]*)
@@ -37,25 +38,31 @@ menu_apps() {
       "$app" "$DESC" "$ENABLED")
   done
 
-  # get user input
+  log 7 "Opening application enable menu."
   SELECTIONS=$(whiptail --title "media-docker Configuration" --checklist \
     "Enable or disable applications" 0 0 0 \
     "${OPTIONS[@]}" 3>&1 1>&2 2>&3 || echo "Exit")
 
-  # replace pesky quotes and map to associative array
+  log 7 "Mapping apps to associative array."
   SELECTIONS=("${SELECTIONS[@]//\"/}")
   for SELECTION in ${SELECTIONS[@]} ; do
     MAPSELS["$SELECTION"]=1
   done
 
+  log 6 "Enabling / disabling apps."
   for APP in ${APPS[@]} ; do
     if [[ ${MAPSELS[$APP]+_} ]] ; then
+      log 7 "Enabled app: ${APP}."
       run_sh "$SCRIPTDIR" "env_set" "$APP" "Y" ".apps"
     else
+      log 7 "Disabled app: ${APP}."
       run_sh "$SCRIPTDIR" "env_set" "$APP" "N" ".apps"
     fi
   done
 
+  log 6 "Running docker-compose creation process."
   run_sh "$SCRIPTDIR" "compose_create"
+
+  log 7 "Returning to configuration menu."
   run_sh "$MENUDIR" "menu_manual"
 }

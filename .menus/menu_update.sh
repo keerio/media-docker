@@ -3,11 +3,13 @@ set -euo pipefail
 
 menu_update() {
   local PROMPT="Would you like to update the media-docker system?"
-  local SELECTION
   local RESPONSE
   local DIRECTORY
 
   DIRECTORY=${1:-}
+
+  log 7 "Prompting decision on self update."
+  local SELECTION
   SELECTION=$(whiptail --title "media-docker Configuration" \
     --yesno "$PROMPT" 0 0 \
     3>&1 1>&2 2>&3 ; echo $?)
@@ -15,15 +17,16 @@ menu_update() {
 
   case $RESPONSE in
     [Yy]*)
-      info "Starting media-docker self update."
+      log 6 "Starting media-docker self update."
       run_sh "$SCRIPTDIR" "self_update" "$DIRECTORY"
     ;;
     [Nn]*)
-      info "The media-docker self update will not be run."
+      log 7 "The media-docker self update will not be run."
     ;;
     *)
     ;;
   esac
 
+  log 7 "Returning to main menu."
   run_sh "$MENUDIR" "menu_main"
 }

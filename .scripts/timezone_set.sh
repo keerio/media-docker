@@ -8,5 +8,5 @@ timezone_set() {
 
   sudo timedatectl set-timezone "${NEWZONE}" \
     > /dev/null 2>&1 \
-    || err "Error setting timezone."
+    || log 3 "Error setting timezone."
 }

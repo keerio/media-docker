@@ -2,7 +2,7 @@
 set -euo pipefail
 
 zypper_upgrade() {
-  info "Upgrading packages from zypper."
+  log 6 "Upgrading packages from zypper."
   sudo zypper -n dup > /dev/null 2>&1 \
-    || err "Error occurred while updating packages from zypper."
+    || log 3 "Error occurred while updating packages from zypper."
 }

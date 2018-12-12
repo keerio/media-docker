@@ -11,6 +11,7 @@ apps_active_list() {
 
   FILE=${1:-".apps"}
 
+  log 7 "Extracting list of active apps from ${FILE}."
   RESULT=($(sudo grep "Y" "$FILE" | grep -v "#"))
   for res in "${RESULT[@]}" ; do
     IFS="=" read -ra res <<< "$res"

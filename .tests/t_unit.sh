@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set +u
 
 # script runner
 run_sh() {
@@ -10,7 +11,8 @@ run_sh() {
     source "${DIR}/${FILE}.sh"
     ${FILE} "$@";
   else
-    err "${DIR}/${FILE}.sh not found."
+    echo "${DIR}/${FILE}.sh not found."
+    exit 1
   fi
 }
 
@@ -56,6 +58,7 @@ oneTimeSetUp() {
   set +u
 
   # GLOBALS
+  readonly _VERBOSE=3
   readonly CURDIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
   readonly SOURCENAME="$(val_get "SOURCE_NAME")"
   readonly BASEDIR="$(val_get "BASE_DIR")"
@@ -65,6 +68,49 @@ oneTimeSetUp() {
   readonly CONFIGDIR="$(val_get "CONFIG_DIR")"
   readonly CONTAINDIR="$(val_get "CONTAIN_DIR")"
   readonly BACKUPDIR="$(val_get "BACKUP_DIR")"
+  readonly LOGFILE="$BASEDIR/.logs/media-docker-$(date +%s).log"
+
+  # colors
+  readonly RED='\033[0;31m'
+  readonly YELLOW='\033[1;33m'
+  readonly BLUE='\033[34m'
+  readonly NOCOL='\033[0m'
+
+  log() {
+    set +u
+    local -A LOGLVLS=([0]="EMERG" [1]="ALERT" [2]="CRIT" [3]="ERR" [4]="WARN" \
+      [5]="NOTICE" [6]="INFO" [7]="DEBUG")
+
+    local LVL=${1}
+    local COL
+    local MSG
+    shift
+
+    if [[ "${LVL}" -le 3 ]] ; then
+      COL="${RED}"
+    elif [[ "${LVL}" -le 5 ]] ; then
+      COL="${YELLOW}"
+    elif [[ "${LVL}" -le 7 ]] ; then
+      COL="${BLUE}"
+    else
+      COL="${NOCOL}"
+    fi
+
+    MSG="[${LOGLVLS[$LVL]}] [$(date +'%Y-%m-%dT%H:%M:%S%z')] $*"
+
+    if [[ ${_VERBOSE} -ge ${LVL} ]] ; then
+      echo -e "${COL}${MSG}${NOCOL}"
+    fi
+
+    touch "${LOGFILE}"
+    echo "${MSG}" >> "${LOGFILE}"
+
+    if [[ "${LVL}" -le 3 ]] ; then
+      exit 1
+    fi
+
+    set -u
+  }
 
   . "${SCRIPTDIR}/app_is_active.sh"
   . "${SCRIPTDIR}/array_contains.sh"

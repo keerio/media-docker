@@ -10,21 +10,23 @@ self_update() {
   REPO="$(run_sh "$SCRIPTDIR" "env_get" "REPOSITORY")"
   BRANCH="$(run_sh "$SCRIPTDIR" "env_get" "BRANCH")"
 
-  info "Updating media-docker from Git."
+  log 6 "Updating media-docker from Git."
 
   if [ -d "${DIRECTORY}/.git/" ] ; then
-    info "Pulling changes from Git."
+    log 6 "Pulling changes from Git."
     sudo git -C "${DIRECTORY}" pull origin "${BRANCH}" \
-      > /dev/null 2>&1 || err "Error occured when updating from Git."
+      > /dev/null 2>&1 || log 3 "Error occured when updating from Git."
   else
-    info "Git repository not in place, installing."
+    log 6 "Git repository not in place, installing."
     sudo rm -r "${DIRECTORY}" && mkdir "${DIRECTORY}" && cd "${DIRECTORY}"
     git clone -b "${BRANCH}" "${REPO}" "${DIRECTORY}"
   fi
 
+  log 7 "Changing to ${DIRECTORY}."
   cd "${DIRECTORY}"
 
+  log 6 "Setting ${SOURCENAME} to executable."
   sudo chmod +x "${SOURCENAME}" \
     > /dev/null 2>&1 \
-      || err "Error occurred while making $SOURCENAME executable."
+      || log 3 "Error occurred while making $SOURCENAME executable."
 }

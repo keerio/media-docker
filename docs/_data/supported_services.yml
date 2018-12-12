@@ -475,3 +475,16 @@
     - x86_64
     - armhf
     - aarch64
+
+- name: Glances
+  description: An Eye on your server
+  maintainer:
+    name: nicolargo
+    url: https://hub.docker.com/r/nicolargo/glances/
+  url: 
+    - https://glances.${DOMAIN}
+  ports: 
+    - 61208
+    - 61209
+  arch:
+    - x86_64

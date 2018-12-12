@@ -1,0 +1,5 @@
+services:
+  glances:
+    ports:
+      - 61208:61208
+      - 61209:61209

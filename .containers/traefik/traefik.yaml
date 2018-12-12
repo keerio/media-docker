@@ -12,6 +12,7 @@ services:
       - traefik.frontend.rule=Host:traefik.${DOMAIN}
       - traefik.docker.network=proxied
       - traefik.port=8080
+      - traefik.frontend.auth.basic.usersFile=${BASE_DIR}/traefik/traefik.passwd
     networks:
       - proxied
       - internal

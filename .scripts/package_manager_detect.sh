@@ -28,6 +28,5 @@ package_manager_detect() {
     fi
   done
 
-  log 6 "Detected package manager as: $PACKAGE_MAN"
   echo "$PACKAGE_MAN"
 }

@@ -1,0 +1,9 @@
+services:
+  gazee:
+    labels:
+      - traefik.backend=gazee
+      - traefik.frontend.rule=Host:gazee.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=4242
+    expose:
+      - 4242

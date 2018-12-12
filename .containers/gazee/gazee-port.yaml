@@ -1,0 +1,4 @@
+services:
+  gazee:
+    ports:
+      - 4242:4242

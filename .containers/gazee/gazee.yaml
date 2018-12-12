@@ -1,0 +1,15 @@
+services:
+  gazee:
+    container_name: gazee
+    volumes:
+      - ${BASE_DIR}/gazee/config:/config
+      - ${BASE_DIR}/mylar/config:/mylar
+      - ${MEDIA_DIR_COMICS}:/comics
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    networks:
+      - proxied
+      - internal
+    restart: unless-stopped

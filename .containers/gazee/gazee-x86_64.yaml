@@ -1,0 +1,3 @@
+services:
+  gazee:
+    image: linuxserver/gazee:latest

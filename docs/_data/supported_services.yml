@@ -126,6 +126,20 @@
     - armhf
     - aarch64
 
+- name: Gazee
+  description: A WebApp Comic Reader
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/gazee/
+  url: 
+    - https://gazee.${DOMAIN}
+  ports: 
+    - 4242
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
 - name: Glances
   description: An Eye on your server
   maintainer:

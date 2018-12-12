@@ -9,25 +9,24 @@ prereq_install() {
   PACKAGE_MAN=$(run_sh "${SCRIPTDIR}" \
     "package_manager_detect")
 
-  log 6 "Detected package manager as: $PACKAGE_MAN"
   log 6 "Starting prerequisite installation process."
-  case "$PACKAGE_MAN" in
-    "apt")
+  case $PACKAGE_MAN in
+    apt)
       run_sh "${SCRIPTDIR}" "apt_prereqs_install" "${NOREMOVE}"
     ;;
-    "dnf")
+    dnf)
       run_sh "${SCRIPTDIR}" "dnf_prereqs_install" "${NOREMOVE}"
     ;;
-    "yum")
+    yum)
       run_sh "${SCRIPTDIR}" "yum_prereqs_install" "${NOREMOVE}"
     ;;
-    "pacman")
+    pacman)
       run_sh "${SCRIPTDIR}" "pacman_prereqs_install" "${NOREMOVE}"
     ;;
-    "emerge")
+    emerge)
       run_sh "${SCRIPTDIR}" "emerge_prereqs_install" "${NOREMOVE}"
     ;;
-    "zypp")
+    zypp)
       run_sh "${SCRIPTDIR}" "zypper_prereqs_install" "${NOREMOVE}"
     ;;
     *)

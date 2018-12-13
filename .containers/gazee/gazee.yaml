@@ -3,7 +3,7 @@ services:
     container_name: gazee
     volumes:
       - ${CONTAINER_DIR}/gazee/${CONTAIN_CONF_SUBDIR}:/config
-      - ${CONTAINER_DIR}/mylar:/mylar
+      - ${CONTAINER_DIR}/mylar/${CONTAIN_CONF_SUBDIR}:/mylar
       - ${MEDIA_DIR_COMICS}:/comics
     environment:
       - PUID=${PUID}

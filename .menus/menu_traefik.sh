@@ -8,7 +8,7 @@ menu_traefik() {
 
   log 7 "Loading base directory from .ENV."
   local DIRECTORY
-  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "BASE_DIR")"
+  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "CONTAINER_DIR")"
 
   log 7 "Checking if traefik.toml already exists."
   if [[ -f "${DIRECTORY}/traefik/traefik.toml" ]] ; then

@@ -7,7 +7,7 @@ menu_traefik_toml() {
   local DOMAIN
   local EMAIL_ADDRESS
 
-  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "BASE_DIR")"
+  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "CONTAINER_DIR")"
   FILE="${DIRECTORY}/traefik/traefik.toml"
 
   log 6 "Checking if traefik.toml exists."

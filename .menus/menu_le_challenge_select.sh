@@ -4,7 +4,7 @@ set -euo pipefail
 menu_le_challenge_select() {
   local DIRECTORY
   local FILE
-  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "BASE_DIR")"
+  DIRECTORY="$(run_sh "$SCRIPTDIR" "env_get" "CONTAINER_DIR")"
   FILE="${DIRECTORY}/traefik/traefik.toml"
 
   local -a OPTIONS

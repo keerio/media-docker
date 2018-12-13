@@ -1,4 +1,4 @@
 services:
   tautulli:
     labels:
-      - traefik.frontend.auth.basic.usersFile=${BASE_DIR}/traefik/traefik.passwd
+      - traefik.frontend.auth.basic.usersFile=/traefik.passwd

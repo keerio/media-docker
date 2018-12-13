@@ -1,4 +1,2 @@
 services:
   nzbget:
-    labels:
-      - traefik.frontend.auth.basic.usersFile=${BASE_DIR}/traefik/traefik.passwd

@@ -3,7 +3,7 @@ services:
   sabnzbd:
     container_name: sabnzbd
     volumes:
-      - ${CONTAINER_DIR}/sabnzbd/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/sabnzbd/config:/config
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=${PUID}

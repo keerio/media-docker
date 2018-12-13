@@ -3,8 +3,8 @@ services:
   tautulli:
     container_name: tautulli
     volumes:
-      - ${CONTAINER_DIR}/tautulli/${CONTAIN_CONF_SUBDIR}:/config
-      - ${CONTAINER_DIR}/plex/${CONTAIN_CONF_SUBDIR}/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
+      - ${CONTAINER_DIR}/tautulli/config:/config
+      - ${CONTAINER_DIR}/plex/config/Library/Application\ Support/Plex\ Media\ Server/Logs:/logs:ro
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

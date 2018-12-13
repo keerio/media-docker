@@ -3,7 +3,7 @@ services:
   ombi:
     container_name: ombi
     volumes:
-      - ${CONTAINER_DIR}/ombi/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/ombi/config:/config
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

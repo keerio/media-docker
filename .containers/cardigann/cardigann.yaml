@@ -3,7 +3,7 @@ services:
   cardigann:
     container_name: cardigann
     volumes:
-      - ${CONTAINER_DIR}/cardigann/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/cardigann/config:/config
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

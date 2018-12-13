@@ -4,7 +4,7 @@ services:
     container_name: portainer
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ${CONTAINER_DIR}/portainer//${CONTAIN_CONF_SUBDIR}:/data
+      - ${CONTAINER_DIR}/portainer//config:/data
     networks:
       - internal
       - proxied

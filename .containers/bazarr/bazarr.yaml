@@ -3,7 +3,7 @@ services:
   bazarr:
     container_name: bazarr
     volumes:
-      - ${CONTAINER_DIR}/bazarr/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/bazarr/config:/config
       - ${MEDIA_DIR_MOVIES}:/movies
       - ${MEDIA_DIR_TV}:/tv
       - ${DOWNLOAD_DIR}:/downloads

@@ -3,7 +3,7 @@ services:
   ubooquity:
     container_name: ubooquity
     volumes:
-      - ${CONTAINER_DIR}/ubooquity/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/ubooquity/config:/config
       - ${MEDIA_DIR_BOOKS}:/books
       - ${MEDIA_DIR_COMICS}:/comics
     environment:

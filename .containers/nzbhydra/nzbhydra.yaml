@@ -3,7 +3,7 @@ services:
   hydra:
     container_name: hydra
     volumes:
-      - ${CONTAINER_DIR}/hydra/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/hydra/config:/config
       - ${DOWNLOAD_DIR}/hydra/blackhole:/downloads
     environment:
       - PUID=${PUID}

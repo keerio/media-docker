@@ -2,7 +2,7 @@ services:
   kodi-headless:
     container_name: kodi-headless
     volumes:
-      - ${CONTAINER_DIR}/kodi-headless/${CONTAIN_CONF_SUBDIR}:/config/.kodi
+      - ${CONTAINER_DIR}/kodi-headless/config:/config/.kodi
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

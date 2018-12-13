@@ -3,7 +3,7 @@ services:
   nzbget:
     container_name: nzbget
     volumes:
-      - ${CONTAINER_DIR}/nzbget/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/nzbget/config:/config
       - ${DOWNLOAD_DIR}:/downloads
     environment:
       - PUID=${PUID}

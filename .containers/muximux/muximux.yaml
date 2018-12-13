@@ -3,7 +3,7 @@ services:
   muximux:
     container_name: muximux
     volumes:
-      - ${CONTAINER_DIR}/muximux/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/muximux/config:/config
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

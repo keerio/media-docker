@@ -2,7 +2,7 @@ services:
   cops:
     container_name: cops
     volumes:
-      - ${CONTAINER_DIR}/cops/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/cops/config:/config
       - ${MEDIA_DIR_BOOKS}:/books
     environment:
       - PUID=${PUID}

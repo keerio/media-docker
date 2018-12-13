@@ -3,7 +3,7 @@ services:
   lazylibrarian:
     container_name: lazylibrarian
     volumes:
-      - ${CONTAINER_DIR}/lazylibrarian/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/lazylibrarian/config:/config
       - ${MEDIA_DIR_BOOKS}:/books
       - ${DOWNLOAD_DIR}:/downloads
     environment:

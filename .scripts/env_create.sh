@@ -20,8 +20,6 @@ env_create() {
     run_sh "$SCRIPTDIR" "env_set" \
       "CONTAINER_DIR" "$BASEDIR/containers" "${DESTDIR}/.env"
     run_sh "$SCRIPTDIR" "env_set" \
-      "CONTAIN_CONF_SUBDIR" "/config" "${DESTDIR}/.env"
-    run_sh "$SCRIPTDIR" "env_set" \
       "MEDIA_DIR_MOVIES" "$BASEDIR/media/Movies" "${DESTDIR}/.env"
     run_sh "$SCRIPTDIR" "env_set" \
       "MEDIA_DIR_MUSIC" "$BASEDIR/media/Music" "${DESTDIR}/.env"
@@ -76,11 +74,6 @@ env_create() {
   if [[ -z "$(run_sh "$SCRIPTDIR" "env_get" "CONTAINER_DIR")" ]] ; then
     run_sh "$SCRIPTDIR" "env_set" \
       "CONTAINER_DIR" "${BASE_DIR}/" "${DESTDIR}/.env"
-  fi
-
-  if [[ -z "$(run_sh "$SCRIPTDIR" "env_get" "CONTAIN_CONF_SUBDIR")" ]] ; then
-    run_sh "$SCRIPTDIR" "env_set" \
-      "CONTAIN_CONF_SUBDIR" "/config" "${DESTDIR}/.env"
   fi
 
   echo 0

@@ -8,12 +8,9 @@ compose_post() {
   local APPENV="${BASEDIR}/.apps"
   local ENV="${BASEDIR}/.env"
   local CONTAINER_DIR
-  local CONTAIN_CONF_SUBDIR
 
   CONTAINER_DIR=$(run_sh "$SCRIPTDIR" "env_get" \
     "CONTAINER_DIR" "${ENV}")
-  CONTAIN_CONF_SUBDIR=$(run_sh "$SCRIPTDIR" "env_get" \
-    "CONTAIN_CONF_SUBDIR" "${ENV}")
 
   local KODI_ENABLED
   local KODI_FIRST
@@ -29,7 +26,7 @@ compose_post() {
     local KODI_DB_USER
     local KODI_DB_PASS
 
-    KODI_CONFIG="${CONTAINER_DIR}/kodi-headless/${CONTAIN_CONF_SUBDIR}"\
+    KODI_CONFIG="${CONTAINER_DIR}/kodi-headless/config"\
 "/userdata/advancedsettings.xml"
     KODI_DB_HOST="kodi-mariadb"
     KODI_DB_USER="=$(run_sh "$SCRIPTDIR" "env_get" \

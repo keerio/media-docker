@@ -3,7 +3,7 @@ services:
   emby:
     container_name: emby
     volumes:
-      - ${CONTAINER_DIR}/emby/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/emby/config:/config
       - ${MEDIA_DIR_TV}:/data/tv
       - ${MEDIA_DIR_MOVIES}:/data/movies
       - ${MEDIA_DIR_MUSIC}:/data/music

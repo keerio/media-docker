@@ -3,7 +3,7 @@ services:
   radarr:
     container_name: radarr
     volumes:
-      - ${CONTAINER_DIR}/radarr/${CONTAIN_CONF_SUBDIR}:/config
+      - ${CONTAINER_DIR}/radarr/config:/config
       - ${MEDIA_DIR_MOVIES}:/movies
       - ${DOWNLOAD_DIR}:/downloads
     environment:

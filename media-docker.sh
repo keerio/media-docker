@@ -124,7 +124,7 @@ finish() {
     fi
 
     log 6 "Ensuring that we are executable."
-    run_sh "$SCRIPTDIR" "self_symlink" || true
+    run_sh "$SCRIPTDIR" "self_chmod" || true
 
     log 6 "Ensuring that our symlink is set."
     run_sh "$SCRIPTDIR" "self_symlink" || true

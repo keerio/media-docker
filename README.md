@@ -22,9 +22,10 @@ installation is omega-easy!
 from your terminal as a sudo-capable user, run the following commands:
 
 ```bash
-git clone https://github.com/joskore/media-docker/ ./media-docker && cd ./media-docker/
-chmod +x ./media-docker.sh
-sudo ./media-docker.sh
+# ensure git is installed before running
+apt-get/dnf/yum/zypper install git
+
+bash -c "$(curl -sL dl.media-docker.com)"
 ```
 
 after this first installation and run, you can run media-docker from anywhere by running:

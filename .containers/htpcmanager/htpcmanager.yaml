@@ -3,7 +3,7 @@ services:
   htpcmanager:
     container_name: htpcmanager
     volumes:
-      - ${BASE_DIR}/htpcmanager/config:/config
+      - ${CONTAINER_DIR}/htpcmanager/${CONTAIN_CONF_SUBDIR}:/config
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

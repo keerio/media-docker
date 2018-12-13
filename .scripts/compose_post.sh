@@ -1,17 +1,26 @@
 #!/usr/bin/env bash
+# shellcheck disable=SC2140
 # shellcheck disable=SC2143
 set -euo pipefail
 
 compose_post() {
   log 6 "Running docker-compose post-processing."
   local APPENV="${BASEDIR}/.apps"
+  local ENV="${BASEDIR}/.env"
+  local CONTAINER_DIR
+  local CONTAIN_CONF_SUBDIR
+
+  CONTAINER_DIR=$(run_sh "$SCRIPTDIR" "env_get" \
+    "CONTAINER_DIR" "${ENV}")
+  CONTAIN_CONF_SUBDIR=$(run_sh "$SCRIPTDIR" "env_get" \
+    "CONTAIN_CONF_SUBDIR" "${ENV}")
 
   local KODI_ENABLED
   local KODI_FIRST
   KODI_ENABLED=$(run_sh "$SCRIPTDIR" "env_get" \
     "kodi-headless" "$APPENV" || echo "N")
   KODI_FIRST=$(run_sh "$SCRIPTDIR" "env_get" \
-    "KODI_FIRST_RUN" "${BASEDIR}/.env" || echo "N")
+    "KODI_FIRST_RUN" "${ENV}" || echo "N")
 
   if [[ "${KODI_ENABLED}" == "Y" ]] && [[ "${KODI_FIRST}" == "Y" ]] ; then
     log 7 "Kodi is enabled, run post-process."
@@ -20,12 +29,13 @@ compose_post() {
     local KODI_DB_USER
     local KODI_DB_PASS
 
-    KODI_CONFIG="${BASEDIR}/kodi-headless/config/userdata/advancedsettings.xml"
+    KODI_CONFIG="${CONTAINER_DIR}/kodi-headless/${CONTAIN_CONF_SUBDIR}"\
+"/userdata/advancedsettings.xml"
     KODI_DB_HOST="kodi-mariadb"
     KODI_DB_USER="=$(run_sh "$SCRIPTDIR" "env_get" \
-      "MARIADB_USER" "${BASEDIR}/.env")"
+      "MARIADB_USER" "${ENV}")"
     KODI_DB_PASS="=$(run_sh "$SCRIPTDIR" "env_get" \
-      "MARIADB_PASSWORD" "${BASEDIR}/.env")"
+      "MARIADB_PASSWORD" "${ENV}")"
 
     log 6 "Setting database server host."
     run_sh "${SCRIPTDIR}" "xml_update" "${KODI_CONFIG}" \

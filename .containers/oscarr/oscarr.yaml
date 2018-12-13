@@ -3,7 +3,7 @@ services:
   oscarr:
     container_name: oscarr
     volumes:
-      - ${BASE_DIR}/oscarr/config:/data
+      - ${CONTAINER_DIR}/oscarr:/data
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

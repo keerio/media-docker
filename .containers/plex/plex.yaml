@@ -4,7 +4,7 @@ services:
     container_name: plex
     hostname: plex
     volumes:
-      - ${BASE_DIR}/plex/config:/config
+      - ${CONTAINER_DIR}/plex/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_TV}:/data/tv
       - ${MEDIA_DIR_MOVIES}:/data/movies
       - ${MEDIA_DIR_MUSIC}:/data/music

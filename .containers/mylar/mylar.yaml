@@ -3,7 +3,7 @@ services:
   mylar:
     container_name: mylar
     volumes:
-      - ${BASE_DIR}/mylar/config:/config
+      - ${CONTAINER_DIR}/mylar/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_COMICS}:/comics
       - ${DOWNLOAD_DIR}:/downloads
     environment:

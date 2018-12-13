@@ -3,7 +3,7 @@ services:
   sonarr:
     container_name: sonarr
     volumes:
-      - ${BASE_DIR}/sonarr/config:/config
+      - ${CONTAINER_DIR}/sonarr/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_TV}:/tv
       - ${DOWNLOAD_DIR}:/downloads
     environment:

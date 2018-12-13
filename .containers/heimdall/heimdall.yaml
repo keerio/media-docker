@@ -3,7 +3,7 @@ services:
   heimdall:
     container_name: heimdall
     volumes:
-      - ${BASE_DIR}/heimdall/config:/config
+      - ${CONTAINER_DIR}/heimdall/${CONTAIN_CONF_SUBDIR}:/config
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

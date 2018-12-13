@@ -3,7 +3,7 @@ services:
   organizr:
     container_name: organizr
     volumes:
-      - ${BASE_DIR}/organizr/config:/config
+      - ${CONTAINER_DIR}/organizr/${CONTAIN_CONF_SUBDIR}:/config
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

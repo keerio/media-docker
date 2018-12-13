@@ -3,7 +3,7 @@ services:
   watcher:
     container_name: watcher
     volumes:
-      - ${BASE_DIR}/watcher/config:/config
+      - ${CONTAINER_DIR}/watcher/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_MOVIES}:/movies
       - ${DOWNLOAD_DIR}:/downloads
     environment:

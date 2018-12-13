@@ -4,7 +4,7 @@ services:
   transmission:
     container_name: transmission
     volumes:
-      - ${BASE_DIR}/transmission:/data
+      - ${CONTAINER_DIR}/transmission:/data
       - ${DOWNLOAD_DIR}:/downloads
       - /etc/localtime:/etc/localtime:ro
     environment:

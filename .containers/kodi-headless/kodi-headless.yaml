@@ -2,7 +2,7 @@ services:
   kodi-headless:
     container_name: kodi-headless
     volumes:
-      - ${BASE_DIR}/kodi-headless/config:/config/.kodi
+      - ${CONTAINER_DIR}/kodi-headless/${CONTAIN_CONF_SUBDIR}:/config/.kodi
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -16,7 +16,7 @@ services:
   kodi-mariadb:
     container_name: kodi-mariadb
     volumes:
-      - ${BASE_DIR}/kodi-mariadb/data:/var/lib/mysql
+      - ${CONTAINER_DIR}/kodi-mariadb/data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       - MYSQL_DATABASE=${MARIADB_DATABASE}

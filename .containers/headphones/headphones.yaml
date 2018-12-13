@@ -3,7 +3,7 @@ services:
   headphones:
     container_name: headphones
     volumes:
-      - ${BASE_DIR}/headphones/config:/config
+      - ${CONTAINER_DIR}/headphones/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_MUSIC}:/music
       - ${DOWNLOAD_DIR}:/downloads
     environment:

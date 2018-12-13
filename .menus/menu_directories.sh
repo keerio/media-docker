@@ -4,6 +4,8 @@ set -euo pipefail
 menu_directories() {
   local -a OPTIONS
   OPTIONS+=("BASE_DIR" "Base directory for general storage.")
+  OPTIONS+=("CONTAINER_DIR" "Base directory for container storage.")
+  OPTIONS+=("CONTAIN_CONF_SUBDIR" "Sub-dir for container conf storage.")
   OPTIONS+=("MEDIA_DIR_MOVIES" "Base directory for movies.")
   OPTIONS+=("MEDIA_DIR_MUSIC" "Base directory for music.")
   OPTIONS+=("MEDIA_DIR_TV" "Base directory for TV.")

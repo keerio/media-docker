@@ -2,7 +2,7 @@ services:
   medusa:
     container_name: medusa
     volumes:
-      - ${BASE_DIR}/medusa/config:/config
+      - ${CONTAINER_DIR}/medusa/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_TV}:/tv
       - ${DOWNLOAD_DIR}:/downloads
     environment:

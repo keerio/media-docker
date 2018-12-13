@@ -3,7 +3,7 @@ services:
     container_name: glances
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ${BASE_DIR}/glances/config:/glances/conf
+      - ${CONTAINER_DIR}/glances:/glances
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

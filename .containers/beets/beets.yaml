@@ -3,7 +3,7 @@ services:
   beets:
     container_name: beets
     volumes:
-      - ${BASE_DIR}/beets/config:/config
+      - ${CONTAINER_DIR}/beets/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_MUSIC}:/music
       - ${DOWNLOAD_DIR}:/downloads
     environment:

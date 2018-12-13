@@ -3,7 +3,7 @@ services:
   lidarr:
     container_name: lidarr
     volumes:
-      - ${BASE_DIR}/lidarr/config:/config
+      - ${CONTAINER_DIR}/lidarr/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_MUSIC}:/music
       - ${DOWNLOAD_DIR}:/downloads
     environment:

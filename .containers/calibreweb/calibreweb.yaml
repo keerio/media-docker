@@ -3,7 +3,7 @@ services:
   calibreweb:
     container_name: calibreweb
     volumes:
-      - ${BASE_DIR}/calibreweb/config:/config
+      - ${CONTAINER_DIR}/calibreweb/${CONTAIN_CONF_SUBDIR}:/config
       - ${MEDIA_DIR_BOOKS}:/books
     environment:
       - PUID=${PUID}

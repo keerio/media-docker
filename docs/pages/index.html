@@ -45,25 +45,15 @@ permalink: /
     <div class="unit golden-large code">
       <p class="title">media-docker quickstart</p>
       <div class="shell">
+          <p class="line">
+              <span class="path">~</span>
+              <span class="prompt">λ</span>
+              <span class="command">apt-get/dnf/yum/zypper install git</span>
+            </p>
         <p class="line">
           <span class="path">~</span>
           <span class="prompt">λ</span>
-          <span class="command">git clone https://github.com/joskore/media-docker</span>
-        </p>
-        <p class="line">
-          <span class="path">~</span>
-          <span class="prompt">λ</span>
-          <span class="command">cd media-docker</span>
-        </p>
-        <p class="line">
-          <span class="path">~/media-docker</span>
-          <span class="prompt">λ</span>
-          <span class="command">chmod +x ./media-docker.sh</span>
-        </p>
-        <p class="line">
-          <span class="path">~/media-docker</span>
-          <span class="prompt">λ</span>
-          <span class="command">sudo ./media-docker.sh</span>
+          <span class="command">bash -c "$(curl -sL dl.media-docker.com)"</span>
         </p>
         <p class="line">
           <span class="output"><em># Away we go!</em></span>

@@ -45,6 +45,10 @@
   description: Base directory path for storage.
   example: /mnt/media/data/
 
+- name: CONTAINER_DIR
+  description: Base directory path for container storage.
+  example: /mnt/media/data/containers/
+
 - name: MEDIA_DIR_MOVIES
   description: Base media directory path for movie storage.
   example: /mnt/media/data/library/Movies

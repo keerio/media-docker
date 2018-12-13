@@ -116,7 +116,10 @@ finish() {
   log 7 "Exit code: ${EXIT_CODE}"
   log 6 "Cleaning up after ourselves."
   if [[ ${EXIT_CODE} -eq 222 ]] ; then
-    log 6 "Installer process, no clean up required."
+    log 6 "Cleaning up installer file."
+    if [[ -f "$0" ]] ; then
+      sudo rm "$0"
+    fi
   else
     if [[ $(service --status-all | grep -Fq 'docker') ]] ; then
       log 6 "Restarting Docker service."
@@ -151,11 +154,6 @@ main() {
     log 5 "Downloading media-docker to ${BASEDIR}/media-docker."
     git clone "https://github.com/joskore/media-docker" \
       "${BASEDIR}/media-docker" || log 3 "Error occurred when cloning repo."
-
-    log 6 "Cleaning up current file."
-    if [[ -f "$0" ]] ; then
-      sudo rm "$0"
-    fi
 
     log 6 "Running newly downloaded media-docker."
     (cd "${BASEDIR}/media-docker/" && \

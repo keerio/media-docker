@@ -9,7 +9,8 @@
 
 a short and sweet way to get a full-blown media stack running on a server from scratch in minutes.
 
-## what's included
+## what it is
+
 with this package, you'll get a media server environment capable of finding, grabbing, downloading, and presenting: movies, tv, books, and music. it does this (relatively) securely, prioritizing usenet but with an option for torrenting-over-VPN.
 
 traefik reverse-proxying is available for access via nice URLs without exposing ports to the outside world, as long as you have a publically accessible domain you should be clear to use this without issue.
@@ -17,34 +18,35 @@ traefik reverse-proxying is available for access via nice URLs without exposing 
 watchtower is available to keep all of your docker containers up-to-date.
 
 ## installation
-installation is omega-easy!
 
-from your terminal as a sudo-capable user, run the following commands:
+installation is omega-easy! just make sure that you have git installed and are a sudo-capable user and run one of the two sets of commands in your terminal to install:
 
 ```bash
-# ensure git is installed before running
-apt-get/dnf/yum/zypper install git
-
 bash -c "$(curl -sL dl.media-docker.com)"
 ```
 
-after this first installation and run, you can run media-docker from anywhere by running:
+*or*
+
+```bash
+git clone https://github.com/joskore/media-docker
+cd media-docker
+chmod +x media-docker.sh
+sudo ./media-docker.sh
+```
+
+regardless of the method chosen from above, after the initial run completes, you can execute media-docker from anywhere by running:
 
 ```bash
 sudo media-docker
 ```
 
-## services
-a full list of available services and where to access them can be found in the wiki [here.](https://media-docker.com/docs/services/)
+## documentation
 
-## system requirements
-system requirements, along with tested configurations, can be found in the wiki [here.](https://media-docker.com/docs/requirements/)
-
-## what are those??
-an overview of the component files involved in this process can be found in the wiki [here.](https://media-docker.com/docs/files/)
-
-### vpn providers
-a listing of supported VPN providers for torrenting-over-vpn, provided via the haugene\transmission-openvpn container, can be found in the container's repository [here.](https://github.com/haugene/docker-transmission-openvpn#supported-providers)
+- [supported services](https://media-docker.com/docs/services/)
+- [system requirements](https://media-docker.com/docs/requirements/)
+- [component files](https://media-docker.com/docs/files/)
+- [supported vpn providers](https://github.com/haugene/docker-transmission-openvpn#supported-providers)
 
 ## thanks!
+
 this very much stands on the shoulders of those who came before, all this has done is made the deployment process simple and straightforward to configure.

@@ -9,6 +9,3 @@ services:
       - 8080
       - 9090
       - 9777
-  kodi-mariadb:
-    expose:
-      - 3306

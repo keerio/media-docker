@@ -1,5 +1,3 @@
 services:
   kodi-headless:
     image: linuxserver/kodi-headless:latest
-  kodi-mariadb:
-    image: mariadb:latest

@@ -13,15 +13,4 @@ services:
       - proxied
       - internal
     restart: unless-stopped
-  kodi-mariadb:
-    container_name: kodi-mariadb
-    volumes:
-      - ${CONTAINER_DIR}/kodi-mariadb/data:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
-      - MYSQL_DATABASE=${MARIADB_DATABASE}
-      - MYSQL_USER=${MARIADB_USER}
-      - MYSQL_PASSWORD=${MARIADB_PASSWORD}
-    networks:
-      - internal
-    restart: unless-stopped
+    

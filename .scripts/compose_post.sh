@@ -28,7 +28,7 @@ compose_post() {
 
     KODI_CONFIG="${CONTAINER_DIR}/kodi-headless/config"\
 "/userdata/advancedsettings.xml"
-    KODI_DB_HOST="kodi-mariadb"
+    KODI_DB_HOST="mariadb"
     KODI_DB_USER="=$(run_sh "$SCRIPTDIR" "env_get" \
       "MARIADB_USER" "${ENV}")"
     KODI_DB_PASS="=$(run_sh "$SCRIPTDIR" "env_get" \

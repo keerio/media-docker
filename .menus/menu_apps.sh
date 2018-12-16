@@ -60,6 +60,13 @@ menu_apps() {
     fi
   done
 
+  log 6 "Checking prerequisite apps."
+  if [[ $(run_sh "$SCRIPTDIR" "env_get" "kodi-headless" "$APPENV" \
+    || echo "N") == "Y" ]] ; then
+    log 7 "Ensuring mariadb is enabled for kodi-headless."
+    run_sh "$SCRIPTDIR" "env_set" "mariadb" "Y" ".apps"
+  fi
+
   log 6 "Running docker-compose creation process."
   run_sh "$SCRIPTDIR" "compose_create"
 

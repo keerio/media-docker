@@ -6,6 +6,8 @@ services:
       - ${CONTAINER_DIR}/couchpotato/config:/config
       - ${MEDIA_DIR_MOVIES}:/movies
       - ${DOWNLOAD_DIR}:/downloads
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

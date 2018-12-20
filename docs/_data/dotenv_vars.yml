@@ -49,6 +49,10 @@
   description: Base directory path for container storage.
   example: /mnt/media/data/containers/
 
+- name: SHARED_DIR
+  description: Directory path for shared container storage.
+  example: /mnt/media/data/shared/
+
 - name: MEDIA_DIR_MOVIES
   description: Base media directory path for movie storage.
   example: /mnt/media/data/library/Movies

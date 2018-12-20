@@ -6,6 +6,8 @@ services:
       - ${CONTAINER_DIR}/ubooquity/config:/config
       - ${MEDIA_DIR_BOOKS}:/books
       - ${MEDIA_DIR_COMICS}:/comics
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

@@ -7,6 +7,8 @@ services:
       - ${CONTAINER_DIR}/traefik/traefik.toml:/traefik.toml
       - ${CONTAINER_DIR}/traefik/acme.json:/acme.json
       - ${CONTAINER_DIR}/traefik/traefik.passwd:/traefik.passwd
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
     labels:
       - traefik.backend=traefik
       - traefik.frontend.rule=Host:traefik.${DOMAIN}

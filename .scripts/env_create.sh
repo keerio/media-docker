@@ -20,6 +20,8 @@ env_create() {
     run_sh "$SCRIPTDIR" "env_set" \
       "CONTAINER_DIR" "$BASEDIR/containers" "${DESTDIR}/.env"
     run_sh "$SCRIPTDIR" "env_set" \
+      "SHARED_DIR" "$BASEDIR/shared" "${DESTDIR}/.env"
+    run_sh "$SCRIPTDIR" "env_set" \
       "MEDIA_DIR_MOVIES" "$BASEDIR/media/Movies" "${DESTDIR}/.env"
     run_sh "$SCRIPTDIR" "env_set" \
       "MEDIA_DIR_MUSIC" "$BASEDIR/media/Music" "${DESTDIR}/.env"
@@ -36,6 +38,12 @@ env_create() {
   fi
 
   run_sh "$SCRIPTDIR" "env_merge" "${DESTDIR}/.env" "${SOURCEDIR}/.env"
+
+  log 7 "Setting shared directory where not set."
+  if [[ -z "$(run_sh "$SCRIPTDIR" "env_get" "SHAREDDIR")" ]] ; then
+    run_sh "$SCRIPTDIR" "env_set" \
+      "SHARED_DIR" "${BASEDIR}/shared" "${DESTDIR}/.env"
+  fi
 
   log 7 "Setting media directories where legacy media directory is set."
   local MEDIA_DIR

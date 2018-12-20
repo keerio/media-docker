@@ -4,6 +4,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ${CONTAINER_DIR}/glances/config:/glances/conf
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

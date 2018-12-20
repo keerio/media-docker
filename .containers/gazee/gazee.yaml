@@ -5,6 +5,8 @@ services:
       - ${CONTAINER_DIR}/gazee/config:/config
       - ${CONTAINER_DIR}/mylar/config:/mylar
       - ${MEDIA_DIR_COMICS}:/comics
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

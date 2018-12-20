@@ -5,6 +5,7 @@ services:
     volumes:
       - ${CONTAINER_DIR}/jackett/config:/config
       - ${DOWNLOAD_DIR}/jackett/blackhole:/downloads
+      - ${SHARED_DIR}:/shared
       - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=${PUID}

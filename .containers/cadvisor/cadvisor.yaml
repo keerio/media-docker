@@ -7,6 +7,8 @@ services:
       - /sys:/sys:ro
       - /var/lob/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
     environment:
       - PUID=${PUID}
       - PGID=${PGID}

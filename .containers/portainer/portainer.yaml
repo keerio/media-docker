@@ -5,6 +5,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ${CONTAINER_DIR}/portainer/config:/data
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
     networks:
       - internal
       - proxied

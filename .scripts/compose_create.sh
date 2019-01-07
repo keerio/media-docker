@@ -48,9 +48,11 @@ compose_create() {
             COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
               "${CONTAINDIR}/${app}/${app}-traefik.yaml")
             if [[ "$TRAEFIK_AUTH" = "Y" ]] ; then
-              log 7 "Adding auth for ${app} to docker-compose stack."
-              COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
-                "${CONTAINDIR}/${app}/${app}-auth.yaml")
+              if [[ ! "${app}" = "portainer " ]] ; then
+                log 7 "Adding auth for ${app} to docker-compose stack."
+                COMPOSE_FILES=("${COMPOSE_FILES[@]}" \
+                  "${CONTAINDIR}/${app}/${app}-auth.yaml")
+              fi
             fi
             if [[ "$app" = "plex" ]] ; then
               COMPOSE_FILES=("${COMPOSE_FILES[@]}" \

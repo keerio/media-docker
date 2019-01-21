@@ -1,0 +1,4 @@
+services:
+  # Deluge
+  deluge:
+    image: linuxserver/deluge:arm32v6-latest

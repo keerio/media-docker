@@ -1,0 +1,5 @@
+services:
+  # deluge
+  deluge:
+    ports:
+      - 8112:8112

@@ -1,0 +1,10 @@
+services:
+  # deluge
+  deluge:
+    labels:
+      - traefik.backend=deluge
+      - traefik.frontend.rule=Host:deluge.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=8112
+    expose:
+      - 8112

@@ -10,7 +10,7 @@ array_contains () {
   shift
 
   for item in "$@" ; do
-    if [[ ! -z $item ]] ; then
+    if [[ -n $item ]] ; then
       MAP[$item]=1
     fi
   done

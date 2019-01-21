@@ -1,0 +1,4 @@
+services:
+  # Deluge
+  deluge:
+    image: linuxserver/deluge:latest

@@ -1,0 +1,16 @@
+services:
+  cops:
+    container_name: cops
+    volumes:
+      - ${CONTAINER_DIR}/cops/config:/config
+      - ${MEDIA_DIR_BOOKS}:/books
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    networks:
+      - proxied
+      - internal
+    restart: unless-stopped

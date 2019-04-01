@@ -1,9 +1,9 @@
 services:
-  cops:
-    container_name: cops
+  pritunl:
+    container_name: pritunl
+    privileged: true
     volumes:
-      - ${CONTAINER_DIR}/cops/config:/config
-      - ${MEDIA_DIR_BOOKS}:/books
+      - ${CONTAINER_DIR}/pritunl/config:/config
       - ${SHARED_DIR}:/shared
       - /etc/localtime:/etc/localtime:ro
     environment:
@@ -11,6 +11,5 @@ services:
       - PGID=${PGID}
       - TZ=${TIMEZONE}
     networks:
-      - proxied
-      - internal
+      - host
     restart: unless-stopped

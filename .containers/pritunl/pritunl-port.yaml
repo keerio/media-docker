@@ -1,4 +1,5 @@
 services:
-  cops:
-    ports:
-      - 8084:80
+  pritunl:
+#    ports:
+#      - 8088:80
+#      - 8089:443

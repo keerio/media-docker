@@ -1,0 +1,23 @@
+services:
+  # mariadb Server
+  mariadb:
+    container_name: mariadb
+    hostname: mariadb
+    volumes:
+      - ${CONTAINER_DIR}/mariadb_data:/bitnami
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
+#      mariadb_data:
+#        driver: local
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+      - MARIADB_USER=bn_wordpress
+      - MARIADB_DATABASE=bitnami_wordpress
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - internal
+      - proxied
+
+    restart: unless-stopped

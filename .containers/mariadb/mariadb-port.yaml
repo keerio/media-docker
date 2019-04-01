@@ -1,0 +1,5 @@
+services:
+  # mariadb Server
+  mariadb:
+    ports:
+      - 3306:3306

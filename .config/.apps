@@ -38,3 +38,6 @@ traefik=N
 ubooquity=N
 watcher=N
 watchtower=N
+wordpress=N
+mariadb=N
+pritunl=N

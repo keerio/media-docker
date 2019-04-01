@@ -28,7 +28,7 @@ bash -c "$(curl -sL dl.media-docker.com)"
 *or*
 
 ```bash
-git clone https://github.com/joskore/media-docker
+git clone https://github.com/keerio/media-docker
 cd media-docker
 chmod +x media-docker.sh
 sudo ./media-docker.sh

@@ -1,0 +1,10 @@
+services:
+  # mariadb Server
+  mariadb:
+    labels:
+      - traefik.backend=mariadb
+      - traefik.frontend.rule=Host:mariadb.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=32400
+    expose:
+      - 32400

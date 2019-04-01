@@ -1,0 +1,10 @@
+services:
+  # wordpress Server
+  wordpress:
+    labels:
+      - traefik.backend=wordpress
+      - traefik.frontend.rule=Host:wordpress.${DOMAIN}
+      - traefik.docker.network=proxied
+      - traefik.port=80
+    expose:
+      - 80

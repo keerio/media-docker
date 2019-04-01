@@ -1,0 +1,3 @@
+services:
+  pritunl:
+    image: andrey0001/pritunl:latest

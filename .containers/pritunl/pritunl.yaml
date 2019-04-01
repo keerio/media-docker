@@ -1,0 +1,15 @@
+services:
+  pritunl:
+    container_name: pritunl
+    privileged: true
+    volumes:
+      - ${CONTAINER_DIR}/pritunl/config:/config
+      - ${SHARED_DIR}:/shared
+      - /etc/localtime:/etc/localtime:ro
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+    networks:
+      - host
+    restart: unless-stopped

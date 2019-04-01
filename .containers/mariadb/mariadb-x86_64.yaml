@@ -1,0 +1,4 @@
+services:
+  # mariadb Server
+  mariadb:
+    image: bitnami/mariadb:latest

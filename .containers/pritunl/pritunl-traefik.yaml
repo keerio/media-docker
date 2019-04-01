@@ -1,0 +1,9 @@
+services:
+  pritunl:
+  #  labels:
+  #    - traefik.backend=pritunl
+  #    - traefik.frontend.rule=Host:pritunl.${DOMAIN}
+  #    - traefik.docker.network=proxied
+  #    - traefik.port=9700
+  #  expose:
+  #    - 9700

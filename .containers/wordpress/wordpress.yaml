@@ -1,0 +1,26 @@
+services:
+  # wordpress Server
+  wordpress:
+    container_name: wordpress
+    hostname: wordpress
+    depends_on:
+      - mariadb
+    volumes:
+      - ${CONTAINER_DIR}/wordpress_data:/bitnami
+      - /etc/localtime:/etc/localtime:ro
+#      wordpress_data:
+#        driver: local
+    environment:
+      - PUID=${PUID}
+      - PGID=${PGID}
+      - TZ=${TIMEZONE}
+      - MARIADB_HOST=mariadb
+      - MARIADB_PORT_NUMBER=3306
+      - WORDPRESS_DATABASE_USER=bn_wordpress
+      - WORDPRESS_DATABASE_NAME=bitnami_wordpress
+      - ALLOW_EMPTY_PASSWORD=yes
+    networks:
+      - internal
+      - proxied
+
+    restart: unless-stopped

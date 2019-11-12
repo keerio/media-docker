@@ -322,6 +322,19 @@
     - armhf
     - aarch64
 
+- name: Nextcloud
+  description: Nextcloud personal cloud
+  maintainer:
+    name: linuxserver.io
+    url: https://hub.docker.com/r/linuxserver/nzbget/
+  url: https://nextcloud.${DOMAIN}
+  ports:
+    - 444
+  arch:
+    - x86_64
+    - armhf
+    - aarch64
+
 - name: NZBHydra
   description: NZB Meta Searcher
   maintainer:

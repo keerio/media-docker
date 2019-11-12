@@ -73,6 +73,14 @@
   description: Base media directory path for comic storage.
   example: /mnt/media/data/library/Comics
 
+- name: MEDIA_DIR_CARTOON
+  description: Base media directory path for cartoon storage.
+  example: /mnt/media/data/library/Cartoons
+
+- name: MEDIA_DIR_ANIME
+  description: Base media directory path for anime storage.
+  example: /mnt/media/data/library/Cartoons
+
 - name: DOWNLOAD_DIR
   description: Base directory path for download swap.
   example: /mnt/media/data/downloads/

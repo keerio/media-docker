@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 #
-# Perform initial setup and configuration of Docker environment for 
+# Perform initial setup and configuration of Docker environment for
 # full media server goodness.
 # shellcheck disable=SC2143
 
 #/ Usage: sudo media-docker [OPTIONS]
 #/ Description: media-docker installation and configuration tool.
-#/ 
+#/
 #/ To run the GUI installer / configurator, run media-docker without options.
 #/
 #/ Options:
@@ -152,7 +152,7 @@ main() {
   if [[ ! -d ${BASEDIR}/.git ]] ; then
     _VERBOSE=6
     log 5 "Downloading media-docker to ${BASEDIR}/media-docker."
-    git clone "https://github.com/joskore/media-docker" \
+    git clone "https://github.com/keerio/media-docker" \
       "${BASEDIR}/media-docker" || log 3 "Error occurred when cloning repo."
 
     log 6 "Running newly downloaded media-docker."

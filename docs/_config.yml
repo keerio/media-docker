@@ -2,9 +2,9 @@
 name: media-docker
 description: all-in-one deployment and configuration for an all-in-one media server.
 url: https://media-docker.com
-repository: https://github.com/joskore/media-docker
+repository: https://github.com/keerio/media-docker
 twitter:
-  username: comradejosey
+  username: none
 collections:
   docs:
     permalink: "/:collection/:path/"
